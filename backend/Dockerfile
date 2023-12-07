@@ -20,6 +20,9 @@ COPY . /app/
 # Expose port 8000 to the outside world
 EXPOSE 8000
 
+# Define the command to makemigrations
+CMD ["python", "manage.py", "makemigrations"]
+
 # Define the command to migrate models
 CMD ["python", "manage.py", "migrate"]
 
