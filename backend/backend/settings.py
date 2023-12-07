@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*@ts#_u0z)fm7+-=kjfoj7l&oebyhk4wk#%5u3&6i8(2rhn7p_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '127.0.0.1:8000', 'localhost', 'yfciik-ip-117-192-131-98.tunnelmole.net']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '127.0.0.1:8000', 'localhost', '0.0.0.0:8000']
 
 
 # Application definition
