@@ -1,0 +1,49 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+td {
+  white-space: nowrap;
+}
+
+th {
+  white-space: nowrap;
+}
+
+/* Green background */
+.green-bg {
+  background-color: green;
+}
+
+/* Orange background */
+.orange-bg {
+  background-color: orange;
+}
+
+/* Red background */
+.red-bg {
+  background-color: red;
+}
+
+.chartContainer {
+  width: 500px;
+  height: 500px;
+}
+
+/* Add your existing styles */
+
+.skeleton-row {
+  display: flex;
+  margin-bottom: 10px;
+  /* Add other styling as needed */
+}
+
+.skeleton-cell {
+  flex: 1;
+  height: 16px; /* Adjust this based on your design */
+  background-color: #f0f0f0; /* Placeholder background color */
+  margin-right: 8px;
+  /* Add other styling as needed */
+}

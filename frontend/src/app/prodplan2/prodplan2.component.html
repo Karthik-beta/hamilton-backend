@@ -1,0 +1,398 @@
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: teal;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Production Planned</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: rebeccapurple;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Order in Process</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow " style="background-color: rgb(128, 187, 39);">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Order Completed</p>
+              <div><h3>03</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 72, 133);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">All</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 125, 125);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Transactions Today</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="search-bar d-flex mt-2">
+  <!-- <button type="button" routerLink="/andonp" class="btn btn-secondary btn-md ml-1 d-flex align-items-center" >
+    <i class="fas fa-chevron-left mr-2"></i> Back
+  </button> -->
+  <input [(ngModel)]="searchText" class="form-control ml-1" (keyup)="filterData()" placeholder="Search" style="width: 200px;">
+  <!-- <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+    <i class="fas fa-file-import mr-2"></i> Import
+  </button>
+  <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+    <i class="fas fa-download mr-2"></i> Export
+  </button> -->
+  <button type="button" class="btn btn-primary ml-2 mr-1 d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static" (click)="addClick()"><i class="fas fa-plus mr-2"></i>Production Planning</button>
+  <div class="btn-group dropright ml-2">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa-solid fa-bars mr-2"></i>
+    </button>
+    <div class="dropdown-menu">
+      <!-- Dropdown menu links -->
+      <a class="dropdown-item"><i class="fas fa-file-import mr-2"></i> Import </a>
+      <a class="dropdown-item"><i class="fas fa-download mr-2"></i> Export </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <table class="table table-striped table-hover table-sm mt-3" style="text-align: center;">
+  <thead>
+    <tr class="table-header" style="background-color: #2b6099; color: white; font-size: small;">
+      <th>#</th>
+      <th>JOB WORK</th>
+      <th>EMPLOYEE ID</th>
+      <th>PRODUCT ID</th>
+      <th>DRAWING NO</th>
+      <th>CUSTOMER</th>
+      <th>PO NO & DATE</th>
+      <th>BATCH NO</th>
+      <th>ORDER QUANTITY</th>
+      <th style="width:7%"> ASSIGNED </th>
+      <th style="width:7%"> EXPECTED </th>
+      <th style="background-color: teal;">Planned</th>
+      <th style="background-color: rebeccapurple;">Processing</th>
+      <th style="background-color: rgb(128, 187, 39);">Completed</th>
+    </tr>
+  </thead>
+  <tbody style="font-size: small;">
+    <tr class="table-row">
+      <td>1</td>
+      <td>JW001</td>
+      <td>EMP001</td>
+      <td>FLAME SPREADER</td>
+      <td>DRAW001</td>
+      <td>CUSTOMER A</td>
+      <td>TEST</td>
+      <td>BATCH001</td>
+      <td>24000</td>
+      <td>01-07-2023</td>
+      <td>10-07-2023</td>
+      <td style="background-color: teal;">01-07-2023</td>
+      <td style="background-color: rebeccapurple;"></td>
+      <td style="background-color: rgb(128, 187, 39);">01-07-2023</td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Import Modal -->
+<div class="modal fade" id="importModalCenter" tabindex="-1" role="dialog" aria-labelledby="importModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLongTitle">Import File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="file-icon-container d-flex justify-content-center align-items-center">
+          <i class="far fa-file fa-5x"></i>
+        </div>
+
+        <div class="text-center mt-3">
+          <p class="drag-drop-text">Or drag and drop files here</p>
+        </div>
+        <div class="input-group mt-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="importFileInput">
+            <label class="custom-file-label" for="importFileInput">Choose file</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="importButton"><i class="fas fa-file-import mr-2"></i>Import</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Export Modal -->
+<div class="modal fade" id="exportModalCenter" tabindex="-1" role="dialog" aria-labelledby="exportModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exportModalLongTitle">Export File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="exportForm">
+          <div class="form-group">
+            <label for="exportType">Select Export Type:</label>
+            <select class="form-control" id="exportType" name="exportType">
+              <option value="csv">CSV</option>
+              <option value="pdf">PDF</option>
+              <option value="xlsx">Excel</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="downloadButton">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Production Planning</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="width:100%; background-color: aliceblue;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="jobwork">Job Work:</label>
+                <input type="text" class="form-control" id="jobbwork">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" class="form-control" id="employeeId">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="productId">Product ID:</label>
+                <select class="form-control custom-select" placeholder="Select Options" style="width: 100%; font-size: small;">
+                  <option value="" disabled selected> Select</option>
+                  <option>CASSEROLES</option>
+                  <option>CARAFES</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="drawingNo">Drawing No:</label>
+                <input type="text" class="form-control" id="drawingNo">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="customer">Customer:</label>
+                <input type="text" class="form-control" id="customer">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="PONO">PO NO:</label>
+                <input type="text" class="form-control" id="PONO">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="batchno">Batch No:</label>
+                <input type="text" class="form-control" id="batchno">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="plannedassigneddate">Planned Assigned Date:</label>
+                <input type="date" class="form-control" id="plannedassigneddate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="productionexpecteddate">Production Expected Date:</label>
+                <input type="date" class="form-control" id="productionexpecteddate">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeClick()">Close</button>
+        <button type="button" class="btn btn-success"><i class="fas fa-save"></i> Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+<!-- <button class="btn btn-outline-primary btn-md fixed-button"><i class="fas fa-plus mr-2"></i>Create Plan</button> -->
+
+
+<!-- Modal Snippet -->
+<div class="modal fade" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="width:100%; background-color: aliceblue;">
+        <app-add-edit-prodplan2 [prodplan]="prodplan" *ngIf="ActivateAddEditProdPlanComp" (prodPlanAdded)="onprodPlanAdded()"></app-add-edit-prodplan2>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mt-2">
+<p-table
+[value]="productionPlanList"
+class="p-datatable-sm"
+styleClass="p-datatable-sm p-datatable-gridlines"
+[tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small', 'color': 'black', 'white-space': 'nowrap' }"
+[lazy]="true"
+[loading]="loading"
+[paginator]="true"
+[rows]="rows"
+[totalRecords]="totalRecords"
+[rowsPerPageOptions]="rowsPerPageOptions"
+[showCurrentPageReport]="true"
+currentPageReportTemplate="{first} - {last} of {totalRecords}"
+(onLazyLoad)="loadLogs($event)"
+>
+<ng-template pTemplate="header">
+  <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black' }">
+    <th>#</th>
+    <th>JOB WORK</th>
+    <th>EMPLOYEE ID</th>
+    <th>PRODUCT ID</th>
+    <th>DRAWING NO</th>
+    <th>PRODUCT TARGET (HH:MM:SS)</th>
+    <th>CUSTOMER</th>
+    <th>PO NO & DATE</th>
+    <th>BATCH NO</th>
+    <th>ORDER QUANTITY</th>
+    <th>REQUIRED TIME (HH:MM)</th>
+    <th>FACTORY RUNNING HOURS</th>
+    <th style="width:7%"> ASSIGNED </th>
+    <th style="width:7%"> EXPECTED </th>
+    <th style="background-color: teal;">Planned</th>
+    <th style="background-color: rebeccapurple;">Processing</th>
+    <th style="background-color: rgb(128, 187, 39);">Completed</th>
+    <th>OPTIONS</th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-item let-i="rowIndex">
+  <tr class="text-size data-row" [ngStyle]="{'color': 'black'}">
+    <td>{{ i + 1 }}</td>
+      <td>{{ item.job_id }}</td>
+      <td>{{ item.employee_id }}</td>
+      <td>{{ item.product_id }}</td>
+      <td>{{ item.drawing_no }}</td>
+      <td>{{ item.product_target }}</td>
+      <td>{{ item.customer }}</td>
+      <td>{{ item.po_no }}</td>
+      <td>{{ item.batch_no }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.required_time }}</td>
+      <td>21</td>
+      <td>{{ item.assigned_date }}</td>
+      <td>{{ item.expected_date }}</td>
+      <td style="background-color: teal;">{{ item.planned_date }}</td>
+      <td style="background-color: rebeccapurple;">{{ item.processing_date }}</td>
+      <td style="background-color: rgb(128, 187, 39);">{{ item.completed_date }}</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-between">
+            <button type="button" class="btn btn-sm btn-info mr-1" (click)="editClick(item)" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger" (click)="deleteClick(item)"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+</ng-template>
+</p-table>
+</div>

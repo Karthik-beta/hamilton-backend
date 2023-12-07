@@ -1,0 +1,37 @@
+
+<div class="search-bar d-flex mt-2">
+  <!-- <button type="button" routerLink="/admin" class="btn btn-secondary ml-1 d-flex align-items-center" >
+    <i class="fas fa-chevron-left"></i> Back
+  </button> -->
+    <input class="form-control ml-3 mr-3" placeholder="Search">
+</div>
+
+<div class="container-fluid mt-2">
+  <table class="table table-sm table-striped table-hover table-bordered text-center">
+      <thead style="color: white; background-color: #2b6099;">
+          <tr>
+              <th>EMPLOYEE ID</th>
+              <th>EMPLOYEE NAME</th>
+              <th>DATE</th>
+              <th>TIME</th>
+              <th>FLAG</th>
+              <th>SHIFT ASSIGNED</th>
+              <th>ASSIGNED SHIFT</th>
+              <th>ASSIGNED BY</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Add table rows and data here if you have any -->
+          <tr *ngFor="let item of data; let i = index;">
+            <td>{{ 223044348 + i }}</td>
+            <td>Employee, {{ 223044348 + i }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.time }}</td>
+            <td>{{ item.flag }}</td>
+            <td>{{ item.shiftAssigned }}</td>
+            <td>{{ item.assignedShift }}</td>
+            <td>{{ item.assignedBy }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>

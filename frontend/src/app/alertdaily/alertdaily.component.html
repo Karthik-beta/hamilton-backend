@@ -1,0 +1,323 @@
+
+<!-- <div class="week-container">
+  <div class="week-circle" style="background-color: green;"></div>
+  <div class="week">Database Connected</div>
+</div> -->
+
+<div class="week-container">
+  <div class="">
+  <!-- Conditionally display an image -->
+<img *ngIf="databaseStatus === 'Database is connected.'" src="assets/images/database.png"  style="width:40px; height:40px" alt="Connected GIF">
+<img *ngIf="databaseStatus !== 'Database is connected.'" src="assets/images/disconnected.png" style="width:50px; height:50px" alt="Disconnected PNG"></div>
+  <div class="week">{{ databaseStatus }}</div>
+</div>
+
+
+
+
+<div class="container-fluid col-md-12 mt-2" style="display: flex; justify-content: center; align-items: center;">
+  <div class="row col-md-12 justify-content-center ">
+    <div class="card mainCard col-md-4">
+      <!-- <apx-chart [series]="chartSeries" [chart]="chartDetails" [labels]="chartLabels" [title]="chartTitle" [dataLabels]="chartDataLabels"></apx-chart> -->
+      <apx-chart [series]="chartSeries2" [chart]="chartDetails2" [labels]="chartLabels2" [title]="chartTitle2" [dataLabels]="chartDataLabels2"></apx-chart>
+      <!-- <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+        <img src="assets/images/siren.gif" alt="" width="100%" height="320px">
+      </div> -->
+    </div>
+    <div class="card smallCardsContainer col-md-8 mx-auto">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 1 content -->
+          <div class="card smallCard shadow" style="background-color: #463D8A;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT TODAY</p>
+              <h4 class="card-title text-bold">{{ today_open_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 2 content -->
+          <div class="card smallCard shadow" style="background-color: #8B178B;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT OPEN</p>
+              <h4 class="card-title text-bold">{{ total_open_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 3 content -->
+          <div class="card smallCard shadow" style="background-color: #DAA420;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT ACK/CLOSURE</p>
+              <h4 class="card-title text-bold">{{ total_acknowledge_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 4 content -->
+          <div class="card smallCard shadow" style="background-color: #E966B2;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">BREAKDOWN ALERT</p>
+              <!-- <h4 class="card-title text-bold"></h4> -->
+              <h4 class="card-title text-bold">{{ total_alerts }}</h4>
+              <!-- <p class="card-subtitle">CLICK TO VIEW</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 5 content -->
+          <div class="card smallCard shadow" style="background-color: #62CD37;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">RESETTING</p>
+              <h4 class="card-title text-bold">{{ total_resetting_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 6 content -->
+          <div class="card smallCard shadow" style="background-color: #CD5C5D;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ENGINEERING</p>
+              <h4 class="card-title text-bold">{{ total_engineering_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 7 content -->
+          <div class="card smallCard shadow" style="background-color: #A7B289;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ELECT MAINT</p>
+              <h4 class="card-title text-bold">{{ total_elect_maint_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 8 content -->
+          <div class="card smallCard shadow" style="background-color: #7F8000;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">QUALITY</p>
+              <h4 class="card-title text-bold">{{ total_quality_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 9 content -->
+          <div class="card smallCard shadow" style="background-color: #31692C;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">MECH MAINT</p>
+              <h4 class="card-title text-bold">{{ total_mech_maint_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="col-md-12 d-flex justify-content-center">
+  <div class="card mainCard2 col-md-6">
+    <apx-chart [series]="chartBarSeries" [chart]="chartBarOptions" [labels]="chartBarLabels" [title]="chartBarTitle" [dataLabels]="chartDataLabels"></apx-chart>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid col-md-12 mt-2 mb-2">
+  <div class="row justify-content-between" style="font-size: small;">
+    <div class="col-auto">
+      <label class="label">Search :</label>
+      <input type="text" class="form-control form-control-sm" placeholder="Search..." aria-label="Large" aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <!-- <div class="col-auto">
+      <p-calendar [showIcon]="true" dateFormat="yy-mm-dd" placeholder="Select Date" class="small-calendar shadow"></p-calendar>
+    </div> -->
+    <div class="col-auto">
+      <label class="label">Company :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Company</option> -->
+        <!-- <option>All</option> -->
+        <option selected>SKF PVT LTD</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Location :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Location</option> -->
+        <!-- <option>All</option> -->
+        <option selected>BLR</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Shopfloor :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Shopfloor</option> -->
+        <!-- <option>All</option> -->
+        <option selected>BALL BEARING</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Assemblyline :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedAssemblyline" (change)="onAssemblylineChange()">
+        <!-- <option selected disabled>Assembly Line</option> -->
+        <option>All</option>
+        <option>CH1</option>
+        <option>CH2</option>
+        <option>CH3</option>
+        <option>CH4</option>
+        <option>CH5</option>
+        <option>CH6</option>
+        <option>CH7</option>
+        <option>CH8</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Machine ID :</label>
+      <select class="form-select form-select-sm" [(ngModel)]="selectedMachine" (change)="onMachineChange()">
+        <!-- <option disabled selected>Machine ID</option> -->
+        <option>All</option>
+        <option>CH5-SGB</option>
+        <option>CH5-SHG1</option>
+        <option>CH5-SHG2</option>
+        <option>CH5_SPC(IR)</option>
+        <option>CH5-SSB1</option>
+        <option>CH5-SSB2</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Category :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        <!-- <option disabled selected>Category</option> -->
+        <option>All</option>
+        <option>RESETTING</option>
+        <option>ENGINEERING</option>
+        <option>ELECTMAINT</option>
+        <option>QUALITY</option>
+        <option>MECHMAINT</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Shift :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedShift" (change)="onShiftChange()">
+        <!-- <option disabled selected>Shift</option> -->
+        <option>All</option>
+        <option>FS</option>
+        <option>SS</option>
+        <option>NS</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label" for="excel-export">Export Excel :</label>
+      <div class="btn-container">
+        <button type="button" (click)="downloadAndonData()" class="btn btn-sm btn-primary"><i class="pi pi-download" style="margin-right: 0.3rem;"></i>Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<p-table
+[value]="andonList"
+class="p-datatable-sm"
+styleClass="p-datatable-sm p-datatable-gridlines"
+[tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small' }"
+[lazy]="true"
+[loading]="loading"
+(onLazyLoad)="loadLogs($event)"
+[paginator]="true"
+[rows]="rows"
+[totalRecords]="totalRecords"
+[rowsPerPageOptions]="rowsPerPageOptions"
+[scrollable]="true"
+[showCurrentPageReport]="true"
+  currentPageReportTemplate="{first} - {last} of {totalRecords}"
+>
+<ng-template pTemplate="header">
+  <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black'}">
+    <th>#</th>
+    <th>Ticket ID</th>
+    <!-- <th>Login</th> -->
+    <th>Company</th>
+    <th>Location</th>
+    <th>Shopfloor</th>
+    <th>Assembly Line</th>
+    <!-- <th>Sub-Assembly Line</th> -->
+    <th>Machine Id</th>
+    <th>Category</th>
+    <!-- <th>Sub Category</th> -->
+    <th>Alert Shift</th>
+    <th>Andon Alert</th>
+    <th>Andon Acknowledge</th>
+    <th>Andon Resolved</th>
+    <th>Respose Time</th>
+    <th>Repair Time</th>
+    <th>Total Breakdown</th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-log let-i="rowIndex">
+  <tr class="text-size data-row" [ngStyle]="{'color': 'black'}">
+    <td>{{ i + 1 }}</td>
+    <td>{{ log.id }}</td>
+    <!-- <td>XYZ</td> -->
+    <td>{{ log.company }}</td>
+    <td>{{ log.location }}</td>
+    <td>{{ log.shopfloor }}</td>
+    <td>{{ log.assemblyline }}</td>
+    <!-- <td></td> -->
+    <td>{{ log.machineId }}</td>
+    <td>{{ log.category }}</td>
+    <!-- <td>{{ log.sub_category }}</td> -->
+    <td>{{ log.alert_shift }}</td>
+    <td>{{ log.andon_alerts | slice:0:19 }}</td>
+    <td>{{ log.andon_acknowledge | slice:0:19 }}</td>
+    <td>{{ log.andon_resolved | slice:0:19 }}</td>
+    <td>{{ log.response_time }}</td>
+    <td>{{ log.repair_time }}</td>
+    <td>{{ log.total_time }}</td>
+  </tr>
+</ng-template>
+</p-table>

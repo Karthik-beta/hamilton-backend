@@ -1,0 +1,681 @@
+
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: teal;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Production Planned</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: rebeccapurple;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Order in Process</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow " style="background-color: rgb(128, 187, 39);">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Order Completed</p>
+              <div><h3>03</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 72, 133);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">All</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 125, 125);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Transactions Today</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="search-bar d-flex mt-2">
+  <button type="button" routerLink="/qch" class="btn btn-secondary ml-2 d-flex align-items-center" >
+    <i class="fas fa-chevron-left mr-1"></i> Back
+  </button>
+  <input [(ngModel)]="searchText" class="form-control ml-1" (keyup)="filterData()" placeholder="Search">
+  <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+    <i class="fas fa-file-import mr-2"></i> Import
+  </button>
+  <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+    <i class="fas fa-download mr-2"></i> Export
+  </button>
+  <button type="button" class="btn btn-primary ml-2 mr-1 d-flex align-items-center" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus mr-2"></i>Add</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="main-search" class="content-dark hidden-sm hidden-xs">
+  <div class="container">
+    <form method="post" action="https://yts.mx/search-movies" accept-charset="UTF-8">
+      <input name="_token" type="hidden" value="407e5f0179bb17fd90d1831947579b4d80d15331f09ad43f8c8657717691d34c">
+      <div id="main-search-fields" style="width: 880px;">
+        <p class="pull-left term">Search Term:</p>
+        <input name="keyword" autocomplete="on" type="search">
+        <div class="selects-container">
+          <p>Quality:</p>
+          <select>
+            <option value="all">All</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+          </select>
+        </div>
+        <div class="selects-container">
+          <p>Genre:</p>
+          <select >
+            <option value="all">All</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="animation">Animation</option>
+            <option value="biography">Biography</option>
+          </select>
+        </div>
+        <div class="selects-container">
+          <p>Rating:</p>
+          <select>
+            <option value="0">All</option>
+            <option value="9">9+</option>
+            <option value="8">8+</option>
+          </select>
+        </div>
+        <div class="selects-container">
+          <p>Year:</p>
+          <select>
+            <option value="0">All</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+        <div class="selects-container">
+          <p>Language:</p>
+          <select>
+            <option value="en">English</option>
+            <option value="foreign">Foreign</option>
+            <option value="all" selected="selected">All</option>
+          </select>
+        </div>
+        <div class="selects-container selects-container-last">
+          <p>Order By:</p>
+          <select name="order_by">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="featured">Featured</option>
+            <option value="seeds">Seeds</option>
+          </select>
+        </div>
+      </div>
+      <div id="main-search-btn">
+        <input class="button-green-download2-big" type="submit" value="Search">
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
+      <div class="dash-card2 shadow ">
+          <div class="card-body2">
+            <p style="font-weight: bolder;">Job Work</p>
+            <div>
+              <select class="form-control custom-select" placeholder="Select Options">
+                <option value="" disabled selected>- All -</option>
+                <option>JW001</option>
+                <option>Jw002</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card2 shadow ">
+          <div class="card-body2">
+            <p style="font-weight: bolder;">QC Inspector</p>
+            <div>
+              <select class="form-control custom-select" placeholder="Select Options">
+                <option value="" disabled selected>- All -</option>
+                <option>A</option>
+                <option>B</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card2 shadow ">
+          <div class="card-body2">
+            <p style="font-weight: bolder;">Assembly Line</p>
+            <div>
+              <select class="form-control custom-select" placeholder="Select Options">
+                <option value="" disabled selected>- All -</option>
+                <option>Line 1</option>
+                <option>Line 2</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card2 shadow ">
+          <div class="card-body2">
+            <p style="font-weight: bolder;">Machine ID</p>
+            <div>
+              <select class="form-control custom-select" placeholder="Select Options">
+                <option value="" disabled selected>- All -</option>
+                <option>Machine 1</option>
+                <option>Machine 2</option>
+              </select>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-auto">
+    <div class="dash-card2 shadow ">
+        <div class="card-body2">
+          <p style="font-weight: bolder;">Shift</p>
+          <div>
+            <select class="form-control custom-select" placeholder="Select Options">
+              <option value="" disabled selected>- All -</option>
+              <option>Shift A</option>
+              <option>Shift B</option>
+              <option>Shift C</option>
+            </select>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-auto">
+  <div class="dash-card2 shadow ">
+      <div class="card-body2">
+        <p style="font-weight: bolder;">Time</p>
+        <div>
+          <select class="form-control custom-select" placeholder="Select Options">
+            <option value="" disabled selected>- All -</option>
+            <option>6 - 14</option>
+            <option>14 - 22</option>
+            <option>22 - 6</option>
+          </select>
+        </div>
+      </div>
+  </div>
+</div>
+      <div class="col-md-auto">
+          <div class="dash-card2 shadow ">
+              <div class="card-body2">
+                <p style="font-weight: bolder;">M/C Pass</p>
+                <div>
+                  <Input class="form-control custom-select" type="text" class="form-control"
+                  placeholder="QC Accept/Rework - Reject">
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card2 shadow ">
+            <div class="card-body2">
+              <p style="font-weight: bolder;">Rework</p>
+              <div>
+                <Input class="form-control custom-select" type="text" class="form-control"
+                placeholder="Enter">
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card2 shadow ">
+          <div class="card-body2">
+            <p style="font-weight: bolder;">Reject</p>
+            <div>
+              <Input class="form-control custom-select" type="text" class="form-control"
+              placeholder="Enter">
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-auto">
+    <div class="dash-card2 shadow ">
+        <div class="card-body2">
+          <p style="font-weight: bolder;">QC Passed</p>
+          <div>
+            <Input class="form-control custom-select" type="text" class="form-control"
+            placeholder="Enter">
+          </div>
+        </div>
+    </div>
+</div>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="container col-md-12 mt-3">
+  <div class="row"> -->
+    <div class="col-md-12 mt-2">
+      <table class="table table-striped table-sm " style="font-size: small; text-align: center;">
+        <thead style="background-color: #2b6099; color: white; font-size: small; font-weight: lighter;">
+          <tr>
+            <th>JOB ID</th>
+            <th>EMPLOYEE ID</th>
+            <th>PRODUCT ID</th>
+            <th>PRODUCT TARGET(SS)</th>
+            <th>DRAWING NO</th>
+            <th>CUSTOMER</th>
+            <th>PO NO & DATE</th>
+            <th>ORDER QUANTITY</th>
+            <th>REQUIRED HOURS</th>
+            <th>PLANNED ASSIGNED DATE</th>
+            <th>PRODUCTION EXPECTED DATE</th>
+            <th style="background-color: teal;">PLANNED</th>
+            <th style="background-color: rebeccapurple;">PROCESSING</th>
+            <th style="background-color: rgb(128, 187, 39);">COMPLETED</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>EMP001</td>
+            <td>CASSEROLES</td>
+            <td>15 </td>
+            <td>DRAW001</td>
+            <td>CUSTOMER A</td>
+            <td>TEST</td>
+            <td>17760</td>
+            <td>74:00:00</td>
+            <td>30-09-2023</td>
+            <td>01-11-2023</td>
+            <td style="background-color: teal; width:7%">01-10-2023</td>
+            <td style="background-color: rebeccapurple; width:7%"></td>
+            <td style="background-color: rgb(128, 187, 39); width:7%">04-10-2023</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <!-- </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12">
+      <table class=" table2 table-sm" style="text-align: center; width: 100%;">
+        <thead>
+          <tr style="background-color: rgb(106, 133, 160); font-weight: lighter;">
+            <th>JOB WORK</th>
+            <th>QC INSPECTOR</th>
+            <th>SHOPFLOOR</th>
+            <!-- <th>MACHINE ID</th> -->
+            <th>ASSEMBLY LINE</th>
+            <th>MACHINE ID</th>
+            <th>SHIFT</th>
+            <th>TIME</th>
+            <!-- <th style="width:8%">M/C PASS</th>
+            <th style="width:8%">REWORK</th>
+            <th style="width:8%">REJECT</th>
+            <th style="width:8%">QC PASSED</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color:rgb(106, 133, 160)">
+            <td>
+                  <select class="form-control custom-select" placeholder="Select Options" style="width: 100%;">
+                    <option value="" disabled selected> Select</option>
+                    <option >JW001</option>
+                    <option>JW002</option>
+                    <option>JW003</option>
+                  </select>
+            </td>
+            <td>
+              <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                <option disabled selected>Select</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                <option disabled selected>Select</option>
+                <option value="1">XYZ</option>
+                <!-- <option value="2">Two</option>
+                <option value="3">Three</option> -->
+              </select>
+            </td>
+            <!-- <td>
+              <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                <option disabled selected>Select</option>
+                <option value="1">TSE-001</option>
+                <option value="2">TSE-002</option>
+                <option value="3">TSE-003</option>
+              </select>
+            </td> -->
+            <td>
+              <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                <option disabled selected>Select</option>
+                <option value="1">TSE</option>
+                <!-- <option value="2">Line 2</option>
+                <option value="3">Line 3</option> -->
+              </select>
+            </td>
+            <td>
+              <div style="width: 100%;">
+                <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                  <option disabled selected>Select</option>
+                  <option value="1">TSE-001</option>
+                <option value="2">TSE-002</option>
+                <option value="3">TSE-003</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <select class="form-select custom-select" aria-label="Default select example" style="width: 100%; font-size: small;">
+                <option disabled selected>Select</option>
+                <option value="1">Shift A</option>
+                <option value="2">Shift B</option>
+                <option value="3">Shift C</option>
+              </select>
+            </td>
+            <td>
+              <!-- [(ngModel)]="selectedShift" -->
+              <select class="form-select custom-select"  style="width: 100%; font-size: small;">
+                <option value="" disabled selected>Select</option>
+                <option>06 - 14</option>
+                <option>14 - 22</option>
+                <option>22 - 06</option>
+              </select>
+            </td>
+            <!-- <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                  placeholder="QC Accept/Rework - Reject">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="container-fluid mt-2">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center">
+          <table class=" table2 table-sm" style="text-align: center; width: 80%;">
+            <thead>
+              <tr style="background-color: rgb(106, 133, 160); font-weight: lighter;">
+                <th>M/C PASS</th>
+                <th>REWORK</th>
+                <th>REJECT</th>
+                <th>QC PASSED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background-color:rgb(106, 133, 160)">
+                <td>
+                  <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                  placeholder="QC Accept/Rework - Reject">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td>
+            <td>
+              <Input class="form-control custom-select" type="text" class="form-control" style="width: 100%; font-size: small;"
+                placeholder="Enter">
+            </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="table-container">
+  <div class="table-header">
+    <div class="table-cell">JOB WORK</div>
+    <div class="table-cell">EMPLOYEE ID</div>
+    <div class="table-cell">PRODUCT ID</div>
+    <div class="table-cell">DRAWING NO</div>
+    <div class="table-cell">CUSTOMER</div>
+    <div class="table-cell">PO NO & DATE</div>
+    <div class="table-cell">BATCH NO</div>
+    <div class="table-cell">PLANNED ASSIGNED DATE</div>
+    <div class="table-cell">PRODUCTION EXPECTED DATE</div>
+    <div class="table-cell" style="background-color: teal;">Planned</div>
+    <div class="table-cell" style="background-color: purple;">Processing</div>
+    <div class="table-cell" style="background-color: green;">Completed</div>
+  </div>
+  <div class="table-row" *ngFor="let dataItem of ProductionPlanList">
+    <div class="table-cell">{{ dataItem.jobworkname }}</div>
+    <div class="table-cell">{{ dataItem.EmployeeId }}</div>
+    <div class="table-cell">{{ dataItem.productId }}</div>
+    <div class="table-cell">{{ dataItem.drawingNo }}</div>
+    <div class="table-cell">{{ dataItem.entrycustomer }}</div>
+    <div class="table-cell">{{ dataItem.entrypono }}</div>
+    <div class="table-cell">{{ dataItem.entrybatchno }}</div>
+    <div class="table-cell">{{ dataItem.plandate }}</div>
+    <div class="table-cell">{{ dataItem.expecteddate }}</div>
+    <div class="table-cell" style="background-color: teal;">2023-07-01</div>
+    <div class="table-cell" style="background-color: purple;"></div>
+    <div class="table-cell" style="background-color: green;">2023-07-01</div>
+  </div>
+</div> -->
+
+
+
+
+
+
+<!-- <table class="table table-container table-sm mt-3" style="font-size: small;">
+  <thead>
+    <tr class="table-header" style="background-color: #2b6099; color: white;">
+      <th>JOB WORK</th>
+      <th>EMPLOYEE ID</th>
+      <th>PRODUCT ID</th>
+      <th>DRAWING NO</th>
+      <th>CUSTOMER</th>
+      <th>PO NO & DATE</th>
+      <th>BATCH NO</th>
+      <th style="width:7%"> ASSIGNED </th>
+      <th style="width:7%"> EXPECTED </th>
+      <th style="background-color: teal;">Planned</th>
+      <th style="background-color: purple;">Processing</th>
+      <th style="background-color: green;">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-row" *ngFor="let dataItem of ProductionPlanList">
+      <td>{{ dataItem.jobworkname }}</td>
+      <td>{{ dataItem.EmployeeId }}</td>
+      <td>{{ dataItem.productId }}</td>
+      <td>{{ dataItem.drawingNo }}</td>
+      <td>{{ dataItem.entrycustomer }}</td>
+      <td>{{ dataItem.entrypono }}</td>
+      <td>{{ dataItem.entrybatchno }}</td>
+      <td>{{ dataItem.plandate }}</td>
+      <td>{{ dataItem.expecteddate }}</td>
+      <td style="background-color: teal;">2023-07-01</td>
+      <td style="background-color: purple;"></td>
+      <td style="background-color: green;">2023-07-01</td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+
+
+
+<!-- Import Modal -->
+<div class="modal fade" id="importModalCenter" tabindex="-1" role="dialog" aria-labelledby="importModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLongTitle">Import File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="file-icon-container d-flex justify-content-center align-items-center">
+          <i class="far fa-file fa-5x"></i>
+        </div>
+
+        <div class="text-center mt-3">
+          <p class="drag-drop-text">Or drag and drop files here</p>
+        </div>
+        <div class="input-group mt-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="importFileInput">
+            <label class="custom-file-label" for="importFileInput">Choose file</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="importButton"><i class="fas fa-file-import mr-2"></i>Import</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Export Modal -->
+<div class="modal fade" id="exportModalCenter" tabindex="-1" role="dialog" aria-labelledby="exportModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exportModalLongTitle">Export File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="exportForm">
+          <div class="form-group">
+            <label for="exportType">Select Export Type:</label>
+            <select class="form-control" id="exportType" name="exportType">
+              <option value="csv">CSV</option>
+              <option value="pdf">PDF</option>
+              <option value="xlsx">Excel</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="downloadButton">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <button class="btn btn-outline-primary btn-lg fixed-button"><i class="fas fa-plus mr-2"></i>Create Line & M/C</button> -->
+<button class="btn btn-success btn-lg fixed-button save-button"><i class="fas fa-plus mr-1"></i> Create QC</button>

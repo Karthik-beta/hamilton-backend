@@ -1,0 +1,117 @@
+
+<div class="mat-elevation-z8 table table-hover table- table-sm">
+
+  <!-- <div class="row"> -->
+    <!-- Search Bar (9 columns) -->
+    <div class="col-12" style="padding-top: 10px;">
+      <div class="d-flex justify-content-center align-items-start search-bar mb-1 ml-2">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" (keyup)="applyFilter($event)" placeholder="Search">
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+    <!-- Date Picker (3 columns) -->
+    <div class="col-3">
+      <label for="datePicker" class="col-form-label col-form-label-sm">Date :</label>
+      <div class="form-group mb-1 mr-2">
+        <input type="date" class="form-control " id="datePicker" (change)="onDateChange($event)">
+      </div>
+    </div>
+  <!-- </div> -->
+
+  <!-- Short Name Filter Dropdown -->
+<div class="col-3">
+  <div class="form-group mb-1 mr-2">
+    <label for="shortNameFilter" class="col-form-label col-form-label-sm">Location :</label>
+    <select class="form-control " (change)="onShortNameFilterChange($event)">
+      <option value="">All</option>
+      <option value="CHS">CHS</option>
+      <option value="CKT">CKT</option>
+    </select>
+  </div>
+</div>
+
+<!-- <div>
+<h4>Location :</h4>
+<mat-form-field>
+  <mat-label>Select Location</mat-label>
+  <mat-select [(value)]="selectedShortName" (change)="onShortNameFilterChange($event)">
+    <mat-option>None</mat-option>
+    <mat-option value="">All</mat-option>
+    <mat-option value="CHS">CHS</mat-option>
+    <mat-option value="CKT">CKT</mat-option>
+  </mat-select>
+</mat-form-field>
+</div> -->
+
+
+
+  <!-- <div class="search-bar">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+    </mat-form-field>
+  </div> -->
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef > No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeid">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.employeeid }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="logdate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Log Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.logdate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="direction">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Direction</th>
+      <td mat-cell *matCellDef="let element">{{ element.direction }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="shortname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+      <td mat-cell *matCellDef="let element">{{ element.shortname }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="serialno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</th>
+      <td mat-cell *matCellDef="let element">{{ element.serialno }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="first_logtime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Logtime</th>
+      <td mat-cell *matCellDef="let element">{{ element.first_logtime }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_logtime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Logtime</th>
+      <td mat-cell *matCellDef="let element">{{ element.last_logtime }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="total_time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Hours</th>
+      <td mat-cell *matCellDef="let element">{{ element.total_time }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 50, 100, 200, 500]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

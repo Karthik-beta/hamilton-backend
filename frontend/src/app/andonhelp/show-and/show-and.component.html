@@ -1,0 +1,309 @@
+<div class="container-fluid mt-3">
+  <div class="row justify-content-center">
+    <!-- <div class="col-md-1">
+      <div class="mt-1 card-top ">
+        <img class="siren-icon siren-icon-left" src="https://img.icons8.com/ios-filled/100/40C057/siren.png" alt="siren" width="70" height="100" />
+      </div>
+    </div> -->
+    <!-- <div class="col-md-3">
+      <div class="shadow mt-1 card-top teal rounded">
+        <p style="font-weight: bolder;">Plant</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">Pune</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-top green rounded">
+        <p style="font-weight: bolder;">Shop Floor</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">Piston</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-top gray rounded" >
+        <p style="font-weight: bolder;">Machine ID</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">{{ selectedMachineId }}</p>
+      </div>
+    </div> -->
+    <!-- <div class="col-md-2">
+      <div class="shadow mt-1 card-top gray rounded" >
+        <p style="font-weight: bolder;">Product ID</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">Pot Support</p>
+      </div>
+    </div> -->
+    <!-- <div class="col-md-1">
+      <div class="mt-1 card-top ">
+        <img class="siren-icon siren-icon-right" src="https://img.icons8.com/ios-filled/100/40C057/siren.png" alt="siren" width="70" height="100" />
+      </div>
+    </div> -->
+  </div>
+  <div class="conatiner-fluid">
+  <div class="row justify-content-between">
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down teal rounded">
+        <p style="font-weight: bolder;">Machine ID</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">SGB CH5</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down gray rounded" >
+        <p style="font-weight: bolder;">Product ID</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">BALL BEARING</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down purple rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder; ">Production Target</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down lightblue rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Production Achieved</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down blue rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Machine Running</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="shadow mt-1 card-down yellow rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Machine Idle</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid col-md-12 mt-1" style="font-size: small;">
+  <div class="row">
+    <div class="col-12">
+      <div class="container-wide">
+        <div class="scale">
+          <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <p class="mt-1">{{ currentTime | date:'dd-MM-yyyy' }} - {{ currentTime | date:'HH:mm' }}</p>
+            </div>
+            <div class="col-auto">
+              <p class="mt-1">{{getShiftText()}} </p>
+            </div>
+            <div class="col-auto">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="row" style="font-weight: bolder;">
+          <div class="col-12">
+            <div class="progress">
+              <div class="progress-bar-green" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" [style.width.%]="100 - ((calculateTotalMinutes(andonList) / 480) * 100)">{{ 480 - (calculateTotalMinutes(andonList)) }} min</div>
+              <div class="progress-bar-red" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalMinutes(andonList) / 480) * 100">{{ calculateTotalMinutes(andonList) }} min</div>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar-yellow" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalResettingMinutes(andonList) / calculateTotalMinutes(andonList)) * 100">{{ calculateTotalResettingMinutes(andonList) }} min</div>
+              <div class="progress-bar-blue" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalEngineeringMinutes(andonList) / calculateTotalMinutes(andonList)) * 100">{{ calculateTotalEngineeringMinutes(andonList) }} min</div>
+              <div class="progress-bar-purple" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalElectMinutes(andonList) / calculateTotalMinutes(andonList)) * 100">{{ calculateTotalElectMinutes(andonList) }} min</div>
+              <div class="progress-bar-pink" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalQualityMinutes(andonList) / calculateTotalMinutes(andonList)) * 100">{{ calculateTotalQualityMinutes(andonList) }} min</div>
+              <div class="progress-bar-yellow2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="(calculateTotalMechMinutes(andonList) / calculateTotalMinutes(andonList)) * 100">{{ calculateTotalMechMinutes(andonList) }} min</div>
+            </div>
+            <div class="bar-info">
+              <div class="bar-info-item">Running</div>
+              <div class="bar-info-item">Breakdown</div>
+              <div class="bar-info-item">RESETTING</div>
+              <div class="bar-info-item">ENGINEERING</div>
+              <div class="bar-info-item">ELECT MAINT</div>
+              <div class="bar-info-item">QUALITY</div>
+              <div class="bar-info-item">MECH MAINT</div>
+            </div>
+          </div>
+          <div class="col-2 custom-table-container">
+            <!-- <table>
+              <tr>
+                <td style="font-size: smaller; background-color:gray">ID</td>
+                <td style="font-size: smaller; background-color:gray">Date</td>
+                <td style="font-size: smaller; background-color:gray">Alert</td>
+                <td style="font-size: smaller; background-color:gray">OEE</td>
+                <td style="font-size: smaller; background-color:gray">Details</td>
+              </tr>
+              <tr>
+                <td style="font-size: smaller;">2345</td>
+                <td style="font-size: smaller;">15/06/23</td>
+                <td style="font-size: smaller;">FS</td>
+                <td style="font-size: smaller;">{{100 - ((calculateTotalMinutes(andonList) / 480) * 100) | number:'0.00' }}%</td>
+                <td style="font-size: smaller;"><i class="fa-solid fa-eye fa-xs"></i></td>
+
+              </tr>
+            </table> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-2" style="font-size: small;">
+  <!-- <div class="table-responsive"> -->
+    <div class="row">
+  <!-- <div class="search-bar col-md-3">
+    <input [(ngModel)]="searchText" class="form-control"
+  (keyup)="filterData()" placeholder="Search">
+  </div> -->
+  <div class="col-auto">
+  <span class="p-float-label">
+    <p-autoComplete
+    field="autocomplete_label"
+    id="inputtext-left"
+    class="text-sm small-calendar shadow"
+    pInputText
+    ></p-autoComplete>
+    <label for="inputtext-left">Search</label>
+    </span>
+    </div>
+  <div class="col-auto">
+    <button pButton type="button" class="p-button-raised shadow"><i class="pi pi-download" style="margin-right: 0.3rem;"></i> Export CSV</button>
+  </div>
+  </div>
+</div>
+<div class="container-fluid mt-2" style="font-size: small;">
+  <div class="row">
+    <div class="col-12">
+      <div class="container-wide2">
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-cell">Start<br> M/C</div>
+            <!-- <div class="table-cell">Ticket</div> -->
+            <!-- <div class="table-cell">Login</div> -->
+            <div class="table-cell">Company</div>
+            <div class="table-cell">Plant</div>
+            <div class="table-cell">Shop<br>floor</div>
+            <div class="table-cell">Assembly<br>line</div>
+            <div class="table-cell">Machine ID</div>
+            <!-- <div class="table-cell">Shift</div> -->
+            <!-- <div class="table-cell">Date</div> -->
+            <div class="table-cell">Category</div>
+            <div class="table-cell">Sub-Category</div>
+            <div class="table-cell">Alert Shift</div>
+            <div class="andon-alert">Andon <br>Alert</div>
+            <div class="andon-acknowledge">Andon <br>Acknowledge</div>
+            <div class="andon-resolved">Andon<br> Resolved</div>
+            <div class="total-breakdown">Total <br>Breakdown</div>
+          </div>
+          <div class="table-row form-group">
+            <div class="table-cell"><img src="assets/images/power.png" alt="" width="40" height="40"></div>
+            <!-- <div class="table-cell"></div> -->
+            <!-- <div class="table-cell">ADMIN</div> -->
+            <div class="table-cell">SKF</div>
+            <div class="table-cell">BLR</div>
+            <div class="table-cell">BALL BEARING</div>
+            <div class="table-cell">CHANNEL 5</div>
+            <div class="table-cell machine-id">
+              <div>
+                <select class="form-control" [(ngModel)]="machineId" placeholder="Select Options" [(ngModel)]="selectedMachineId" style="font-size: small;">
+                  <option value="" disabled selected>-Select-</option>
+                  <option>SGB CH5</option>
+                  <option>SHG1 CH5</option>
+                  <option>SHG2 CH5</option>
+                  <option>SPC (IR) CH5</option>
+                  <option>SSB1 CH5</option>
+                  <option>SSB2 CH5</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <div class="table-cell">15/06/2023</div> -->
+            <div class="table-cell category">
+              <div>
+                <select class="form-control" placeholder="Select Options" style="font-size: small;">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>RESETTING</option>
+                  <option>ENGINEERING</option>
+                  <option>ELECT MAINT</option>
+                  <option>QUALITY</option>
+                  <option>MECH MAINT</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-cell sub-category">
+              <div  >
+                <select class="form-control" [(ngModel)]="sub_category" placeholder="Select Options" *ngIf="selectedCategory === 'Mechanical'">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>None</option>
+                  <option>Mech-1</option>
+                  <option>Mech-2</option>
+                  <option>Mech-3</option>
+                </select>
+              </div>
+              <div>
+                <select class="form-control" [(ngModel)]="sub_category" placeholder="Select Options" *ngIf="selectedCategory === 'Electrical'">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>None</option>
+                  <option>Elec-1</option>
+                  <option>Elec-2</option>
+                  <option>Elec-3</option>
+                </select>
+              </div>
+              <div >
+                <select class="form-control" [(ngModel)]="sub_category" placeholder="Select Options" *ngIf="selectedCategory === 'Others'">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>None</option>
+                  <option>Other-1</option>
+                  <option>Other-2</option>
+                  <option>Other-3</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-cell">{{ alert_shift }}</div>
+            <!-- Andon Alert -->
+            <div class="table-cell andon-alert">
+              <button class="raise-alert-button" *ngIf="!andonAlertCompleted" (click)="addAnd()" (click)="onAndonAlert()">
+                Raise <br>Alert
+              </button>
+              <p class="timestamp" *ngIf="andonAlertCompleted">[EMPNAME, ID] <br>
+                {{ getFormattedTimestamp(andonAlertTimestamp) }}
+              </p>
+            </div>
+
+            <!-- Andon Acknowledge -->
+            <div class="table-cell andon-acknowledge">
+              <button class="raise-acknowledge-button" *ngIf="!andonAcknowledgeCompleted" (click)="onAndonAcknowledge()">
+                Acknowledge
+              </button>
+              <p class="timestamp" *ngIf="andonAcknowledgeCompleted">[EMPNAME, ID] <br>
+                {{ getFormattedTimestamp(andonAcknowledgeTimestamp) }}
+              </p>
+            </div>
+
+            <!-- Andon Resolved -->
+            <div class="table-cell andon-resolved">
+              <button class="raise-resolved-button" *ngIf="!andonResolvedCompleted" (click)="onAndonResolved()">
+                Resolved
+              </button>
+              <p class="timestamp" *ngIf="andonResolvedCompleted">[EMPNAME, ID] <br>
+                {{ getFormattedTimestamp(andonResolvedTimestamp) }}
+              </p>
+            </div>
+
+            <div class="table-cell total-breakdown">
+              {{ counter }}
+            </div>
+          </div>
+          <!-- Add more rows as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

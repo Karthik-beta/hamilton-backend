@@ -1,0 +1,107 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label for="jobwork">Job Work:</label>
+          <input type="text" class="form-control" id="jobbwork" [(ngModel)]="jobwork">
+        </div>
+      </div> -->
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label for="employeeId">Employee ID:</label>
+          <input type="text" class="form-control" id="employeeId">
+        </div>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="productId">Product ID:</label>
+          <select class="form-control custom-select" placeholder="Select Options" style="width: 100%; font-size: small;" [(ngModel)]="product_id">
+            <option value="" disabled selected> Select</option>
+            <option  *ngFor="let dataItem of productList; let i = index">{{ dataItem.product_Name }}</option>
+            <!-- <option>CARAFES</option> -->
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label for="drawingNo">Drawing No:</label>
+          <input type="text" class="form-control" id="drawingNo">
+        </div>
+      </div>
+    </div> -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="customer">Customer:</label>
+          <select class="form-control custom-select" placeholder="Select Options" style="width: 100%; font-size: small;" [(ngModel)]="customer">
+            <option value="" disabled selected> Select</option>
+            <option>CUSTOMER A</option>
+            <option>CUSTOMER B</option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label for="PONO">PO NO:</label>
+          <input type="text" class="form-control" id="PONO">
+        </div>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="quantity">PO NO:</label>
+          <select class="form-control custom-select" placeholder="Select Options" style="width: 100%; font-size: small;" [(ngModel)]="po_no">
+            <option value="" disabled selected> Select</option>
+            <option *ngFor="let item of poNoList">{{ item.po_no }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="batchno">Batch No:</label>
+          <select class="form-control custom-select" placeholder="Select Options" style="width: 100%; font-size: small;" [(ngModel)]="batch_no">
+            <option value="" disabled selected> Select</option>
+            <option *ngFor="let item of batchList">{{ item.batch_name }}</option>
+            <!-- <option>BATCH002</option> -->
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label for="plannedassigneddate">Planned Assigned Date:</label>
+          <input type="date" class="form-control" id="plannedassigneddate">
+        </div>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="quantity">Order Quantity:</label>
+          <input type="number" class="form-control" id="quantity" [(ngModel)]="quantity">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="productionexpecteddate">Production Expected Date:</label>
+          <input type="date" class="form-control" id="productionexpecteddate" [(ngModel)]="expected_date">
+        </div>
+      </div>
+      <!-- Add other input fields as needed -->
+    </div>
+  </div>
+
+
+
+
+  <div class="d-flex justify-content-end">
+    <button id="closeButton" type="button" class="btn btn-secondary mr-2 mt-2" data-dismiss="modal">Close</button>
+    <button (click)="addProductionPlan()" *ngIf="prodplan.employee_id == null" class="btn btn-success mt-2">
+      <i class="pi pi-save"></i> Save </button>
+    <button (click)="updateProductionPlan()" *ngIf="prodplan.employee_id!= null" class="btn btn-success mt-2">
+      <i class="pi pi-pencil"></i> Update </button>
+  </div>
+

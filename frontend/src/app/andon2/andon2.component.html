@@ -1,0 +1,281 @@
+
+
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-1">
+      <div class="mt-1 card-top ">
+        <img class="siren-icon siren-icon-left" src="https://img.icons8.com/ios-filled/100/40C057/siren.png" alt="siren" width="70" height="100" />
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-top teal rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Plant</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">Pune</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-top green rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Shop Floor</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">Piston</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-top gray rounded" >
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Machine ID</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;"></p>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="mt-1 card-top ">
+        <img class="siren-icon siren-icon-right" src="https://img.icons8.com/ios-filled/100/40C057/siren.png" alt="siren" width="70" height="100" />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-down blue rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Machine Running</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-down yellow rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Machine Idle</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-down purple rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder; ">Production Target</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow mt-1 card-down lightblue rounded">
+        <!-- Your content goes here -->
+        <p style="font-weight: bolder;">Production Achieved</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;">00:00</p>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid mt-1">
+  <div class="row">
+    <div class="col-12">
+      <div class="container-wide">
+        <div class="scale">
+          <p class="mt-2">Shift A: 6:00 AM to 2:00 PM - <span id="timePlaceholder"></span></p>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <div class="progress">
+              <div class="progress-bar-green" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 70%">240 min</div>
+              <div class="progress-bar-red" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">144 min</div>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar-yellow" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 50%">72 min</div>
+              <div class="progress-bar-blue" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 50%">72 min</div>
+            </div>
+            <div class="bar-info">
+              <div class="bar-info-item">Running</div>
+              <div class="bar-info-item">Mechanical Failure</div>
+              <div class="bar-info-item">Electrical Failure</div>
+              <div class="bar-info-item">Other</div>
+            </div>
+          </div>
+          <div class="col-2 custom-table-container">
+            <table>
+              <tr>
+                <td style="font-size: smaller;">ID</td>
+                <td style="font-size: smaller;">OEE</td>
+              </tr>
+              <tr>
+                <td style="font-size: smaller;">2345</td>
+                <td style="font-size: smaller;">7</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<table class="small-table-container col-12 mt-3">
+  <thead>
+    <tr>
+      <th>Machine Id</th>
+      <th>Category</th>
+      <th>Sub-Category</th>
+      <th>Andon Alert</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="form-group">
+      <td>
+        <div>
+          <select class="form-control" [(ngModel)]="machineId" placeholder="Select Options">
+            <option value="" disabled selected>--Select Machine ID--</option>
+            <option>2345</option>
+            <option>4456</option>
+            <option>5643</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div>
+          <select class="form-control" [(ngModel)]="category" placeholder="Select Options" [(ngModel)]="selectedCategory">
+            <option value="" disabled selected>--Select Category--</option>
+            <option>Mechanical</option>
+            <option>Electrical</option>
+            <option>Others</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div>
+          <select class="form-control" [(ngModel)]="sub_category" placeholder="Select Options" *ngIf="selectedCategory === 'Mechanical'">
+            <option value="" disabled selected>--Select Sub-Category--</option>
+            <option>None</option>
+            <option>Mech-1</option>
+            <option>Mech-2</option>
+            <option>Mech-3</option>
+          </select>
+        </div>
+        <div>
+          <select class="form-control" placeholder="Select Options" *ngIf="selectedCategory === 'Electrical'">
+            <option value="" disabled selected>--Select Sub-Category--</option>
+            <option>None</option>
+            <option>Elec-1</option>
+            <option>Elec-2</option>
+            <option>Elec-3</option>
+          </select>
+        </div>
+        <div>
+          <select class="form-control" placeholder="Select Options" *ngIf="selectedCategory === 'Others'">
+            <option value="" disabled selected>--Select Sub-Category--</option>
+            <option>None</option>
+            <option>Other-1</option>
+            <option>Other-2</option>
+            <option>Other-3</option>
+          </select>
+        </div>
+      </td>
+      <td class="andon-alert-button">
+
+          <button class="btn btn-secondary ml-2 andon-alert-button" (click)="addTicket()" [(ngModel)]="andon_alerts">Raise Alert</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<div class="container-fluid mt-2">
+  <div class="search-bar">
+    <div class="search-input">
+      <input class="form-control" placeholder="Search">
+    </div>
+    <!-- <div class="add-ticket-button">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">
+        Add Ticket
+      </button>
+    </div> -->
+  </div>
+</div>
+
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-12">
+      <div class="container-wide2">
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-cell">Start<br> M/C</div>
+            <div class="table-cell">Ticket</div>
+            <div class="table-cell">Login</div>
+            <div class="table-cell">Machine ID</div>
+            <div class="table-cell">Category</div>
+            <div class="table-cell">Sub-Category</div>
+            <div class="andon-alert">Andon <br>Alert</div>
+            <div class="andon-acknowledge">Andon <br>Acknowledge</div>
+            <div class="andon-resolved">Andon<br> Resolved</div>
+            <div class="total-breakdown">Total <br>Breakdown</div>
+          </div>
+          <div class="table-row" *ngFor="let dataItem of andonList">
+            <div class="table-cell"><img src="assets/images/power.png" alt="" width="40" height="40"></div>
+            <div class="table-cell">{{dataItem.ticket}}</div>
+            <div class="table-cell">{{dataItem.login}}</div>
+            <div class="table-cell machine-id">{{dataItem.machineId}}</div>
+            <div class="table-cell category">{{ dataItem.category }}</div>
+            <div class="table-cell sub-category">{{dataItem.sub_category}}
+              <!-- <div>
+                <select class="form-control" placeholder="Select Options">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>Mech-1</option>
+                  <option>Mech-2</option>
+                  <option>Mech-3</option>
+                </select>
+              </div>
+              <div>
+                <select class="form-control" placeholder="Select Options">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>Elec-1</option>
+                  <option>Elec-2</option>
+                  <option>Elec-3</option>
+                </select>
+              </div>
+              <div>
+                <select class="form-control" placeholder="Select Options">
+                  <option value="" disabled selected>--Select--</option>
+                  <option>Other-1</option>
+                  <option>Other-2</option>
+                  <option>Other-3</option>
+                </select>
+              </div> -->
+            </div>
+            <div class="table-cell andon-alert">{{ dataItem.andon_alerts | date:'dd-MM-yyyy hh:mm:ss a' }}
+              <!-- <button class="raise-alert-button">
+
+              </button> -->
+            </div>
+            <div class="table-cell andon-acknowledge">
+              <button class="raise-acknowledge-button">
+                {{ dataItem.andon_acknowledge | date:'dd-MM-yyyy hh:mm:ss a' }}
+              </button>
+            </div>
+            <div class="table-cell andon-resolved">
+              <button class="raise-resolved-button">
+                {{ dataItem.andon_resolved | date:'dd-MM-yyyy hh:mm:ss a' }}
+              </button>
+            </div>
+            <div class="table-cell total-breakdown">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

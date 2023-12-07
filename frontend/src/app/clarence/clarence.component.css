@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  font-size: small;
+}
+
+
+/* .mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.row-is-clicked {
+  font-weight: bold;
+} */
+
+th.mat-sort-header {
+  color: black;
+}
+
+.table td.mat-cell,
+.table th.mat-header-cell {
+  height: 14px; /* Adjust height as needed */
+  line-height: 14px; /* Match line height to height */
+}
+
+
+

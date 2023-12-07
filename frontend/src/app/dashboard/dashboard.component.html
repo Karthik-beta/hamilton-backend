@@ -1,0 +1,108 @@
+
+<div class="container col-12 ">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card shadow card-sm">
+        <div class="card-body p-1">
+          <h3 class="card-title">PLANT</h3>
+          <div class="border-red my-1"></div>
+          <h4 class="card-content">1</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow card-sm">
+        <div class="card-body p-1">
+          <h3 class="card-title">SHOPFLOOR</h3>
+          <div class="border-green my-1"></div>
+          <h4 class="card-content">1</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow card-sm">
+        <div class="card-body p-1">
+          <h3 class="card-title">ASSEMBLY LINE</h3>
+          <div class="border-yellow my-1"></div>
+          <h4 class="card-content">1</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow card-sm">
+        <div class="card-body p-1">
+          <h3 class="card-title">MACHINE</h3>
+          <div class="border-violet my-1"></div>
+          <h4 class="card-content">3</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="database-container">
+  <div class="">
+  <!-- Conditionally display an image -->
+<img *ngIf="databaseStatus === 'Database is connected.'" src="assets/images/database.png"  style="width:40px; height:40px" alt="Connected GIF">
+<img *ngIf="databaseStatus !== 'Database is connected.'" src="assets/images/disconnected.png" style="width:50px; height:50px" alt="Disconnected PNG"></div>
+  <div class="week">{{ databaseStatus }}</div>
+</div>
+
+
+
+<div class="container-fluid mt-2">
+  <div class="row">
+<div class="col-md-4">
+<div class="card square-card shadow">
+  <div class="card-body">
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [xaxis]="chartOptions.xaxis!"
+        [dataLabels]="chartOptions.dataLabels!"
+        [grid]="chartOptions.grid!"
+        [stroke]="chartOptions.stroke!"
+        [title]="chartOptions.title!"
+      ></apx-chart>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="col-md-8">
+  <div class="card square-card shadow">
+    <div class="card-body">
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions2.series!"
+          [chart]="chartOptions2.chart!"
+          [xaxis]="chartOptions2.xaxis!"
+          [dataLabels]="chartOptions2.dataLabels!"
+          [grid]="chartOptions2.grid!"
+          [stroke]="chartOptions2.stroke!"
+          [title]="chartOptions2.title!"
+        ></apx-chart>
+    </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-2 mb-2">
+<div class="col-md-12">
+  <div class="card square-card shadow">
+    <div class="card-body"></div>
+  </div>
+  </div>
+</div>
+
+
+<div class="container-fluid mt-2 mb-2">
+  <div class="col-md-12">
+    <div class="card shadow">
+      <div class="card-body"></div>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,179 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  /* width: 230px; */
+  /* height: 100px; */
+  border-radius: 10px;
+  /* background-color: gainsboro; */
+  background-color: rgb(106, 133, 160);
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin: 0.5em; */
+}
+
+.col-md-auto {
+  flex: 1; /* Distribute available space evenly among cards in the same row */
+  margin: 0.2em; /* Add margin for spacing between cards */
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.custom-select {
+  background-color: gainsboro;
+  /* background-color: rgb(105, 144, 184); */
+  color: #000000; /* Set the text color */
+  border-color: #ccc; /* Set the border color */
+  /* Add any other desired styling properties */
+}
+
+
+.container-wide {
+  height: 130px;
+  background-color: white;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.container-wide2 {
+  height: 150px;
+  background-color: white;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.progress {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  font-weight: bold;
+}
+
+.progress-bar-green {
+  background-color: green;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-red {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-yellow {
+  background-color: #686811;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-blue {
+  background-color: #0d6efd;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-purple {
+  background-color: #6f42c1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bar-info-item {
+  position: relative;
+  padding-left: 20px;
+}
+
+.bar-info-item:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+}
+
+.bar-info-item:nth-child(1):before {
+  background-color: green;
+}
+
+.bar-info-item:nth-child(2):before {
+  background-color: red;
+}
+
+.bar-info-item:nth-child(3):before {
+  background-color: #686811;
+}
+
+.bar-info-item:nth-child(4):before {
+  background-color: blue;
+}
+
+.bar-info-item:nth-child(5):before {
+  background-color: purple;
+}
+
+.custom-table-container {
+  /* border: 1px solid #000; */
+  padding-top: -25px;
+}
+
+.custom-table-container table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 90%;
+  height: 10px;
+}
+
+.custom-table-container th,
+.custom-table-container td {
+  border: 1px solid #000;
+  text-align: center;
+  /* padding: 5px; */
+}
+
+.scale {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+
+
+
+
+

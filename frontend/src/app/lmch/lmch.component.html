@@ -1,0 +1,130 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: teal;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Production Planned</p>
+                <div><h3>01</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: rebeccapurple;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Order in Process</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow " style="background-color: rgb(128, 187, 39);">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Order Completed</p>
+              <div><h3>0</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 72, 133);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">All</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 125, 125);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Transactions Today</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="search-bar d-flex mt-2">
+  <!-- <button type="button" routerLink="/admin" class="btn btn-secondary btn-md ml-1 d-flex align-items-center" >
+    <i class="pi pi-chevron-left mr-2"></i> Back
+  </button> -->
+    <input class="form-control ml-1" placeholder="Search"  style="width: 200px;">
+    <!-- <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+      <i class="pi pi-file-import mr-2"></i> Import
+    </button>
+    <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+      <i class="pi pi-download mr-2"></i> Export
+    </button> -->
+    <button type="button" routerLink="/lmc" class="btn btn-primary ml-2 mr-1 d-flex align-items-center"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+    <div class="btn-group dropright ml-2">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="dropdown-menu">
+        <!-- Dropdown menu links -->
+        <a class="dropdown-item"><i class="fas fa-file-import mr-2"></i> Import </a>
+        <a class="dropdown-item"><i class="fas fa-download mr-2"></i> Export </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="mt-2">
+    <p-table
+    [value]="lineMachineList"
+    class="p-datatable-sm"
+    styleClass="p-datatable-sm p-datatable-gridlines"
+    [tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small', 'color': 'black' }"
+    [lazy]="true"
+    [loading]="loading"
+    [paginator]="true"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} - {last} of {totalRecords}"
+    >
+    <ng-template pTemplate="header">
+      <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black'}">
+        <th>#</th>
+          <th>JOB WORK</th>
+          <th>COMPANY</th>
+          <th>PLANT</th>
+          <th>SHOPFLOOR</th>
+          <th>ASSEMBLY LINE</th>
+          <th>MACHINE ID</th>
+          <th>PRODUCT ID</th>
+          <th>PRODUCT TARGET (HH:MM)</th>
+          <th>TOTAL ORDERS</th>
+          <th>HOURS REQUIRED (SS)</th>
+          <th>BREAKTIME</th>
+          <th>ASSIGNED START PRODUCTION</th>
+          <th>ASSIGNED END PRODUCTION</th>
+          <th>MANAGER</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-log let-i="rowIndex">
+      <tr class="text-size data-row" [ngStyle]="{'color': 'black', 'white-space': 'nowrap'}">
+        <td>{{ i + 1 }}</td>
+        <td>{{ log.job_id }}</td>
+        <td>{{ log.company }}</td>
+        <td>{{ log.plant }}</td>
+        <td>{{ log.shopfloor }}</td>
+        <td>{{ log.assembly_line }}</td>
+        <td>{{ log.machine_id }}</td>
+        <td>{{ log.product_id }}</td>
+        <td>{{ log.product_target }}</td>
+        <td>{{ log.total_order }}</td>
+        <td>{{ log.required_time }}</td>
+        <td>{{ log.break_time }}</td>
+        <td>{{ log.assigned_start_production }}</td>
+        <td>{{ log.assigned_end_production }}</td>
+        <td>{{ log.manager }}</td>
+      </tr>
+    </ng-template>
+    </p-table>
+    </div>

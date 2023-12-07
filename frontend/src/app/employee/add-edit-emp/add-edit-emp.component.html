@@ -1,0 +1,290 @@
+<!-- <div class="d-flex flex-row bd-highlight mb-6 col-md-12">
+
+  <div class="form-group row">
+
+      <label class="col-sm-2 col-form-label mb-3">Employee Name</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="EmployeeName"
+          placeholder="Enter Employee Name">
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3 ">Department</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Department" >
+             <option disabled selected value="">--Select--</option>
+             <option *ngFor="let depName of DepartmentsList">
+                 {{depName.DepartmentName}}
+             </option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3">Plant</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Company" (change)="onCompanyChange()">
+             <option disabled selected value="">--Select--</option>
+             <option *ngFor="let comName of CompaniesList">
+                 {{comName.CompanyName}}
+             </option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3">Designation</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Designation" >
+             <option disabled selected value="">--Select--</option>
+             <option *ngFor="let desName of DesignationsList">
+                 {{desName.DesignationName}}
+             </option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3">Employment Type</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="EmployementType" >
+             <option disabled selected value="">--Select--</option>
+             <option>Employee</option>
+             <option>Contract</option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3">Status</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="EmployeeStatus" >
+             <option disabled selected value="">--Select--</option>
+             <option>Active</option>
+             <option>Resigned</option>
+             <option>Absconded</option>
+         </select>
+      </div>
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+  <button (click)="addEmployee()" *ngIf="emp.EmployeeId==0" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>
+      Add
+  </button>
+
+  <button (click)="updateEmployee()" *ngIf="emp.EmployeeId!=0" class="btn btn-primary">
+      Update
+  </button> -->
+
+
+
+
+
+
+  <div class="d-flex flex-row bd-highlight mb-6 col-md-12" style="width:100%; background-color: aliceblue;">
+    <div class="container-fluid">
+      <div class="form-container row">
+        <!-- Employee Information Form -->
+        <div class="container mt-2">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="text" class="form-control" id="employeeId" readonly>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="deviceEnrollId">Device Enroll ID</label>
+                <input type="text" class="form-control" id="deviceEnrollId" placeholder="Enter Device ID">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="accessCardNo">Access Card No</label>
+                <input type="text" class="form-control" id="accessCardNo" placeholder="Enter Access Card No">
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4 ">
+              <div class="form-group">
+                <label for="employeeName">Name</label>
+                <input type="text" class="form-control" id="employeeName" [(ngModel)]="EmployeeName" placeholder="Enter Employee Name">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="emailAddress">Email address</label>
+                <input type="email" class="form-control" id="emailAddress" placeholder="Enter email">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="mobileNo">Mobile No</label>
+                <input type="text" class="form-control" id="mobileNo" placeholder="Enter Mobile No">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-container col-2">
+      <!-- Profile Picture Upload Section -->
+      <div class="profile-picture">
+        <img src="assets/images/depositphoto.jpg" alt="" width="150" height="150">
+        <!-- Display uploaded/captured profile picture here -->
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn btn-info">Capture</button>
+        <button type="button" class="btn btn-outline-info">Upload</button>
+      </div>
+    </div>
+    <!-- <div class="form-container col-md-12"><div class="form-group col-md-12"><label for="formGroupExampleInput">Plant</label><div><select class="form-control" [(ngModel)]="Company" (change)="onCompanyChange()"><option disabled selected value="">--Select--</option><option *ngFor="let comName of CompaniesList">
+                  {{comName.CompanyName}}
+              </option></select></div></div> -->
+  </div>
+  <!-- </div> -->
+  <!-- Existing code... -->
+  <div class="container-fluid mt-1" style="background-color: aliceblue;">
+    <div class="row">
+      <div class="col mt-2">
+        <div class="form-group">
+          <label for="company">Company</label>
+          <select class="form-control" [(ngModel)]="Company" (change)="onCompanyChange()">
+            <option disabled selected value="">--Select--</option>
+            <option *ngFor="let comName of CompaniesList">
+                {{comName.CompanyName}}
+            </option>
+        </select>
+        </div>
+      </div>
+      <div class="col mt-2">
+        <div class="form-group">
+          <label for="location">Location</label>
+          <select class="form-control" id="dropdown4">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col mt-2">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" id="dropdown4">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col mt-2">
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select class="form-control" [(ngModel)]="Department" >
+            <option disabled selected value="">--Select--</option>
+            <option *ngFor="let depName of DepartmentsList">
+                {{depName.DepartmentName}}
+            </option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col mb-3">
+        <div class="form-group">
+          <label for="jobType">Job Type</label>
+          <select class="form-control" [(ngModel)]="EmployementType" >
+            <option disabled selected value="">--Select--</option>
+            <option>Employee</option>
+            <option>Contract</option>
+        </select>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" [(ngModel)]="EmployeeStatus" >
+            <option disabled selected value="">--Select--</option>
+            <option>Active</option>
+            <option>Resigned</option>
+            <option>Absconded</option>
+        </select>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="form-group">
+          <label for="dateOfJoining">Date of Joining</label>
+          <input type="date" class="form-control" id="dateOfJoining">
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="form-group">
+          <label for="dateOfLeaving">Date of Leaving</label>
+          <input type="date" class="form-control" id="dateOfLeaving">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="rounded bg-secondary text-white p-1 col-1" style="text-align: center;"> Skill Matrix </div>
+    <div class="row" style="background-color: aliceblue;">
+      <div class="col mt-2 mb-2">
+        <div class="form-group">
+          <label for="dropdown1">Skill Matrix 1</label>
+          <select class="form-control custom-select" id="dropdown1">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col mt-2 mb-2">
+        <div class="form-group">
+          <label for="dropdown2">Skill Matrix 2</label>
+          <select class="form-control" id="dropdown2">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col mt-2 mb-2">
+        <div class="form-group">
+          <label for="dropdown3">Skill Matrix 3</label>
+          <select class="form-control" id="dropdown3">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col mt-2 mb-2">
+        <div class="form-group">
+          <label for="dropdown4">Skill Matrix 4</label>
+          <select class="form-control" id="dropdown4">
+            <option disabled selected value="">--Select--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-secondary mr-2 mt-2" data-dismiss="modal">Close</button>
+    <button (click)="addEmployee()" *ngIf="emp.EmployeeId==0" class="btn btn-success mt-2">
+      <i class="fas fa-save"></i> Save
+    </button>
+    <button (click)="updateEmployee()" *ngIf="emp.EmployeeId!=0" class="btn btn-primary">
+      Update
+    </button>
+  </div>
+

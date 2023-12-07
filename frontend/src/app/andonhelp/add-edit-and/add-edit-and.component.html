@@ -1,0 +1,116 @@
+<div class="d-flex flex-row bd-highlight mb-6">
+
+  <div class="form-group row">
+
+      <!-- <label class="col-sm-2 col-form-label mb-3">Employee Name</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="EmployeeName"
+          placeholder="Enter Employee Name">
+      </div> -->
+
+      <!-- <label class="col-sm-2 col-form-label mb-3 ">Login</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="login" >
+             <option>--Select--</option>
+             <option>A</option>
+             <option>B</option>
+             <option>C</option>
+         </select>
+      </div> -->
+
+      <label class="col-sm-2 col-form-label mb-3">Machine ID</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="machineId"
+          placeholder="Enter Machine ID">
+      </div>
+
+      <!-- <label class="col-sm-2 col-form-label mb-3">Ticket</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="ticket"
+          placeholder="Enter Ticket Number">
+      </div> -->
+
+      <label class="col-sm-2 col-form-label mb-3 ">Category</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="category" placeholder="Select Options" >
+             <option>--Select--</option>
+             <option>A</option>
+             <option>B</option>
+             <option>C</option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3 ">Sub Category</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="sub_category" placeholder="Select Options" >
+             <option>--Select--</option>
+             <option>A</option>
+             <option>B</option>
+             <option>C</option>
+         </select>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3 " for="andonAlertsDateTime">Andon Alerts</label>
+      <div class="col-sm-10">
+      <input type="datetime-local" id="andonAlertsDateTime" [(ngModel)]="andon_alerts" name="andonAlertsDateTime">
+      <button class="btn btn-secondary ml-2" (click)="enterCurrentDateTime('andon_alerts')">Set Current</button>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3 " for="andonAcknowledgeDateTime">Andon Acknowledge</label>
+      <div class="col-sm-10">
+      <input type="datetime-local" id="andonAcknowledgeDateTime" [(ngModel)]="andon_acknowledge" name="andonAcknowledgeDateTime">
+      <button class="btn btn-secondary ml-2" (click)="enterCurrentDateTime('andon_acknowledge')">Set Current</button>
+      </div>
+
+      <label class="col-sm-2 col-form-label mb-3 " for="andonResolvedDateTime">Andon Resolved</label>
+      <div class="col-sm-10">
+      <input type="datetime-local" id="andonResolvedDateTime" [(ngModel)]="andon_resolved" name="andonResolvedDateTime">
+      <button class="btn btn-secondary ml-2" (click)="enterCurrentDateTime('andon_resolved')">Set Current</button>
+      </div>
+
+
+      <!-- <label class="col-sm-2 col-form-label mb-3">Plant</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Company" (change)="onCompanyChange()">
+             <option>--Select--</option>
+             <option *ngFor="let comName of CompaniesList">
+                 {{comName.CompanyName}}
+             </option>
+         </select>
+      </div> -->
+
+      <!-- <label class="col-sm-2 col-form-label mb-3">Designation</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Designation" >
+             <option>--Select--</option>
+             <option *ngFor="let desName of DesignationsList">
+                 {{desName.DesignationName}}
+             </option>
+         </select>
+      </div> -->
+
+      <!-- <label class="col-sm-2 col-form-label mb-3">Location</label>
+      <div class="col-sm-10">
+         <select class="form-control" [(ngModel)]="Location" >
+             <option>--Select--</option>
+             <option *ngFor="let locName of LocationsList">
+                 {{locName.LocationName}}
+             </option>
+         </select>
+      </div> -->
+
+
+
+
+  </div>
+
+  </div>
+
+
+  <button (click)="addTicket()" *ngIf="andData" class="btn btn-primary">
+      Add
+  </button>
+
+  <button (click)="updateTicket()" *ngIf="!andData" class="btn btn-primary">
+      Update
+  </button>

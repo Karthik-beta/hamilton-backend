@@ -1,0 +1,435 @@
+<!-- <div class="col-12">
+  <video width="100%" autoplay loop>
+    <source src="assets/images/alert.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div> -->
+
+<!-- <div class="container-fluid col-md-12 mx-auto">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card smallCard shadow" style="background-color: #463D8A;">
+        <div class="text-center">
+          <p class="card-subtitle">ALERT TODAY</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card smallCard shadow" style="background-color: #8B178B;">
+        <div class="text-center">
+          <p class="card-subtitle">ALERT OPEN</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card smallCard shadow" style="background-color: #DAA420;">
+        <div class="text-center">
+          <p class="card-subtitle">ALERT ACK/CLOSURE</p>
+          <h4 class="card-title text-bold">5</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card smallCard shadow" style="background-color: #E966B2;">
+        <div class="text-center">
+          <p class="card-subtitle">BREAKDOWN ALERT</p>
+          <h4 class="card-title text-bold">5</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-md-2">
+      <div class="card smallCard shadow" style="background-color: #62CD37;">
+        <div class="text-center">
+          <p class="card-subtitle">RESETTING</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="card smallCard shadow" style="background-color: #CD5C5D;">
+        <div class="text-center">
+          <p class="card-subtitle">ENGINEERING</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="card smallCard shadow" style="background-color: #A7B289;">
+        <div class="text-center">
+          <p class="card-subtitle">ELECT MAINT</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="card smallCard shadow" style="background-color: #7F8000;">
+        <div class="text-center">
+          <p class="card-subtitle">QUALITY</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="card smallCard shadow" style="background-color: #31692C;">
+        <div class="text-center">
+          <p class="card-subtitle">MECH MAINT</p>
+          <h4 class="card-title text-bold">1</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid col-md-12">
+  <div class="card" style="background-color: black; height: 400px;">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+      <img src="assets/images/alert.gif" alt="" width="600px" height="400px">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<table class="table table-bordered table-striped">
+  <thead>
+      <tr>
+        <th>Ticket</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Shopfloor</th>
+        <th>Assembly Line</th>
+        <th>Sub-Assembly Line</th>
+        <th>Machine Id</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Alert Shift</th>
+        <th>Andon Alert</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>SKF</td>
+          <td>BLR</td>
+          <td>BALL BEARING</td>
+          <td>CHANNEL 5</td>
+          <td></td>
+          <td>SGB CH5</td>
+          <td>RESETTING</td>
+          <td></td>
+          <td>SS</td>
+          <td>Sep 16, 2023 3:30 PM</td>
+      </tr>
+  </tbody>
+</table> -->
+
+
+
+<!-- <div class="week-container">
+  <div class="week-circle" style="background-color: green;"></div>
+  <div class="week">Database Connected</div>
+</div> -->
+
+
+<div class="week-container">
+  <div class="">
+  <!-- Conditionally display an image -->
+<img *ngIf="databaseStatus === 'Database is connected.'" src="assets/images/database.png"  style="width:40px; height:40px" alt="Connected GIF">
+<img *ngIf="databaseStatus !== 'Database is connected.'" src="assets/images/disconnected.png" style="width:50px; height:50px" alt="Disconnected PNG"></div>
+  <div class="week">{{ databaseStatus }}</div>
+</div>
+
+
+
+
+
+<div class="container-fluid col-md-12 mt-2" style="display: flex; justify-content: center; align-items: center;">
+  <div class="row col-md-12 justify-content-center ">
+    <div class="card mainCard col-md-4">
+      <!-- <apx-chart [series]="chartSeries" [chart]="chartDetails" [labels]="chartLabels" [title]="chartTitle" [dataLabels]="chartDataLabels"></apx-chart> -->
+      <!-- <apx-chart [series]="chartSeries2" [chart]="chartDetails2" [labels]="chartLabels2" [title]="chartTitle2" [dataLabels]="chartDataLabels2"></apx-chart> -->
+      <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+        <!-- Display red.gif if total_open_alerts > 0, otherwise display green.gif -->
+        <img *ngIf="total_open_alerts > 0" src="assets/images/red.gif" alt="" width="100%" height="320px">
+        <img *ngIf="total_open_alerts <= 0" src="assets/images/green.gif" alt="" width="100%" height="320px">
+      </div>
+    </div>
+    <div class="card smallCardsContainer col-md-8 mx-auto">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 1 content -->
+          <div class="card smallCard shadow" style="background-color: #463D8A;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT TODAY</p>
+              <h4 class="card-title text-bold">{{ today_open_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 2 content -->
+          <div class="card smallCard shadow" style="background-color: #8B178B;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT OPEN</p>
+              <h4 class="card-title text-bold">{{ total_open_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 3 content -->
+          <div class="card smallCard shadow" style="background-color: #DAA420;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ALERT ACK/CLOSURE</p>
+              <h4 class="card-title text-bold">{{ total_acknowledge_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 4 content -->
+          <div class="card smallCard shadow" style="background-color: #E966B2;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">BREAKDOWN ALERT</p>
+              <!-- <h4 class="card-title text-bold"></h4> -->
+              <h4 class="card-title text-bold">{{ total_alerts }}</h4>
+              <!-- <p class="card-subtitle">CLICK TO VIEW</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 5 content -->
+          <div class="card smallCard shadow" style="background-color: #62CD37;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">RESETTING</p>
+              <h4 class="card-title text-bold">{{ total_resetting_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 6 content -->
+          <div class="card smallCard shadow" style="background-color: #CD5C5D;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ENGINEERING</p>
+              <h4 class="card-title text-bold">{{ total_engineering_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 7 content -->
+          <div class="card smallCard shadow" style="background-color: #A7B289;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">ELECT MAINT</p>
+              <h4 class="card-title text-bold">{{ total_elect_maint_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 8 content -->
+          <div class="card smallCard shadow" style="background-color: #7F8000;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">QUALITY</p>
+              <h4 class="card-title text-bold">{{ total_quality_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 9 content -->
+          <div class="card smallCard shadow" style="background-color: #31692C;">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <p class="card-subtitle">MECH MAINT</p>
+              <h4 class="card-title text-bold">{{ total_mech_maint_alerts }}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="col-md-12 d-flex justify-content-center">
+  <div class="card mainCard2 col-md-6">
+    <apx-chart [series]="chartBarSeries" [chart]="chartBarOptions" [labels]="chartBarLabels" [title]="chartBarTitle" [dataLabels]="chartDataLabels"></apx-chart>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Ticket ID</th>
+      <!-- <th>Login</th> -->
+      <th>Company</th>
+      <th>Location</th>
+      <th>Shopfloor</th>
+      <th>Assembly Line</th>
+      <th>Sub-Assembly Line</th>
+      <th>Machine Id</th>
+      <th>Category</th>
+      <th>Sub Category</th>
+      <th>Alert Shift</th>
+      <th>Andon Alert</th>
+      <th>Andon Acknowledge</th>
+      <th>Andon Resolved</th>
+      <th>Total Breakdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of AndonOpenAlertsList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ dataItem.id }}</td>
+      <td>{{ dataItem.company }}</td>
+      <td>{{ dataItem.location }}</td>
+      <td>{{ dataItem.shopfloor }}</td>
+      <td>{{ dataItem.assemblyline }}</td>
+      <td></td>
+      <td>{{ dataItem.machineId }}</td>
+      <td>{{ dataItem.category }}</td>
+      <td>{{ dataItem.sub_category }}</td>
+      <td>{{ dataItem.alert_shift }}</td>
+      <td>{{ dataItem.andon_alerts | slice:0:19 }}</td>
+      <td>{{ dataItem.andon_acknowledge | slice:0:19 }}</td>
+      <td>{{ dataItem.andon_resolved | slice:0:19 }}</td>
+      <td>{{ calculateTotalTime(dataItem.andon_alerts) }}</td>
+    </tr>
+    <!-- <tr>
+      <td>8</td>
+      <td>SKF</td>
+      <td>BLR</td>
+      <td>BALL BEARING</td>
+      <td>CHANNEL 5</td>
+      <td></td>
+      <td>SHG CH5</td>
+      <td>ENGINEERING</td>
+      <td></td>
+      <td>SS</td>
+      <td>Sep 11, 2023 2:24 PM</td>
+      <td>Sep 11, 2023 3:01 PM</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>SKF</td>
+      <td>BLR</td>
+      <td>BALL BEARING</td>
+      <td>CHANNEL 5</td>
+      <td></td>
+      <td>SHG2 CH5</td>
+      <td>ENGINEERING</td>
+      <td></td>
+      <td>SS</td>
+      <td>Sep 11, 2023 3:11 PM</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>SKF</td>
+      <td>BLR</td>
+      <td>BALL BEARING</td>
+      <td>CHANNEL 5</td>
+      <td></td>
+      <td>SHG2 CH5</td>
+      <td>ENGINEERING</td>
+      <td></td>
+      <td>SS</td>
+      <td>Sep 11, 2023 3:30 PM</td>
+      <td>Sep 11, 2023 3:43 PM</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>SKF</td>
+      <td>BLR</td>
+      <td>BALL BEARING</td>
+      <td>CHANNEL 5</td>
+      <td></td>
+      <td>SHG2 CH5</td>
+      <td>ENGINEERING</td>
+      <td></td>
+      <td>SS</td>
+      <td>Sep 11, 2023 3:30 PM</td>
+      <td>Sep 11, 2023 3:43 PM</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>SKF</td>
+      <td>BLR</td>
+      <td>BALL BEARING</td>
+      <td>CHANNEL 5</td>
+      <td></td>
+      <td>SHG2 CH5</td>
+      <td>ENGINEERING</td>
+      <td></td>
+      <td>SS</td>
+      <td>Sep 11, 2023 3:30 PM</td>
+      <td>Sep 11, 2023 3:43 PM</td>
+      <td></td>
+      <td></td>
+    </tr> -->
+  </tbody>
+</table>
+</div>

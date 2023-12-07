@@ -1,0 +1,38 @@
+
+
+
+
+
+
+<div class="container">
+  <main class="form-container">
+    <form [formGroup]="form" (submit)="submit()">
+      <div style="text-align: center;">
+        <img class="mb-4" src="assets/images/Magnum.png" alt="" width="372" height="97">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      </div>
+
+      <div class="form-floating mb-4">
+        <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="Email address">
+        <!-- <label for="floatingInput">Email address</label> -->
+      </div>
+
+      <div class="form-floating mb-4">
+        <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <!-- <label for="floatingPassword">Password</label> -->
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+
+      <div class="form-text mb-4">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+    </form>
+  </main>
+</div>

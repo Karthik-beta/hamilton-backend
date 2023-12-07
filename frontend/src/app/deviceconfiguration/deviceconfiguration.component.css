@@ -1,0 +1,39 @@
+body {
+  background-color: aliceblue;
+}
+
+.input-fields-container {
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-row {
+  margin-bottom: 14px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.input-fields-container .form-group {
+  margin-bottom: 0; /* Remove the bottom margin for individual form groups */
+}
+
+.input-fields-container label {
+  font-weight: bold;
+  display: block; /* Display the labels as block elements */
+}
+
+/* Additional styling for the form elements (optional) */
+.input-fields-container .form-control {
+  border-radius: 5px;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  z-index: 9999;
+}

@@ -1,0 +1,116 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  /* width: 230px; */
+  /* height: 100px; */
+  border-radius: 10px;
+  /* background-color: gainsboro; */
+  background-color: rgb(106, 133, 160);
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin: 0.5em; */
+}
+
+.col-md-auto {
+  flex: 1; /* Distribute available space evenly among cards in the same row */
+  margin: 0.2em; /* Add margin for spacing between cards */
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.custom-select {
+  background-color: gainsboro;
+  font-size: small;
+  /* background-color: rgb(105, 144, 184); */
+  color: #000000; /* Set the text color */
+  border-color: #ccc; /* Set the border color */
+  /* Add any other desired styling properties */
+}
+
+.scrollable-cards {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+@keyframes cardScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.card {
+  animation: cardScroll 15s linear infinite; /* Adjust the animation duration as per your preference */
+}
+
+.scrollable-cards::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera */
+}
+
+.card {
+  display: inline-block;
+  margin: 1em;
+  height: 120x;
+  width: 260px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.card-content {
+  background-color: burlywood;
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.card-content-gray {
+  background-color: #ccc;
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.card-content-slateblue {
+  background-color: rgb(133, 124, 190);
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.card-content-honeydew {
+  background-color: rgb(195, 223, 195);
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.card-content-biege {
+  background-color: rgb(202, 202, 180);
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.container-1 {
+  background-color: gainsboro;
+}
+
+.fas {
+  color: red
+}

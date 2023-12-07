@@ -1,0 +1,107 @@
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Production Planned</p>
+                <div><h1>0</h1></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Order in Process</p>
+                <div><h1>0</h1></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Order Completed</p>
+              <div><h1>0</h1></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow rounded">
+          <div class="card-body">
+            <p style="font-weight: bolder;">All</p>
+            <div><h1>0</h1></div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow rounded">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Transactions Today</p>
+            <div><h1>0</h1></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="large-card-container mt-5  rounded" *ngFor="let dataItem of ProductionPlanList" style="background-color: black;">
+<div class="card-container col-md-auto mt-2">
+  <div class="card">
+    <h4 class="title">JOB WORK</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.jobworkname }}</h5>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="title">EMPLOYEE ID</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.EmployeeId }}</h5>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="title">PRODUCT ID</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.productId }}</h5>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="title">DRAWING NO</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.drawingNo }}</h5>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="title">CUSTOMER</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.entrycustomer }}</h5>
+    </div>
+  </div>
+</div>
+<div class="card-container mt-3 mb-2">
+  <div class="card">
+    <h4 class="title">PO NO & DATE</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.entrypono }}</h5>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="title">BATCH NO</h4>
+    <div class="inner-card">
+      <h5 class="sub-title">{{ dataItem.entrybatchno }}</h5>
+    </div>
+  </div>
+  <div class="card card-large">
+    <h5 class="title">PLANNED ASSIGNED DATE</h5>
+    <div class="inner-card-large">
+      <h5 class="sub-title">{{ dataItem.plandate }}</h5>
+    </div>
+  </div>
+  <div class="card card-large">
+    <h5 class="title">PRODUCTION EXPECTED DATE</h5>
+    <div class="inner-card-large">
+      <h4 class="sub-title">{{ dataItem.expecteddate }}</h4>
+    </div>
+  </div>
+</div>
+</div>

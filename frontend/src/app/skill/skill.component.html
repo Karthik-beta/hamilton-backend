@@ -1,0 +1,658 @@
+<app-nav></app-nav>
+
+<!-- <div class="container mt-5" style="width: 95%;">
+  <div class="table-container">
+    <div class="button-container">
+
+<button type="button" class="btn btn-primary"
+data-toggle="modal" data-target="#exampleModal"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Skill
+  </button>
+  </div>
+
+  <div class="back-button-container">
+    <button type="button" class="btn btn-primary" data-backdrop="static" data-keyboard="false">Back</button>
+  </div> -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Skill</h5>
+          <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- <app-add-edit-skill [skill]="skill" *ngIf="ActivateAddEditSkillComp">
+          </app-add-edit-skill> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="search-bar d-flex mt-2">
+    <button type="button" routerLink="/admin" class="btn btn-secondary ml-2 d-flex align-items-center" >
+      <i class="fas fa-chevron-left"></i> Back
+    </button>
+    <input class="form-control ml-1" placeholder="Search">
+    <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+      <i class="fas fa-file-import mr-2"></i> Import
+    </button>
+    <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+      <i class="fas fa-download mr-2"></i> Export
+    </button>
+    <button type="button" class="btn btn-primary ml-2 mr-1 d-flex align-items-center" data-toggle="modal" data-target="#exampleModal"
+    data-backdrop="static" data-keyboard="false" style="width: 250px;"><i class="fas fa-plus mr-2"></i>Create New Skill</button>
+  </div>
+
+
+    <table class="table table-striped table-hover table-sm btn-sm" style="text-align: center; font-size: medium;">
+      <thead>
+        <tr style="background-color: #2b6099; color: white;">
+      <th style="text-align: center;">Skill ID</th>
+      <th style="text-align: center; width: 70%;">SVCT Sub Assembly Skill Name</th>
+      <th style="text-align: center;">OPTIONS</th>
+      <!-- Add more header columns if needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">AXIAL DRIVE ASSEMBLY
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn  btn-light mr-1"
+        data-toggle="modal" data-target="#viewModalCenter"
+        data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">AXIAL DRIVE TESTING
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+        data-toggle="modal" data-target="#viewModalCenter"
+        data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">3</td>
+      <td style="text-align: center;">ORP Sub-Assembly
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">4</td>
+      <td style="text-align: center;">Console Assembly</td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">Console Testing
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">6</td>
+      <td style="text-align: center;">Covers Sub-Assembly
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">7</td>
+      <td style="text-align: center;">SR sub-Assembly
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">8</td>
+      <td style="text-align: center;">TGP Sub-Assembly
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">9</td>
+      <td style="text-align: center;">DAS Sub-Assembly
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">Table Main Build
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">11</td>
+      <td style="text-align: center;">Table Testing
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">12</td>
+      <td style="text-align: center;">Table Labeling</td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">13</td>
+      <td style="text-align: center;">Table PDI
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">14</td>
+      <td style="text-align: center;">Table Sub-assembly 1
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">15</td>
+      <td style="text-align: center;">Table Sub-assembly 2
+      </td>
+      <td style="text-align: center;">
+        <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+        <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<!-- Import Modal -->
+<div class="modal fade" id="importModalCenter" tabindex="-1" role="dialog" aria-labelledby="importModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLongTitle">Import File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="file-icon-container d-flex justify-content-center align-items-center">
+          <i class="far fa-file fa-5x"></i>
+        </div>
+
+        <div class="text-center mt-3">
+          <p class="drag-drop-text">Or drag and drop files here</p>
+        </div>
+        <div class="input-group mt-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="importFileInput">
+            <label class="custom-file-label" for="importFileInput">Choose file</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="importButton"><i class="fas fa-file-import mr-2"></i>Import</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Export Modal -->
+<div class="modal fade" id="exportModalCenter" tabindex="-1" role="dialog" aria-labelledby="exportModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exportModalLongTitle">Export File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="exportForm">
+          <div class="form-group">
+            <label for="exportType">Select Export Type:</label>
+            <select class="form-control custom-select" id="exportType" name="exportType">
+              <option value="csv">CSV</option>
+              <option value="pdf">PDF</option>
+              <option value="xlsx">Excel</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="downloadButton">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-striped table-hover table-sm mt-4" style="text-align: center; font-size: medium;">
+  <thead>
+    <tr style="background-color: #2b6099; color: white;">
+  <th style="text-align: center;">Skill ID</th>
+  <th style="text-align: center; width: 70%;">SVCT Main Assembly Skill Name</th>
+  <th style="text-align: center;">OPTIONS</th>
+  <!-- Add more header columns if needed -->
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align: center;">1</td>
+  <td style="text-align: center;">SVCT M1</td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn  btn-light mr-1"
+    data-toggle="modal" data-target="#viewModalCenter"
+    data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">2</td>
+  <td style="text-align: center;">SVCT M2
+
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+    data-toggle="modal" data-target="#viewModalCenter"
+    data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">3</td>
+  <td style="text-align: center;">SVCT M3</td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">4</td>
+  <td style="text-align: center;">SVCT M4</td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-striped table-hover table-sm btn-sm mt-4" style="text-align: center; font-size: medium;">
+  <thead>
+    <tr style="background-color: #2b6099; color: white;">
+  <th style="text-align: center;">Skill ID</th>
+  <th style="text-align: center; width: 70%;">SVCT Installation & Testing Skill Name</th>
+  <th style="text-align: center;">OPTIONS</th>
+  <!-- Add more header columns if needed -->
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align: center;">1</td>
+  <td style="text-align: center;">SVCT Installation</td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn  btn-light mr-1"
+    data-toggle="modal" data-target="#viewModalCenter"
+    data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">2</td>
+  <td style="text-align: center;">SVCT Initial Testing
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+    data-toggle="modal" data-target="#viewModalCenter"
+    data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">3</td>
+  <td style="text-align: center;">SVCT Alignment
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">4</td>
+  <td style="text-align: center;">SVCT Covers Assembly  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">5</td>
+  <td style="text-align: center;">SVCT Calibration
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">6</td>
+  <td style="text-align: center;">SVCT CIE
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">7</td>
+  <td style="text-align: center;">SVCT POST CIE
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">8</td>
+  <td style="text-align: center;">SVCT Dissassembly & Labeling
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">9</td>
+  <td style="text-align: center;">SVCT PDI
+  </td>
+  <td style="text-align: center;">
+    <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button type="button" class="btn btn-light mr-1"
+            data-toggle="modal" data-target="#viewModalCenter"
+            data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+    <button type="button" class="btn btn-danger mr-1" data-backdrop="static" data-keyboard="false">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>
+</tbody>
+</table>

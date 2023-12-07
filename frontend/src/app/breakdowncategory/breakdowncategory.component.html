@@ -1,0 +1,154 @@
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+          <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <app-add-edit-bdc [bdc]="bdc" *ngIf="ActivateAddEditBdcComp">
+          </app-add-edit-bdc>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="search-bar d-flex mt-2">
+    <button type="button" routerLink="/admin" class="btn btn-secondary ml-2 d-flex align-items-center" >
+      <i class="fas fa-chevron-left"></i> Back
+    </button>
+    <input [(ngModel)]="searchText" class="form-control ml-1" (keyup)="filterData()" placeholder="Search">
+    <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+      <i class="fas fa-file-import mr-2"></i> Import
+    </button>
+    <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+      <i class="fas fa-download mr-2"></i> Export
+    </button>
+    <button type="button" class="btn btn-primary ml-2 mr-1 d-flex align-items-center" data-toggle="modal" data-target="#exampleModal"
+    (click)="addClick()" data-backdrop="static" data-keyboard="false" style="width: 310px;"><i class="fas fa-plus mr-2"></i>Create New Category</button>
+  </div>
+
+
+    <table class="table table-striped table-hover" style="text-align: center;">
+      <thead>
+        <tr style="background-color: #2b6099; color: white;">
+          <th>#</th>
+          <th>Breakdown Category</th>
+          <th> Breakdown Category ID</th>
+          <th>Options</th>
+          <!-- Add more header columns if needed -->
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let dataItem of BreakdownCategoryList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <!-- <td>{{ dataItem.breakdownCategoryId }}</td> -->
+          <td>{{ dataItem.breakdownCategoryName }}</td>
+          <td>{{ dataItem.breakdownCategoryId }}</td>
+          <td>
+            <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click)="editClick(dataItem)"
+                data-backdrop="static" data-keyboard="false"
+                >
+            <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#viewModalCenter"
+                data-backdrop="static" data-keyboard="false"><i class="fa-solid fa-eye fa-sm"></i></button>
+            <button type="button" class="btn btn-danger mr-1"
+                (click)="deleteClick(dataItem.breakdownCategoryId)"
+                data-backdrop="static" data-keyboard="false"
+                >
+                <i class="fa-solid fa-trash"></i>
+                </button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+ <!-- Import Modal -->
+ <div class="modal fade" id="importModalCenter" tabindex="-1" role="dialog" aria-labelledby="importModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLongTitle">Import File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="file-icon-container d-flex justify-content-center align-items-center">
+          <i class="far fa-file fa-5x"></i>
+        </div>
+
+        <div class="text-center mt-3">
+          <p class="drag-drop-text">Or drag and drop files here</p>
+        </div>
+        <div class="input-group mt-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="importFileInput">
+            <label class="custom-file-label" for="importFileInput">Choose file</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="importButton"><i class="fas fa-file-import mr-2"></i>Import</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Export Modal -->
+<div class="modal fade" id="exportModalCenter" tabindex="-1" role="dialog" aria-labelledby="exportModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exportModalLongTitle">Export File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="exportForm">
+          <div class="form-group">
+            <label for="exportType">Select Export Type:</label>
+            <select class="form-control custom-select" id="exportType" name="exportType">
+              <option value="csv">CSV</option>
+              <option value="pdf">PDF</option>
+              <option value="xlsx">Excel</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="downloadButton">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

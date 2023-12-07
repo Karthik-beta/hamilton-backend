@@ -1,0 +1,89 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  width: 220px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 0.5em;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #000;
+}
+
+thead th {
+  border-top: none;
+}
+
+tbody td:first-child {
+  border-left: none;
+  /* border-bottom-left-radius: 5px; */
+}
+
+tbody td:last-child {
+  border-right: none;
+  /* border-bottom-right-radius: 5px; */
+}
+
+thead th:first-child {
+  border-left: none;
+  border-top-left-radius: 5px;
+}
+
+thead th:last-child {
+  border-right: none;
+  border-top-right-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+.table td, th {
+  white-space: nowrap;
+}
+
+td[rowspan] {
+  vertical-align: middle;
+}
+
+th[rowspan]{
+  vertical-align: middle;
+}
+
+th[colspan]{
+  text-align: center;
+}
+
+/* th {
+  background-color: #2b6099;
+  color: white;
+} */
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: center;
+}

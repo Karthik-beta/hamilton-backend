@@ -1,0 +1,220 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-3">
+      <div class="dash-card shadow " style="background-color: skyblue; display: flex; align-items: center;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p style="font-weight: bolder;">Today</p>
+            </div>
+            <div class="col">
+              <p style="font-weight: bolder;">{{ today_open_alerts }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dash-card shadow " style="background-color: #ee6b6e;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p style="font-weight: bolder;">Open</p>
+            </div>
+            <div class="col">
+              <p style="font-weight: bolder;">{{ total_open_alerts }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dash-card shadow " style="background-color: #45b6fe;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p style="font-weight: bolder;">Ack/Closure</p>
+            </div>
+            <div class="col">
+              <p style="font-weight: bolder;">{{ total_acknowledge_alerts }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dash-card shadow " style="background-color: #80e57c;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p style="font-weight: bolder;">All</p>
+            </div>
+            <div class="col">
+              <p style="font-weight: bolder;">{{ total_alerts }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid col-md-12 mt-2 mb-2">
+  <div class="row justify-content-between" style="font-size: small;">
+    <div class="col-auto">
+      <label class="label">Search :</label>
+      <input type="text" class="form-control form-control-sm" placeholder="Search..." aria-label="Large" aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <!-- <div class="col-auto"><p-calendar [showIcon]="true" dateFormat="yy-mm-dd" placeholder="Select Date" class="small-calendar shadow"></p-calendar></div> -->
+    <div class="col-auto">
+      <label class="label">Company :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Company</option> -->
+        <!-- <option>All</option> -->
+        <option selected>SKF PVT LTD</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Location :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Location</option> -->
+        <!-- <option>All</option> -->
+        <option selected>BLR</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Shopfloor :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line">
+        <!-- <option disabled>Shopfloor</option> -->
+        <!-- <option>All</option> -->
+        <option selected>GRINDING</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Assemblyline :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedAssemblyline" (change)="onAssemblylineChange()">
+        <!-- <option selected disabled>Assembly Line</option> -->
+        <option>All</option>
+        <option>CH1</option>
+        <option>CH2</option>
+        <option>CH3</option>
+        <option>CH4</option>
+        <option>CH5</option>
+        <option>CH6</option>
+        <option>CH7</option>
+        <option>CH8</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Machine ID :</label>
+      <select class="form-select form-select-sm" placeholder="All" [(ngModel)]="selectedMachine" (change)="onMachineChange()">
+        <!-- <option disabled selected>Machine ID</option> -->
+        <option>All</option>
+        <option>CH5-SGB</option>
+        <option>CH5-SHG1</option>
+        <option>CH5-SHG2</option>
+        <option>CH5-SPC(IR)</option>
+        <option>CH5-SSB1</option>
+        <option>CH5-SSB2</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Category :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        <!-- <option disabled selected>Category</option> -->
+        <option>All</option>
+        <option>RESETTING</option>
+        <option>ENGINEERING</option>
+        <option>ELECTMAINT</option>
+        <option>QUALITY</option>
+        <option>MECHMAINT</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label">Shift :</label>
+      <select class="form-select form-select-sm" placeholder="Assembly Line" [(ngModel)]="selectedShift" (change)="onShiftChange()">
+        <!-- <option disabled selected>Shift</option> -->
+        <option>All</option>
+        <option>FS</option>
+        <option>SS</option>
+        <option>NS</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="label" for="excel-export">Export Excel :</label>
+      <div class="btn-container">
+        <button type="button" (click)="downloadAndonData()" class="btn btn-sm btn-primary">
+          <i class="pi pi-download" style="margin-right: 0.3rem;"></i>Download </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<table class="table table-striped table-hover table-bordered"><thead><tr><th>Ticket</th><th>Login</th><th>Company</th><th>Location</th><th>Shopfloor</th><th>Assembly Line</th><th>Sub-Assembly Line</th><th>Machine Id</th><th>Category</th><th>Sub Category</th><th>Alert Shift</th><th>Andon Alert</th><th>Andon Acknowledge</th><th>Andon Resolved</th><th>Total Breakdown</th></tr></thead><tbody><tr *ngFor="let dataItem of andonList"><td>{{ dataItem.id }}</td><td>XYZ</td><td>{{ dataItem.company }}</td><td>{{ dataItem.location }}</td><td>{{ dataItem.shopfloor }}</td><td>{{ dataItem.assemblyline }}</td><td></td><td>{{ dataItem.machineId }}</td><td>{{ dataItem.category }}</td><td>{{ dataItem.sub_category }}</td><td>{{ dataItem.alert_shift }}</td><td>{{ dataItem.andon_alerts | slice:0:19 }}</td><td>{{ dataItem.andon_acknowledge | slice:0:19 }}</td><td>{{ dataItem.andon_resolved | slice:0:19 }}</td><td>{{ dataItem.total_time }}</td></tr></tbody></table><div class="flex-auto" style="font-size: x-small;"><p-paginator [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions" [showCurrentPageReport]="true"
+  currentPageReportTemplate="{first} - {last} of {totalRecords}"></p-paginator></div>
+-->
+
+
+  <p-table
+  [value]="andonList"
+  class="p-datatable-sm"
+  styleClass="p-datatable-sm p-datatable-gridlines"
+  [tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small' }"
+  [lazy]="true"
+  [loading]="loading"
+  (onLazyLoad)="loadLogs($event)"
+  [paginator]="true"
+  [rows]="rows"
+  [totalRecords]="totalRecords"
+  [rowsPerPageOptions]="rowsPerPageOptions"
+  [scrollable]="true"
+  [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} - {last} of {totalRecords}"
+>
+  <ng-template pTemplate="header">
+    <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black'}">
+      <th>#</th>
+      <th>Ticket ID</th>
+      <!-- <th>Login</th> -->
+      <th>Company</th>
+      <th>Location</th>
+      <th>Shopfloor</th>
+      <th>Assembly Line</th>
+      <!-- <th>Sub-Assembly Line</th> -->
+      <th>Machine Id</th>
+      <th>Category</th>
+      <!-- <th>Sub Category</th> -->
+      <th>Alert Shift</th>
+      <th>Andon Alert</th>
+      <th>Andon Acknowledge</th>
+      <th>Andon Resolved</th>
+      <th>Response Time</th>
+      <th>Repair Time</th>
+      <th>Total Breakdown</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-log let-i="rowIndex">
+    <tr class="text-size data-row" [ngStyle]="{'color': 'black'}">
+      <td>{{ i + 1 }}</td>
+      <td>{{ log.id }}</td>
+      <!-- <td>XYZ</td> -->
+      <td>{{ log.company }}</td>
+      <td>{{ log.location }}</td>
+      <td>{{ log.shopfloor }}</td>
+      <td>{{ log.assemblyline }}</td>
+      <!-- <td></td> -->
+      <td>{{ log.machineId }}</td>
+      <td>{{ log.category }}</td>
+      <!-- <td>{{ log.sub_category }}</td> -->
+      <td>{{ log.alert_shift }}</td>
+      <td>{{ log.andon_alerts | slice:0:19 }}</td>
+      <td>{{ log.andon_acknowledge | slice:0:19 }}</td>
+      <td>{{ log.andon_resolved | slice:0:19 }}</td>
+      <td>{{ log.response_time }}</td>
+      <td>{{ log.repair_time }}</td>
+      <td>{{ log.total_time }}</td>
+    </tr>
+  </ng-template>
+</p-table>

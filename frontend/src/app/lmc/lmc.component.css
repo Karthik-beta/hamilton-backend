@@ -1,0 +1,104 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  width: 220px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 0.5em;
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.custom-select {
+  background-color: gainsboro;
+  color: #000000;
+  border-color: #ccc;
+}
+
+.custom-table {
+  height: 40px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 2px solid blue;
+  padding: 4px;
+}
+
+.custom-table th {
+  background-color: lightblue;
+}
+
+/*.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  z-index: 9999;
+} */
+
+.table2 th,
+.table2 td {
+  border: 2px solid white;
+  padding: 4px;
+}
+
+.custom-select2 {
+  background-color: gainsboro;
+  color: #ffffff; /* Set the text color */
+  border-color: #ccc;
+}
+
+.table {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  /* right: 40px; */
+  z-index: 9999;
+}
+
+
+.table {
+  font-size: x-small;
+}
+
+.small-calendar {
+  width: 150px; /* Adjust the width as needed */
+  font-size: small; /* Adjust the font size as needed */
+}
+
+.label {
+  font-weight: bold;
+}
+
+.header-row {
+  font-weight: bold;
+  color: black; /* Change to the desired color */
+}
+
+.data-row {
+  color: black; /* Change to the desired color */
+}
+
+td, th {
+  border: 1px solid #000;
+}

@@ -1,0 +1,17 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  width: 220px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 0.5em;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}

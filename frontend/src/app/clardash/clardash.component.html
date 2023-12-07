@@ -1,0 +1,114 @@
+<div class="container-fluid mt-4" style="height: 400px">
+  <div class="row col-md-12 justify-content-center">
+    <div class="card mainCard col-md-4">
+      <apx-chart [series]="chartSeries" [chart]="chartDetails" [labels]="chartLabels" [title]="chartTitle" [dataLabels]="chartDataLabels"></apx-chart>
+    </div>
+    <div class="card smallCardsContainer col-md-8">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 1 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">LIVE HEADCOUNT</h3>
+              <p class="card-subtitle">{{ getLiveHeadcount() }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 2 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">TOTAL CHECK IN</h3>
+              <p class="card-subtitle">{{ getPresentCount() }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 3 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">Total CHECK OUT</h3>
+              <p class="card-subtitle">{{ getEarlyExitCount() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 4 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">DAILY INFORMATION</h3>
+              <p class="card-subtitle">CLICK TO VIEW</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 5 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">TOTAL PRESENT</h3>
+              <p class="card-subtitle">{{ getPresentCount() }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 6 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">TOTAL ABSENT</h3>
+              <p class="card-subtitle">{{ getAbsentCount() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Small Card 7 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">LATE ENTRY</h3>
+              <p class="card-subtitle">{{ getLateEntryCount() }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 8 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">EARLY EXIT</h3>
+              <p class="card-subtitle">{{ getEarlyExitCount() }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Small Card 9 content -->
+          <div class="card smallCard">
+            <!-- ... Small Card content ... -->
+            <div class="text-center">
+              <h3 class="card-title text-bold">OVERTIME</h3>
+              <p class="card-subtitle">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-md-12 d-flex justify-content-center">
+  <div class="card mainCard2 col-md-6">
+    <apx-chart [series]="chartBarSeries" [chart]="chartBarOptions" [labels]="chartBarLabels" [title]="chartBarTitle" [dataLabels]="chartDataLabels"></apx-chart>
+  </div>
+</div>

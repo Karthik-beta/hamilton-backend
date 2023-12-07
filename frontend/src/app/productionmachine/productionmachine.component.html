@@ -1,0 +1,522 @@
+
+<div class="container-fluid">
+  <div class="row d-flex justify-content-between mt-1">
+    <!-- <div class="col-1"></div> -->
+      <div class="col-2">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Jobwork</p>
+              <div>
+                <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                  <option disabled>- All -</option>
+                  <option selected>JW-12345678-54</option>
+                  <option></option>
+                </select>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+      <div class="dash-card shadow rounded">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Plant</p>
+            <div>
+              <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                  <option disabled>- All -</option>
+                  <option selected>CHENNAI</option>
+                  <option>BLR</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div>
+      <div class="col-2">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Shopfloor</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options">
+                    <option disabled>- All -</option>
+                    <option selected>XYZ</option>
+                    <!-- <option>Axle</option> -->
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-2">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Assembly Line</p>
+              <div>
+                <select class="form-control custom-select" placeholder="Select Options">
+                  <option value="" disabled >- All -</option>
+                  <option selected>TSE</option>
+                  <!-- <option>Line 2</option> -->
+                </select>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-2">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Machine ID</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options" [(ngModel)]="selectedMachine" (change)="onMachineChange()">
+                    <option value="" disabled>- All -</option>
+                    <option *ngFor="let item of machineList">{{ item.machine_name }}</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-2">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Product ID</p>
+                <select class="form-control custom-select" placeholder="Select Options">
+                  <option value="" disabled>- All -</option>
+                  <option selected>CASSEROLES</option>
+                  <option>CARAFES</option>
+                </select>
+              </div>
+          </div>
+      </div>
+    <!-- <div class="col-1"></div> -->
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid col-md-12 mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container-wide">
+        <div class="scale">
+          <p class="mt-1">{{getShiftText()}} - {{ currentDate | date:'dd/MM/yy'}} - {{ currentTime | date:'shortTime' }}</p>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <div class="progress">
+              <div class="progress-bar-green" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 60%">60%</div>
+              <div class="progress-bar-red" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 40%">40%</div>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar-yellow" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 46%">46%</div>
+              <div class="progress-bar-blue" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 34%">34%</div>
+              <div class="progress-bar-purple" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 20%">20%</div>
+            </div>
+            <div class="bar-info">
+              <div class="bar-info-item">Running</div>
+              <div class="bar-info-item">Breakdown</div>
+              <div class="bar-info-item">Electrical Failure</div>
+              <div class="bar-info-item">Mechanical Failure</div>
+              <div class="bar-info-item">Others</div>
+            </div>
+          </div>
+          <div class="col-2 gif-card">
+            <img src="assets/images/green.gif" alt="" width="99%" height="70px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<table class="table table-bordered table-striped table-sm vertically-striped-columns mt-3 text-center table-with-black-border" style="font-weight: bold;">
+  <thead class="thead">
+    <tr>
+      <!-- <th scope="col">PLANT</th>
+      <th scope="col">SHOPFLOOR</th>
+      <th scope="col">ASSEMBLY LINE</th>
+      <th scope="col">MACHINE ID</th> -->
+      <th scope="col">PRODUCT ID</th>
+      <th scope="col">SHIFT </th>
+      <th scope="col">M/C ON HOURS</th>
+      <th scope="col">M/C IDLE HOURS</th>
+      <th scope="col">ACTUAL</th>
+      <th scope="col">TARGET</th>
+      <th scope="col">PERFORMANCE</th>
+      <th scope="col">PRODUCTION SAULD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of machineWiseDataList">
+      <!-- <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td> -->
+      <td>CASSEROLES</td>
+      <!-- <td>{{ dataItem.product_target }}</td> -->
+      <td>{{ dataItem.time }}</td>
+      <td>{{ dataItem.on_time }}</td>
+      <td>{{ dataItem.idle_time }}</td>
+      <td>{{ dataItem.actual }}</td>
+      <td>{{ dataItem.target}}</td>
+      <!-- <td style="background-color: yellow;">91.66 %</td> -->
+      <td [ngStyle]="getBackgroundColorStyle(dataItem.performance)">{{ dataItem.performance }}</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" (click)="editClick(dataItem)" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <!-- <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button> -->
+          </div>
+        </div>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>07 - 08</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>08 - 09</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>09 - 10</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>10 - 11</td>
+      <td>30</td>
+      <td>0</td>
+      <td>28</td>
+      <td>30</td>
+      <td style="background-color: yellow;">93.33 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>11 - 12</td>
+      <td>60</td>
+      <td>0</td>
+      <td>50</td>
+      <td>60</td>
+      <td style="background-color: red;">83.33 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>12 - 13</td>
+      <td>54</td>
+      <td>6</td>
+      <td>54</td>
+      <td>60</td>
+      <td style="background-color: yellow;">90 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>13 - 14</td>
+      <td>59</td>
+      <td>1</td>
+      <td>58</td>
+      <td>60</td>
+      <td  style="background-color: green;">96.66 %</td>
+      <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr> -->
+    <!-- <tr>
+      <th >Total</th>
+      <th class="footer">450</th>
+      <th class="footer">438</th>
+      <th class="footer">12</th>
+      <th class="footer">435</th>
+      <th class="footer">450</th>
+      <th class="footer">94.37 %</th>
+       <td>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </td>
+    </tr> -->
+  </tbody>
+</table>
+
+
+
+
+
+<!-- Modal Snippet -->
+<!-- <div class="modal fade" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">EDIT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="width:100%; background-color: aliceblue;">
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- Modal Snippet -->
+<div class="modal fade" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="width:100%; background-color: aliceblue;">
+        <app-add-edit-productionmachine [prodmach]="prodmach" *ngIf="ActivateAddEditProductionMachineComp" (prodMachAdded)="onprodMachAdded()"></app-add-edit-productionmachine>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="mt-2">
+  <p-table
+  [value]="dummyList"
+  class="p-datatable-sm"
+  styleClass="p-datatable-sm p-datatable-gridlines"
+  [tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small', 'color': 'black' }"
+  [scrollable]="true"
+  >
+  <ng-template pTemplate="header">
+    <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black'}">
+      <th scope="col">PLANT</th>
+      <th scope="col">SHOPFLOOR</th>
+      <th scope="col">ASSEMBLY LINE</th>
+      <th scope="col">MACHINE ID</th>
+      <th scope="col">PRODUCT ID</th>
+      <th scope="col">SHIFT A</th>
+      <th scope="col">M/C ON HOURS</th>
+      <th scope="col">M/C IDLE HOURS</th>
+      <th scope="col">ACTUAL</th>
+      <th scope="col">TARGET</th>
+      <th scope="col">PERFORMANCE</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body">
+    <tr class="text-size data-row" [ngStyle]="{'color': 'black'}">
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>06 - 07</td>
+      <td>55</td>
+      <td>5</td>
+      <td>55</td>
+      <td>60</td>
+      <td style="background-color: yellow;">91.66 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>07 - 08</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>08 - 09</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>09 - 10</td>
+      <td>60</td>
+      <td>0</td>
+      <td>60</td>
+      <td>60</td>
+      <td style="background-color: green;">100 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>10 - 11</td>
+      <td>30</td>
+      <td>0</td>
+      <td>28</td>
+      <td>30</td>
+      <td style="background-color: yellow;">93.33 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>11 - 12</td>
+      <td>60</td>
+      <td>0</td>
+      <td>50</td>
+      <td>60</td>
+      <td style="background-color: red;">83.33 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>12 - 13</td>
+      <td>54</td>
+      <td>6</td>
+      <td>54</td>
+      <td>60</td>
+      <td style="background-color: yellow;">90 %</td>
+    </tr>
+    <tr>
+      <td>HOSUR</td>
+      <td>SGB</td>
+      <td>CHANNEL 5</td>
+      <td>FASTNER123</td>
+      <td>0:01:00</td>
+      <td>13 - 14</td>
+      <td>59</td>
+      <td>1</td>
+      <td>58</td>
+      <td>60</td>
+      <td  style="background-color: green;">96.66 %</td>
+    </tr>
+    <tr>
+      <th colspan="5">Total</th>
+      <th class="footer">450</th>
+      <th class="footer">438</th>
+      <th class="footer">12</th>
+      <th class="footer">435</th>
+      <th class="footer">450</th>
+      <th class="footer">94.37 %</th>
+    </tr>
+  </ng-template>
+  </p-table>
+  </div> -->

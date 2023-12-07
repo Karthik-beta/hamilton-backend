@@ -1,0 +1,228 @@
+
+
+<div class="container-fluid mt-2" style="color: white; background-color: #2b6099;">
+  <h5 style="text-align: center; font-weight: bold; font-stretch: extra-expanded; padding: 3px;">CURRENT ATTENDANCE RULES</h5>
+</div>
+
+
+<div class="search-bar d-flex ml-1 mt-2 mb-2">
+  <button type="button" routerLink="/admin" class="btn btn-secondary btn-sm mr-auto d-flex align-items-center text-sm">
+    <i class="fas fa-chevron-left fa-sm mr-1"></i> Back
+  </button>
+
+  <div class="button-group d-flex">
+    <button type="button" class="btn btn-outline-primary btn-sm ml-2 d-flex align-items-center text-sm" data-toggle="modal" data-target="#importModalCenter">
+      <i class="fas fa-file-import fa-sm mr-2"></i> Import
+    </button>
+    <button type="button" class="btn btn-outline-primary btn-sm ml-2 d-flex align-items-center text-sm" data-toggle="modal" data-target="#exportModalCenter">
+      <i class="fas fa-download mr-2"></i> Export
+    </button>
+    <button type="button" class="btn btn-primary btn-sm ml-2 mr-1 d-flex align-items-center text-sm"  data-toggle="modal" data-target="#myModal">
+      <i class="fas fa-plus mr-2"></i>Add New Shift Rules
+    </button>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="container-fluid"> -->
+<!-- <div class="container-fluid mt-2" style="color: white; background-color: #2b6099;"><h6 style="text-align: center; font-weight: bold; font-stretch: extra-expanded; padding: 2px;">CURRENT ATTENDANCE RULES</h6></div> -->
+<table class="table table-bordered table-sm">
+  <thead class="thead" style="color: white; background-color: #2b6099; font-size: small; text-align: center;">
+    <!-- <tr>
+      <th colspan="11" style="text-align: center; font-weight: bold; font-stretch: extra-expanded; padding: 2px;">CURRENT ATTENDANCE RULES</th>
+    </tr> -->
+    <tr>
+      <th>SHIFT</th>
+      <th>SHIFT START</th>
+      <th>SHIFT END</th>
+      <th>LUNCH START</th>
+      <th>LUNCH END</th>
+      <th>LATE ENTRY GRACE TIME</th>
+      <th>EARLY OUT GRACE TIME</th>
+      <th>BEFORE SHIFT OT CONSIDER (MINIMUM TIME)</th>
+      <th>AFTER SHIFT OT CONSIDER (MINIMUM TIME)</th>
+      <th>AUTO SHIFT CALCULATION (BEFORE SHIFT START)</th>
+      <th>AUTO SHIFT CALCULATION (AFTER SHIFT START)</th>
+      <th style="width: 10%;">EDIT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="head">SHIFT A</td>
+      <td>06:00</td>
+      <td>14:00</td>
+      <td>09:00</td>
+      <td>09:30</td>
+      <td>00:15</td>
+      <td>00:15</td>
+      <td>00:59</td>
+      <td>00:59</td>
+      <td>00:30</td>
+      <td>00:30</td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button type="button" class="btn btn-outline-info btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-eye"></i></button>
+        <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td class="head">SHIFT B</td>
+      <td>14:00</td>
+      <td>22:00</td>
+      <td>18:00</td>
+      <td>18:30</td>
+      <td>00:15</td>
+      <td>00:15</td>
+      <td>00:59</td>
+      <td>00:59</td>
+      <td>00:30</td>
+      <td>00:30</td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button type="button" class="btn btn-outline-info btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-eye"></i></button>
+        <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td class="head">SHIFT C</td>
+      <td>22:00</td>
+      <td>06:00</td>
+      <td>02:00</td>
+      <td>02:30</td>
+      <td>00:15</td>
+      <td>00:15</td>
+      <td>00:59</td>
+      <td>00:59</td>
+      <td>00:30</td>
+      <td>00:30</td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button type="button" class="btn btn-outline-info btn-sm mr-1" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-eye"></i></button>
+        <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- </div> -->
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Update Attendance Rules</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: aliceblue;">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- <div class="container-fluid col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="shiftSelect">Select Shift:</label>
+                      <select class="form-control" id="shiftSelect">
+                        <option value="" disabled selected>Select Shift</option>
+                        <option value="A">SHIFT A</option>
+                        <option value="B">SHIFT B</option>
+                        <option value="C">SHIFT C</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div> -->
+            <div class="container-fluid col-md-12">
+                <!-- <div class="card">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="shiftStart">Change Shift Name:</label>
+                    <input type="text" class="form-control" id="shiftStart" placeholder="Enter Shift Name">
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid col-8">
+          <div class="card" style="padding: -25px; border-radius: 5px;">
+            <div class="card-body">
+          <label for="shiftStart" style="font-weight: bold;">Change Shift Name:</label>
+          <input type="text" class="form-control" id="shiftStart" placeholder="Enter Shift Name">
+          </div>
+          </div>
+        </div>
+
+        <div class="container-fluid col-md-12 mt-2">
+          <div class="card">
+            <div class="cut-border">Shift Timings</div>
+            <div class="card-body">
+              <div class="container-fluid mt-1">
+                <div class="row">
+                  <div class="col">
+                    <label for="startTime">Start Time:</label>
+                    <input type="time" id="startTime" class="form-control">
+                  </div>
+                  <div class="col">
+                    <label for="endTime">End Time:</label>
+                    <input type="time" id="endTime" class="form-control">
+                  </div>
+                  <div class="col">
+                    <label for="lunchStartTime">Lunch Start Time:</label>
+                    <input type="time" id="lunchStartTime" class="form-control">
+                  </div>
+                  <div class="col">
+                    <label for="lunchEndTime">Lunch End Time:</label>
+                    <input type="time" id="lunchEndTime" class="form-control">
+                  </div>
+
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <label for="lateEntryGraceTime">Late Entry Grace Time:</label>
+                    <input type="number" id="lateEntryGraceTime" class="form-control" placeholder="In Minutes">
+                  </div>
+                  <div class="col">
+                    <label for="earlyOutGraceTime">Early Out Grace Time:</label>
+                    <input type="number" id="earlyOutGraceTime" class="form-control" placeholder="In Minutes">
+                  </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col">
+                      <label for="Before OT">Before Shift OT:</label>
+                      <input type="number" id="Before OT" class="form-control" placeholder="In Minutes">
+                    </div>
+                    <div class="col">
+                      <label for="After OT">After Shift OT:</label>
+                      <input type="number" id="After OT" class="form-control" placeholder="In Minutes">
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col">
+                      <label for="Before OT">Before Shift Calculation:</label>
+                      <input type="number" id="Before OT" class="form-control" placeholder="In Minutes">
+                    </div>
+                    <div class="col">
+                      <label for="After OT">After Shift Calculation:</label>
+                      <input type="number" id="After OT" class="form-control" placeholder="In Minutes">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success"><i class="fas fa-save"></i> Update</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,294 @@
+<div class="container-fluid shadow" style="font-weight: bolder; font-style: normal;">
+  <div class="d-flex flex-wrap justify-content-center py-2 mb-2 border-bottom">
+    <div class="container-fluid">
+      <p-sidebar [(visible)]="sidebarVisible">
+        <ng-template pTemplate="header"></ng-template>
+
+        <div>
+          <div class="flex-shrink-0 p-1 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+              <svg class="bi me-2" width="30" height="24">
+                <use xlink:href="#bootstrap" />
+              </svg>
+              <img src="assets/images/Magnum.png" alt="" width="180" height="50">
+            </a>
+            <ul class="list-unstyled ps-0 text-style">
+              <li class="mb-1">
+                <button class="btn align-items-center rounded " routerLink="dashboard" aria-expanded="true" style="font-weight: bold;">
+                  <i class="fa-solid fa-house-chimney mr-2"></i> Home </button>
+              </li>
+              <li class="mb-1">
+                <button class="btn align-items-center rounded " routerLink="/pp2" aria-expanded="false" style="font-weight: bold;">
+                  <i class="far fa-calendar-alt mr-2"></i> Production planning </button>
+                <!-- <div class="collapse" id="dashboard-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a href="#" class="link-dark rounded">Overview</a></li><li><a href="#" class="link-dark rounded">Weekly</a></li><li><a href="#" class="link-dark rounded">Monthly</a></li><li><a href="#" class="link-dark rounded">Annually</a></li></ul></div> -->
+              </li>
+              <li class="mb-1">
+                <button class="btn align-items-center rounded collapsed" routerLink="/lmch" aria-expanded="false" style="font-weight: bold;">
+                  <i class="fa-solid fa-sliders mr-2"></i> Line / Machine Configuration </button>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resource-collapse" aria-expanded="false">
+                  <i class="fa fa-balance-scale" aria-hidden="true"></i> Resource Management </button>
+              </li>
+              <div class="collapse" id="resource-collapse">
+                <ul class="btn-toggle-nav list-unstyled pb-1">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resourcedash-collapse" aria-expanded="false">
+                      <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard </button>
+                  </li>
+                  <div class="collapse" id="resourcedash-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li>
+                        <a routerLink="/shift_skill" class="link-dark rounded"><i class="fa-solid fa-scale-balanced"></i> Shift Strength V/S Skill Matrix</a>
+                      </li>
+                      <li>
+                        <a routerLink="/shift_strength" class="link-dark rounded"><i class="fa-solid fa-users"></i> Shift Strength</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-solid fa-right-from-bracket"></i> Evacuation</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <li class="mb-1">
+                    <button class="btn align-items-center rounded collapsed" routerLink="/employee_master" aria-expanded="false" style="font-weight: bold;">
+                      <i class="fa-solid fa-user-plus"></i> Onboarding </button>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resourcealoc-collapse" aria-expanded="false">
+                      <i class="fa-solid fa-sliders mr-2"></i> Resource Allocation </button>
+                  </li>
+                  <div class="collapse" id="resourcealoc-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li>
+                        <a routerLink="/shift_skill" class="link-dark rounded"><i class="fa-solid fa-list-check"></i> Shift management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/shift_strength" class="link-dark rounded"><i class="fa-solid fa-people-roof"></i> Reserve Skill Matrix Employee</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#monthly-collapse" aria-expanded="false">
+                      <i class="fa-solid fa-people-roof"></i> Attendance Regularization </button>
+                  </li>
+                  <div class="collapse" id="monthly-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-solid fa-fingerprint"></i> Manual Attendance Management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-calendar-days"></i> Leave Management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-calendar-plus"></i> Compensatory Off Management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-calendar-minus"></i> On Duty Management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-address-card"></i> Gate Pass Management</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-calendar-check"></i> Holiday Management</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <li class="mb-1">
+                    <button class="btn align-items-center rounded collapsed" routerLink="/daily_info" aria-expanded="false" style="font-weight: bold;">
+                      <i class="fa-regular fa-calendar-days"></i> Daily Attendance Info </button>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#attendance-collapse" aria-expanded="false">
+                      <i class="fa-regular fa-calendar"></i> Monthly Info </button>
+                  </li>
+                  <div class="collapse" id="attendance-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li>
+                        <a routerLink="/monthly_report" class="link-dark rounded"><i class="fa-solid fa-clock"></i> Monthly In - Out</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-solid fa-calendar-days"></i> Monthly In – Out Register</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-solid fa-calendar-plus"></i> Monthly Muster Roll Registe</a>
+                      </li>
+                      <li>
+                        <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-regular fa-calendar-plus"></i> Payroll Output Register</a>
+                      </li>
+                    </ul>
+                  </div>
+                </ul>
+              </div>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#production-collapse" aria-expanded="false">
+                  <i class="fas fa-cogs mr-2"></i> Production Andon </button>
+              </li>
+              <div class="collapse" id="production-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="font-weight: bold;">
+                  <li>
+                    <a routerLink="/aps" class="link-dark rounded">
+                      <i class="fas fa-industry"></i> Shopfloorwise </a>
+                  </li>
+                  <li>
+                    <a routerLink="/apm" class="link-dark rounded">
+                      <i class="fas fa-wrench"></i> Machinewise </a>
+                  </li>
+                </ul>
+              </div>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#andon-collapse" aria-expanded="false">
+                  <i class="fas fa-tools mr-2"></i> Andon Breakdown </button>
+              </li>
+              <div class="collapse" id="andon-collapse">
+                <li class="mb-1">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard </button>
+                </li>
+                <div class="collapse" id="dashboard-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a routerLink="/alertreport" class="link-dark rounded">
+                        <i class="fas fa-industry"></i> Andon Plant Breakdown </a>
+                    </li>
+                    <li>
+                      <a routerLink="/shopfloorwise" class="link-dark rounded">
+                        <i class="fas fa-wrench"></i> Andon Shopfloor Breakdown </a>
+                    </li>
+                    <li>
+                      <a routerLink="/categorywise" class="link-dark rounded">
+                        <i class="fas fa-list-alt"></i> Andon Category Breakdown </a>
+                    </li>
+                    <li>
+                      <a routerLink="/alert" class="link-dark rounded">
+                        <i class="fas fa-exclamation-circle"></i> Andon Alerts </a>
+                    </li>
+                  </ul>
+                </div>
+                <li class="mb-1">
+                  <button class="btn align-items-center rounded collapsed" routerLink="/andon_help" aria-expanded="false" style="font-weight: bold;">
+                    <i class="fa fa-exclamation-triangle mr-2"></i> Andon Call Help </button>
+                </li>
+                <li class="mb-1">
+                  <button class="btn align-items-center rounded collapsed" routerLink="/alertreport" aria-expanded="false" style="font-weight: bold;">
+                    <i class="fa-solid fa-bell"></i> Andon Alerts Info </button>
+                </li>
+                <li class="mb-1">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#breakdown-collapse" aria-expanded="false">
+                    <i class="fas fa-chart-line mr-2"></i> Andon Breakdown Analysis </button>
+                  <div class="collapse" id="breakdown-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li>
+                        <a routerLink="/assembly_analysis" class="link-dark rounded"><i class="fas fa-chart-bar"></i> Assemblyline Analysis</a>
+                      </li>
+                      <li>
+                        <a routerLink="/oee" class="link-dark rounded"><i class="fas fa-cogs"></i> Machinewise Analysis</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </div>
+              <li class="mb-1">
+                <button class="btn align-items-center rounded collapsed" routerLink="/qc" aria-expanded="false" style="font-weight: bold;">
+                  <i class="fas fa-check-circle mr-2"></i> Quality Management </button>
+              </li>
+              <li class="mb-1">
+                <button class="btn align-items-center rounded collapsed" routerLink="/oee" aria-expanded="false" style="font-weight: bold;">
+                  <i class="fas fa-chart-line mr-2"></i> OEE </button>
+              </li>
+              <li class="mb-1">
+                <button class="btn align-items-center rounded collapsed" routerLink="/todo" aria-expanded="false" style="font-weight: bold;">
+                  <i class="fas fa-list mr-2"></i> TO-DO </button>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#report-collapse" aria-expanded="false">
+                  <i class="fas fa-file-alt mr-2"></i> Reports </button>
+              </li>
+              <div class="collapse" id="report-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a routerLink="/alertreport" class="link-dark rounded"><i class="fa-solid fa-bell mr-2"></i> Alerts Report</a>
+                  </li>
+                  <li>
+                    <a routerLink="/alert2" class="link-dark rounded"><i class="fas fa-exclamation-circle mr-2"></i> Alerts with OEE</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- <li class="mb-1"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                Orders
+              </button><div class="collapse" id="orders-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a href="#" class="link-dark rounded">New</a></li><li><a href="#" class="link-dark rounded">Processed</a></li><li><a href="#" class="link-dark rounded">Shipped</a></li><li><a href="#" class="link-dark rounded">Returned</a></li></ul></div></li> -->
+              <li class="border-top my-1"></li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                  <i class="fa-solid fa-gear mr-2"></i> Settings </button>
+                <div class="collapse" id="account-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <!-- <li><a href="#" class="link-dark rounded">New...</a></li> -->
+                    <li>
+                      <a routerLink="/admin" class="link-dark rounded">Configuration</a>
+                    </li>
+                    <!-- <li><a href="#" class="link-dark rounded">Settings</a></li> -->
+                    <!-- <li><a href="#" class="link-dark rounded">Sign out</a></li> -->
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#setting-collapse" aria-expanded="false">
+                  <i class="fa-solid fa-user mr-2"></i> Account </button>
+                <div class="collapse" id="setting-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                    <!-- <li><a href="#" class="link-dark rounded">New...</a></li> -->
+                    <li>
+                      <a href="#" class="link-dark rounded">Profile</a>
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded">Settings</a>
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded">Sign out</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </p-sidebar>
+      <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+        </div>
+      </div> -->
+      <div class="d-flex align-items-center" (click)="sidebarVisible = true" style="cursor:pointer;">
+          <i class="fa-solid fa-bars fa-xl" style="margin-right: 15px;"></i>
+        <a class="d-flex align-items-center mb-4 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <img src="assets/images/Magnum.png" alt="" width="150" height="40">
+          <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg><span class="fs-4">MAGNUM</span> -->
+        </a>
+        <a class="d-flex mb-4 mb-md-0 ">
+          <img src="assets/images/Hamilton.png" alt="" width="150" height="40">
+          <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg><span class="fs-4">MAGNUM</span> -->
+        </a>
+        <!-- <div class="scale text-center" style="font-size: large; font-weight: bolder; margin-right: 0.7em;">
+          <p class="mt-2">Hamilton Houseware Pvt. Ltd</p>
+          <p>SVCT LINE - SHIFT A (06 TO 14)</p>
+        </div> -->
+        <ul class="nav nav-pills" style="margin-right: 1em;">
+          <!-- <li class="nav-item">
+            <a class="nav-link link-body-emphasis" routerLink="/alertreport" (click)="$event.preventDefault()">
+              <i class="fa-solid fa-bell"></i> Andon Alerts Info </a>
+          </li> -->
+          <!-- <li class="nav-item"><a routerLink="/monthly" class="nav-link active mr-3 ml-2"><i class="pi pi-calendar"></i> Monthly Info</a></li> -->
+          <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-chart-line"></i> Andon Breakdown Analysis
+      </a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" routerLink="/assembly_analysis"><i class="fas fa-chart-bar"></i> Assembly Line Analysis</a><a class="dropdown-item" routerLink="/machinewise_analysis"><i class="fas fa-cogs"></i> Machine Wise Analysis</a></div></li> -->
+          <!-- <li class="nav-item">
+            <i class="fa-solid fa-gear mt-1" style="font-size: 1.8rem; cursor: pointer;"></i>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>

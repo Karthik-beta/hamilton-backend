@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile  # Use your Django Dockerfile
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
+    # networks:
+    #   - WIP_network
+    # depends_on:
+    restart: always  # Add this line for automatic restart
+    #   - database  # If you have a separate database container

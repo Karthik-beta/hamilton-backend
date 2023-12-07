@@ -1,0 +1,102 @@
+/* .table-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.table-header,
+.table-row {
+  display: flex;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 5px;
+  border-bottom: 1px solid blue;
+  border-right: 1px solid blue;
+  text-align: center;
+}
+
+.table-cell:first-child {
+  flex: 0.5;
+  border-left: 1px solid blue;
+}
+
+.table-row:nth-child(odd) {
+  background-color: #f9f9f9;
+} */
+
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  width: 200px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 0.5em;
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.dash-card2 {
+  text-align: center;
+  cursor: pointer;
+  width: 200px;
+  height: 90px;
+  background-color: rgb(106, 133, 160);
+  border-radius: 5px;
+  margin: 0.5em;
+}
+
+.dash-card2 .card-body2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.custom-select {
+  background-color: gainsboro;
+  /* background-color: rgb(105, 144, 184); */
+  color: #000000; /* Set the text color */
+  border-color: #ccc; /* Set the border color */
+  /* Add any other desired styling properties */
+}
+
+.table {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.table2 th,
+.table2 td {
+  border: 2px solid white;
+  padding: 4px;
+}
+
+.save-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

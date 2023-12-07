@@ -1,0 +1,45 @@
+.table {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.table td, th {
+  white-space: nowrap;
+}
+
+td[rowspan] {
+  vertical-align: middle;
+}
+
+th[rowspan]{
+  vertical-align: middle;
+}
+
+th[colspan]{
+  text-align: center;
+}
+
+th {
+  background-color: #2b6099;
+  color: white;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: center;
+}

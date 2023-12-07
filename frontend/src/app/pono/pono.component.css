@@ -1,0 +1,63 @@
+.search-bar {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top:40px;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+.container {
+  width: 95%;
+}
+
+.table-container {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px;
+}
+
+.back-button-container {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  bottom: 10px;
+  padding: 10px;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.table {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 8px;
+}

@@ -1,0 +1,83 @@
+.dash-card {
+  text-align: center;
+  cursor: pointer;
+  width: 230px;
+  height: 100px;
+  border-radius: 10px;
+  /* background-color: gainsboro; */
+  background-color: rgb(106, 133, 160);
+  /* padding: 10px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  margin: 0.5em;
+}
+
+.dash-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 240px;
+  height: 120px;
+  background-color: #f2f2f2;
+  margin-right: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.card-large {
+  width: 280px;
+  height: 120px;
+  background-color: #f2f2f2;
+  margin-right: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.inner-card-large {
+  width: 240px;
+  height: 50px;
+  background-color: #ccc;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  text-align: center;
+  text-justify: auto;
+}
+
+.inner-card {
+  width: 220px;
+  height: 50px;
+  background-color: #ccc;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  text-align: center;
+  text-justify: auto;
+}
+
+.title{
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.sub-title {
+  padding-top: 15px;
+}

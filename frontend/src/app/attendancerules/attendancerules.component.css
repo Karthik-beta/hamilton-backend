@@ -1,0 +1,32 @@
+table td {
+  white-space: nowrap;
+  text-align: center;
+  font-size: small;
+  padding: 5px;
+}
+
+.head {
+  font-weight: bold;
+}
+
+/* .card {
+  border: 2px solid black;
+  position: relative;
+} */
+
+.cut-border {
+  position: absolute;
+  top: -13px;
+  left: 20px;
+  background-color: white;
+  padding: 0 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  justify-items: auto;
+  /* margin: 5px; */
+}

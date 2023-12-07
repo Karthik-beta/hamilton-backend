@@ -1,0 +1,275 @@
+<div class="container-fluid col-md-12" style="font-size: small;">
+  <div class="row justify-content-between" >
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Plant</p>
+                <div>
+                  <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                    <option value="" disabled>- All -</option>
+                    <option selected>SKF</option>
+                    <!-- <option>Pune</option> -->
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Shopfloor</p>
+                <div>
+                  <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                    <option value="" disabled>- All -</option>
+                    <option selected>BALL BEARING</option>
+                    <!-- <option>Axle</option> -->
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Assembly Line</p>
+              <div>
+                <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                  <option value="" disabled>- All -</option>
+                  <option selected>CHANNEL 5</option>
+                  <!-- <option>Line 2</option> -->
+                </select>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Machine</p>
+                <div>
+                  <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                    <option value="" disabled selected>- All -</option>
+                    <option>RESETTING</option>
+                    <option>ENGINEERING</option>
+                    <option>ELECT MAINT</option>
+                    <option>QUALITY</option>
+                    <option>MECH MAINT</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">B D Category</p>
+                <select class="form-control form-control-sm custom-select" placeholder="Select Options">
+                  <option value="" disabled selected>- All -</option>
+                  <option>Mechanical</option>
+                  <option>Electrical</option>
+                </select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Open Alert</p>
+                <div><h5>{{ total_open_alerts }}</h5></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Closed Alert</p>
+                <div><h5>{{ total_closed_alerts }}</h5></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>SHOPFLOOR : BALL BEARING</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card" *ngFor="let dataItem of ShopfloorList; let i = index">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content" [style.backgroundColor]="cardColors[i % cardColors.length]">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : {{ dataItem.shopfloor }}</p>
+            <p class="card-text">Machine ID : {{ dataItem.machineId }}</p>
+            <p class="card-text">{{ dataItem.category }}	</p>
+            <p class="card-text">{{ dataItem.andon_alerts }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : BALL BEARING</p>
+              <p class="card-text">Machine ID : SPC (IR) CH5</p>
+              <p class="card-text">MECH MAINT</p>
+              <p class="card-text">Sep 11, 2023 4:30 PM	</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : BALL BEARING</p>
+              <p class="card-text">Machine ID : SSB2 CH5</p>
+              <p class="card-text">RESETTING</p>
+              <p class="card-text">Sep 11, 2023 4:30 PM</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : BALL BEARING</p>
+              <p class="card-text">Machine ID : SSB1 CH5</p>
+              <p class="card-text">ELECT MAINT</p>
+              <p class="card-text">Sep 11, 2023 4:47 PM</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : BALL BEARING</p>
+              <p class="card-text">Machine 2</p>
+              <p class="card-text">Mechanical</p>
+              <p class="card-text">June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : SGB CH5</p>
+              <p class="card-text">QUALITY</p>
+              <p class="card-text">Sep 11, 2023 4:57 PM</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container-fluid container-1 shadow rounded mt-3">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>SHOPFLOOR : AXLE</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine 1</p>
+            <p class="card-text">Mechanical</p>
+            <p class="card-text">June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 1</p>
+              <p class="card-text">Mechanical</p>
+              <p class="card-text">June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 2</p>
+              <p class="card-text">Production</p>
+              <p class="card-text">June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 1</p>
+              <p class="card-text">Electrical</p>
+              <p class="card-text">June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 2</p>
+              <p class="card-text">Mechanical</p>
+              <p class="card-text">June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 2</p>
+              <p class="card-text">Other</p>
+              <p class="card-text">June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 1</p>
+              <p class="card-text">Mechanical</p>
+              <p class="card-text">June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine 1</p>
+              <p class="card-text">Mechanical</p>
+              <p class="card-text">June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

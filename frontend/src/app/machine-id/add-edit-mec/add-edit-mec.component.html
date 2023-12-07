@@ -1,0 +1,20 @@
+<div class="form-group row">
+
+  <label class="col-sm-2 col-form-label">Machine Name</label>
+  <div class="col-sm-10">
+      <input type="text" class="form-control" [(ngModel)]="MachineName"
+      placeholder="Enter Machine Name">
+  </div>
+</div>
+
+<button (click)="addMachine()" *ngIf="mec.machineId==0" class="btn btn-success">
+  Add
+</button>
+
+<button (click)="updateMachine()" *ngIf="mec.machineId!=0" class="btn btn-primary">
+  Update
+</button>
+
+
+
+

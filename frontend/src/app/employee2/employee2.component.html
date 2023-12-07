@@ -1,0 +1,1106 @@
+
+
+
+
+<div class="search-bar d-flex mt-2">
+  <button type="button" routerLink="/admin" class="btn btn-secondary ml-2 d-flex align-items-center" >
+    <i class="fas fa-chevron-left"></i> Back
+  </button>
+  <input class="form-control ml-1"  placeholder="Search">
+  <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#importModalCenter">
+    <i class="fas fa-file-import mr-2"></i> Import
+  </button>
+  <button type="button" class="btn btn-outline-primary ml-2 d-flex align-items-center" data-toggle="modal" data-target="#exportModalCenter">
+    <i class="fas fa-download mr-2"></i> Export
+  </button>
+  <button type="button" class="btn btn-primary ml-2 mr-1 d-flex align-items-center" data-toggle="modal" data-target="#exampleModal"
+   data-backdrop="static" data-keyboard="false" style="width: 320px;"><i class="fas fa-plus mr-2"></i>Create New Employee</button>
+</div>
+
+
+<!--
+    <div class="table-responsive mt-2" style="font-size: smaller;">
+        <table class="table table-sm table-bordered table-striped table-hover">
+      <thead>
+        <tr style="background-color: #2b6099; color: white; text-align: center;">
+          <th>SL. NO</th>
+          <th>EMPLOYEE ID</th>
+          <th>NAME</th>
+          <th>SKILL MATRIX</th>
+          <th>SKILL MATRIX</th>
+          <th>SKILL MATRIX</th>
+          <th>SKILL MATRIX</th>
+          <th>EMAIL ID</th>
+          <th>CONTACT DETAILS</th>
+          <th>COMPANY</th>
+          <th>PLANT</th>
+          <th>SHOPFLOOR</th>
+          <th>EMPLOYEE TYPE</th>
+          <th>DEPARTMENT NAME</th>
+          <th>DESIGNATION</th>
+          <th>DIVISION</th>
+          <th>DATE OF JOINING</th>
+          <th>DATE OF LEAVING</th>
+          <th>STATUS (Active / Resigned)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>212437037</td>
+          <td>Suma HC</td>
+          <td>AXIAL DRIVE Testing</td>
+          <td>SR sub-Assembly</td>
+          <td>TGP Sub-Assembly</td>
+          <td></td>
+          <td>suma.hc@example.com</td>
+          <td>CONTACT DETAILS HERE</td>
+          <td>WIPRO GE</td>
+          <td>ITPL</td>
+          <td>SVCT</td>
+          <td>PERMANENT</td>
+          <td>SVCT SUB-ASSEMBLY LINE</td>
+          <td>OPERATOR</td>
+          <td></td>
+          <td>1/1/2023</td>
+          <td></td>
+          <td>ACTIVE</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>212587815</td>
+          <td>Sampath Kumar</td>
+          <td>Table Sub-assembly 2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>sample@example.com</td>
+          <td>CONTACT DETAILS HERE</td>
+          <td>WIPRO GE</td>
+          <td>ITPL</td>
+          <td>SVCT</td>
+          <td>PERMANENT</td>
+          <td>SVCT SUB-ASSEMBLY LINE</td>
+          <td>OPERATOR</td>
+          <td></td>
+          <td>1/1/2023</td>
+          <td></td>
+          <td>ACTIVE</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>212588539</td>
+          <td>Sudhakar T</td>
+          <td>SVCT M3</td>
+          <td>SVCT Alignment</td>
+          <td></td>
+          <td></td>
+          <td>sudhakar.t@example.com</td>
+          <td>CONTACT DETAILS HERE</td>
+          <td>WIPRO GE</td>
+          <td>ITPL</td>
+          <td>SVCT</td>
+          <td>PERMANENT</td>
+          <td>SVCT MAIN ASSEMBLY LINE</td>
+          <td>OPERATOR</td>
+          <td></td>
+          <td>1/1/2023</td>
+          <td></td>
+          <td>ACTIVE</td>
+        </tr>
+
+<tr>
+  <td>4</td>
+  <td>212763613</td>
+  <td>MANU R</td>
+  <td>SVCT Initial Testing</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>manu.r@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT INSTALLATION & TESTING LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>212764709</td>
+  <td>Rajashekhar Arjunagi</td>
+  <td>Covers Sub-Assembly</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>rajashekhar.arjunagi@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>212777416</td>
+  <td>Nagabhushana M T</td>
+  <td>SVCT Calibration</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>nagabhushana.mt@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT INSTALLATION & TESTING LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>223039084</td>
+  <td>Nischal M G</td>
+  <td>SVCT M2</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>nischal.mg@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT MAIN ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>223044347</td>
+  <td>Meshak .</td>
+  <td>DAS Sub-Assembly</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>meshak@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>223044348</td>
+  <td>Krishna .</td>
+  <td>AXIAL DRIVE ASSEMBLY</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>krishna@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>223053737</td>
+  <td>Sanjay K</td>
+  <td>SVCT Dissassembly & Labeling</td>
+  <td>SVCT PDI</td>
+  <td></td>
+  <td></td>
+  <td>sanjay.k@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT INSTALLATION & TESTING LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>223098308</td>
+  <td>Sharath SB</td>
+  <td>SVCT M1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>sharath.sb@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT MAIN ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>305008438</td>
+  <td>Geetha BP</td>
+  <td>ORP Sub-Assembly</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>geetha.bp@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>305008680</td>
+  <td>Arockiaswamy I</td>
+  <td>SVCT M4</td>
+  <td>SVCT Covers Assembly</td>
+  <td></td>
+  <td></td>
+  <td>arockiaswamy.i@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT MAIN ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>305015266</td>
+  <td>Nasir Hussain</td>
+  <td>SVCT CIE</td>
+  <td>SVCT POST CIE</td>
+  <td></td>
+  <td></td>
+  <td>nasir.hussain@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT INSTALLATION & TESTING LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td>305018960</td>
+  <td>Ravindra S</td>
+  <td>SVCT Installation</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>ravindra.s@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT INSTALLATION & TESTING LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>305020222</td>
+  <td>Ramachandra G</td>
+  <td>Table Main Build</td>
+  <td>Table PDI</td>
+  <td>Table Sub-assembly 1</td>
+  <td></td>
+  <td>ramachandra.g@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>305021393</td>
+  <td>Nagendra Swamy C G</td>
+  <td>Console Assembly</td>
+  <td>Console Testing</td>
+  <td></td>
+  <td></td>
+  <td>nagendra.swamy@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td>305022167</td>
+  <td>Raja Shankara G</td>
+  <td>Table Testing</td>
+  <td></td>
+  <td>Table Labeling</td>
+  <td></td>
+  <td>raja.shankara@example.com</td>
+  <td>CONTACT DETAILS HERE</td>
+  <td>WIPRO GE</td>
+  <td>ITPL</td>
+  <td>SVCT</td>
+  <td>PERMANENT</td>
+  <td>SVCT SUB-ASSEMBLY LINE</td>
+  <td>OPERATOR</td>
+  <td></td>
+  <td>1/1/2023</td>
+  <td></td>
+  <td>ACTIVE</td>
+</tr>
+      </tbody>
+    </table>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <table class="table table-bordered table-responsive mt-2" style="font-size: smaller;">
+    <thead>
+      <tr>
+        <th rowspan="2" style="font-weight: bold;">SL. NO</th>
+        <th rowspan="2" style="font-weight: bold;">EMPLOYEE ID</th>
+        <th rowspan="2" style="font-weight: bold;">NAME</th>
+        <th colspan="13">SVCT Sub-Assembly Assembly</th>
+        <th colspan="4">SVCT MAIN ASSEMBLY</th>
+        <th colspan="9">SVCT TESTING & INSTALLION</th>
+      </tr>
+        <tr>
+            <th>AXIAL DRIVE ASSEMBLY</th>
+            <th>AXIAL DRIVE Testing</th>
+            <th>ORP Sub-Assembly</th>
+            <th>Console Assembly</th>
+            <th>Console Testing</th>
+            <th>SR sub-Assembly</th>
+            <th>TGP Sub-Assembly</th>
+            <th>DAS Sub-Assembly</th>
+            <th>Table Main Build</th>
+            <th>Table Testing</th>
+            <th>Table Labeling</th>
+            <th>Table PDI</th>
+            <th>Table Sub-assembly 1</th>
+            <th>SVCT M1</th>
+            <th>SVCT M2</th>
+            <th>SVCT M3</th>
+            <th>SVCT M4</th>
+            <th>SVCT Installation</th>
+            <th>SVCT Initial Testing</th>
+            <th>SVCT Alignment</th>
+            <th>SVCT Covers Assembly</th>
+            <th>SVCT Calibration</th>
+            <th>SVCT CIE</th>
+            <th>SVCT POST CIE</th>
+            <th>SVCT Disassembly & Labeling</th>
+            <th>SVCT PDI</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>305008438</td>
+            <td>Geetha BP</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>212480778</td>
+            <td>Sridhar</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td></td>
+            <td>Yes</td>
+            <td></td>
+            <td>Yes</td>
+            <td></td>
+            <td>Yes</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>212588539</td>
+          <td>Sudhakar</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>223053738</td>
+          <td>Chanappa</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>305021360</td>
+          <td>Venkatesh KB</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>212764709</td>
+          <td>Rajsekhar</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>305008668</td>
+          <td>Yuvarajan</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>305020222</td>
+          <td>Ramachandra</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>305015266</td>
+          <td>Nasir</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>212777416</td>
+          <td>Nagbushan</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td>223041731</td>
+          <td>Mubarak</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>12</td>
+          <td>305021296</td>
+          <td>Raja W</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>13</td>
+          <td>223113620</td>
+          <td>Anitha</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>14</td>
+          <td>223113634</td>
+          <td>Sandeep</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>15</td>
+          <td>223041732</td>
+          <td>Sachin B</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>16</td>
+          <td>223044347</td>
+          <td>Meshak</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>17</td>
+          <td>223053737</td>
+          <td>Sanjay</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>18</td>
+          <td>223113629</td>
+          <td>Ramesh</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td>Yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+      </tr>
+    </tbody>
+</table>

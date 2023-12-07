@@ -1,0 +1,107 @@
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Shift Timing</h5>
+          <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- <app-add-edit-pro [pro]="pro" *ngIf="ActivateAddEditProComp">
+          </app-add-edit-pro> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<div class="search-bar">
+    <input class="form-control" placeholder="Search">
+</div>
+<table class="table table-striped table-hover" style="text-align: center;">
+  <thead>
+    <tr style="background-color: #2b6099; color: white;">
+          <th>SHIFT</th>
+          <th>SHIFT START</th>
+          <th>SHIFT END</th>
+          <th>LUNCH START</th>
+          <th>LUNCH END</th>
+          <th>OPTIONS</th>
+          <!-- Add more header columns if needed -->
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <!-- <td>{{ i + 1 }}</td> -->
+          <td>Shift A</td>
+          <td>6:00 </td>
+          <td>14:00 </td>
+          <td>9:00 </td>
+          <td>9:30 </td>
+          <td>
+            <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                data-backdrop="static" data-keyboard="false"
+                >
+            <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button type="button" class="btn btn-danger mr-1"
+                data-backdrop="static" data-keyboard="false"
+                >
+                <i class="fa-solid fa-trash"></i>
+                </button>
+          </td>
+      </tr>
+      <tr>
+        <!-- <td>{{ i + 1 }}</td> -->
+        <td>Shift B</td>
+        <td>14:00 </td>
+        <td>22:00 </td>
+        <td>18:00 </td>
+        <td>18:30 </td>
+        <td>
+          <button type="button" class="btn btn-light mr-1"
+              data-toggle="modal" data-target="#exampleModal"
+              data-backdrop="static" data-keyboard="false"
+              >
+          <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button type="button" class="btn btn-danger mr-1"
+              data-backdrop="static" data-keyboard="false"
+              >
+              <i class="fa-solid fa-trash"></i>
+              </button>
+        </td>
+      </tr>
+      <tr>
+        <!-- <td>{{ i + 1 }}</td> -->
+        <td>Shift C</td>
+        <td>22:00 </td>
+        <td>6:00 </td>
+        <td>2:00 </td>
+        <td>2:30 </td>
+        <td>
+          <button type="button" class="btn btn-light mr-1"
+              data-toggle="modal" data-target="#exampleModal"
+              data-backdrop="static" data-keyboard="false"
+              >
+          <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button type="button" class="btn btn-danger mr-1"
+              data-backdrop="static" data-keyboard="false"
+              >
+              <i class="fa-solid fa-trash"></i>
+              </button>
+        </td>
+      </tr>
+  </tbody>
+</table>

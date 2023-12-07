@@ -1,0 +1,125 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: teal;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Production Planned</p>
+                <div><h3>01</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow " style="background-color: rebeccapurple;">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Order in Process</p>
+                <div><h3>0</h3></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow " style="background-color: rgb(128, 187, 39);">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Order Completed</p>
+              <div><h3>0</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 72, 133);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">All</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dash-card shadow " style="background-color: rgb(133, 125, 125);">
+          <div class="card-body">
+            <p style="font-weight: bolder;">Transactions Today</p>
+            <div><h3>0</h3></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="mt-2">
+  <p-table
+  [value]="productionInfoist"
+  class="p-datatable-sm"
+  styleClass="p-datatable-sm p-datatable-gridlines"
+  [tableStyle]="{ 'min-width': '20rem', 'font-size': 'x-small', 'color': 'black', 'white-space': 'nowrap' }"
+  [lazy]="true"
+  [loading]="loading"
+  [paginator]="true"
+  [rows]="rows"
+  [totalRecords]="totalRecords"
+  [rowsPerPageOptions]="rowsPerPageOptions"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="{first} - {last} of {totalRecords}"
+  (onLazyLoad)="loadLogs($event)"
+  >
+  <ng-template pTemplate="header">
+    <tr class="text-size header-row" [ngStyle]="{'font-weight': 'bold', 'color': 'black' }">
+      <th>#</th>
+      <th>JOB WORK</th>
+      <th>CUSTOMER</th>
+      <th>PO & DATE</th>
+      <th>BATCH</th>
+      <th>EXPECTED</th>
+      <th>JOBWORK ASSIGNED</th>
+      <th>COMPANY</th>
+      <th>PLANT</th>
+      <th>SHOPFLOOR</th>
+      <th>ASSEMBLY LINE</th>
+      <th>MACHINE ID</th>
+      <th>PRODUCT ID</th>
+      <th>MANAGER</th>
+      <th style="background-color: teal;">Planned</th>
+      <th style="background-color: rebeccapurple;">Processing</th>
+      <th style="background-color: rgb(128, 187, 39);">Completed</th>
+      <th>OPTIONS</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-i="rowIndex">
+    <tr class="text-size data-row" [ngStyle]="{'color': 'black'}">
+      <td>{{ i + 1 }}</td>
+        <td>{{ item.job_id }}</td>
+        <td>{{ item.customer }}</td>
+        <td>{{ item.po_no }}</td>
+        <td>{{ item.batch_no }}</td>
+        <td>{{ item.expected_date }}</td>
+        <td>{{ item.assigned_date }}</td>
+        <td>{{ item.company }}</td>
+        <td>{{ item.plant }}</td>
+        <td>{{ item.shopfloor }}</td>
+        <td>{{ item.assembly_line }}</td>
+        <td>{{ item.machine_id }}</td>
+        <td>{{ item.product_id }}</td>
+        <td>{{ item.manager }}</td>
+        <td style="background-color: teal;">{{ item.planned_date }}</td>
+        <td style="background-color: rebeccapurple;">{{ item.processing_date }}</td>
+        <td style="background-color: rgb(128, 187, 39);">{{ item.completed_date }}</td>
+        <td>
+          <div class="row">
+            <div class="col d-flex justify-content-between">
+              <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-eye"></i></button>
+              <button type="button" class="btn btn-sm btn-secondary mr-1" data-toggle="modal" data-target="#staticBackdrop" data-backdrop="static"><i class="bi bi-pencil-square"></i></button>
+              <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+            </div>
+          </div>
+        </td>
+      </tr>
+  </ng-template>
+  </p-table>
+  </div>
