@@ -24,3 +24,6 @@ services:
     # depends_on:
     restart: always  # Add this line for automatic restart
     #   - database  # If you have a separate database container
+
+volumes:
+  postgres_data:
