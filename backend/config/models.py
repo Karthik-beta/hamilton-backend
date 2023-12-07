@@ -73,7 +73,7 @@ class productReceipe(models.Model):
     target_per_unit = models.DurationField()
     units_per_minute = models.FloatField(blank=True, null=True)
     units_per_hour = models.FloatField(blank=True, null=True)
-    skill_matrix = models.CharField()
+    skill_matrix = models.CharField(max_length=255)
 
     def save(self, *args, **kwargs):
         # Calculate units_per_minute and units_per_hour based on target_per_unit

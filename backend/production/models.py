@@ -37,7 +37,7 @@ class productionPlanning(models.Model):
     planned_date = models.DateField(blank=True, null=True)
     processing_date = models.DateField(blank=True, null=True)
     completed_date = models.DateField(blank=True, null=True)
-    required_time = models.CharField(blank=True, null=True)
+    required_time = models.CharField(max_length=255, blank=True, null=True)
     product_target = models.DurationField(blank=True, null=True)
 
     # def jobwork_generator(self, id):
@@ -133,20 +133,20 @@ class productionPlanning(models.Model):
 
 class lineMachineConfig(models.Model):
     id = models.AutoField(primary_key=True)
-    job_id = models.CharField()
-    company = models.CharField()
-    plant = models.CharField()
-    shopfloor = models.CharField()
-    product_id = models.CharField()
-    product_target = models.CharField(max_length=8, default='00:01:00')
-    assembly_line = models.CharField()
-    machine_id = models.CharField()
+    job_id = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    plant = models.CharField(max_length=255)
+    shopfloor = models.CharField(max_length=255)
+    product_id = models.CharField(max_length=255)
+    product_target = models.CharField(max_length=255, default='00:01:00')
+    assembly_line = models.CharField(max_length=255)
+    machine_id = models.CharField(max_length=255)
     total_order = models.IntegerField(blank=True, null=True)
-    required_time = models.CharField(blank=True, null=True)
-    break_time = models.CharField(blank=True, null=True, default='01:00:00')
-    assigned_start_production = models.CharField(blank=True, null=True)
-    assigned_end_production = models.CharField(blank=True, null=True)
-    manager = models.CharField()
+    required_time = models.CharField(max_length=255, blank=True, null=True)
+    break_time = models.CharField(max_length=255, blank=True, null=True, default='01:00:00')
+    assigned_start_production = models.CharField(max_length=255, blank=True, null=True)
+    assigned_end_production = models.CharField(max_length=255, blank=True, null=True)
+    manager = models.CharField(max_length=255)
 
     class Meta:
         db_table = 'line_machine_config'
@@ -155,22 +155,22 @@ class lineMachineConfig(models.Model):
 
 class lineMachineSlotConfig(models.Model):
     id = models.AutoField(primary_key=True)
-    job_id = models.CharField()
-    company = models.CharField()
-    plant = models.CharField()
-    shopfloor = models.CharField()
-    assembly_line = models.CharField()
-    machine_id = models.CharField()
-    product_id = models.CharField()
+    job_id = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    plant = models.CharField(max_length=255)
+    shopfloor = models.CharField(max_length=255)
+    assembly_line = models.CharField(max_length=255)
+    machine_id = models.CharField(max_length=255)
+    product_id = models.CharField(max_length=255)
     date = models.DateField()
-    shift_a = models.CharField(blank=True, null=True)
-    shift_b = models.CharField(blank=True, null=True)
-    shift_c = models.CharField(blank=True, null=True)
+    shift_a = models.CharField(max_length=255, blank=True, null=True)
+    shift_b = models.CharField(max_length=255, blank=True, null=True)
+    shift_c = models.CharField(max_length=255,blank=True, null=True)
     planned_hours = models.IntegerField()
     planned_production = models.IntegerField(blank=True, null=True)
     remaining_hours = models.IntegerField()
     balance_production = models.IntegerField()
-    manager = models.CharField(default='XYZ')
+    manager = models.CharField(max_length=255, default='XYZ')
 
     class Meta:
         db_table = 'line_machine_slot_config'
@@ -180,12 +180,12 @@ class lineMachineSlotConfig(models.Model):
 
 class machineWiseData(models.Model):
     id = models.AutoField(primary_key=True)
-    plant = models.CharField(default='PUNE')
-    shopfloor = models.CharField(default='XYZ')
-    assembly_line = models.CharField(default='TSE')
-    machine_id = models.CharField()
+    plant = models.CharField(max_length=255, default='PUNE')
+    shopfloor = models.CharField(max_length=255, default='XYZ')
+    assembly_line = models.CharField(max_length=255, default='TSE')
+    machine_id = models.CharField(max_length=255)
     product_target = models.IntegerField(default=60)
-    time = models.CharField()
+    time = models.CharField(max_length=255)
     date = models.DateField()
     # date = models.DateField(default=date.today)    #production sauld
     on_time = models.IntegerField(blank=True, null=True)
