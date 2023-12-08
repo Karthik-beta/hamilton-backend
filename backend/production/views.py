@@ -201,7 +201,7 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
         total_hours_required = round(total_seconds_required / 3600, 2)  # 1 hour = 3600 seconds
 
         # Calculate the number of days required
-        days_required = total_hours_required / 21  # Assuming 21 hours per day
+        days_required = total_hours_required / 22  # Assuming 21 hours per day
 
         # Initialize the current date and remaining hours
         current_date = start_date
@@ -212,7 +212,7 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
 
         while remaining_hours > 0:
             # Calculate planned production for the day
-            planned_hours = min(21, remaining_hours)
+            planned_hours = min(22, remaining_hours)
             
 
             planned_production = planned_hours * (3600 / product_target)
@@ -231,9 +231,10 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
                 planned_production=planned_production,  # Planned production in units
                 remaining_hours=remaining_hours - planned_hours,
                 balance_production=balance_production,  # Balance production in units
-                shift_a=f'06 - 14 ({planned_hours})',
-                shift_b=f'14 - 22 ({planned_hours})',
-                shift_c=f'22 - 06 ({planned_hours})',
+                shift_a=f'08 - 20 ({planned_hours})',
+                shift_b=f'20 - 08 ({planned_hours})',
+                # shift_c=f'22 - 06 ({planned_hours})',
+                shift_c= None,
                 job_id=job_id,
                 company=company,
                 plant=plant,
