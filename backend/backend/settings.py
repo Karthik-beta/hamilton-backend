@@ -101,7 +101,8 @@ DATABASES = {
         'NAME': 'magnum',
         'USER': 'postgres',
         'PASSWORD': 'password123',
-        'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
+        'HOST': 'localhost',
+        # 'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
         'PORT': '5432',
     }
 }

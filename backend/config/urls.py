@@ -34,4 +34,10 @@ urlpatterns = [
     re_path(r'^attendanceRules/$', views.attendanceRulesList.as_view()),
     re_path(r'^attendanceRules/(?P<id>\d+)/$', views.attendanceRulesEdit.as_view()),
 
+    re_path(r'^department/$', views.departmentList.as_view()),
+    re_path(r'^department/(?P<id>\d+)/$', views.departmentEdit.as_view()),
+
+    re_path(r'^designation/$', views.designationList.as_view()),
+    re_path(r'^designation/(?P<id>\d+)/$', views.designationEdit.as_view()),
+
 ]

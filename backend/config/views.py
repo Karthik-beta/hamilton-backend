@@ -108,3 +108,22 @@ class attendanceRulesEdit(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.attendanceRules.objects.all()
     serializer_class = serializers.attendanceRulesSerializer
     lookup_url_kwarg = "id"
+
+class departmentList(generics.ListCreateAPIView):
+    queryset = models.department.objects.order_by('id')
+    serializer_class = serializers.departmentSerializer
+
+class departmentEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.department.objects.all()
+    serializer_class = serializers.departmentSerializer
+    lookup_url_kwarg = "id"
+
+
+class designationList(generics.ListCreateAPIView):
+    queryset = models.designation.objects.order_by('id')
+    serializer_class = serializers.designationSerializer
+
+class designationEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.designation.objects.all()
+    serializer_class = serializers.designationSerializer
+    lookup_url_kwarg = "id"

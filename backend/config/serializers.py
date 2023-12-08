@@ -56,3 +56,17 @@ class attendanceRulesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.attendanceRules
         fields = '__all__'
+
+
+class departmentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.department
+        fields = '__all__'
+
+
+class designationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.designation
+        fields = '__all__'

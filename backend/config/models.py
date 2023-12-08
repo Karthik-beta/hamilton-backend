@@ -65,6 +65,18 @@ class poNo(models.Model):
         db_table = 'po_no'
 
 
+class department(models.Model):
+    id = models.AutoField(primary_key=True)
+    department_name = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'department'
+
+
+class designation(models.Model):
+    id = models.AutoField(primary_key=True)
+    designation_name = models.CharField(max_length=255)
+
 
 class productReceipe(models.Model):
     id = models.AutoField(primary_key=True)
@@ -74,6 +86,8 @@ class productReceipe(models.Model):
     units_per_minute = models.FloatField(blank=True, null=True)
     units_per_hour = models.FloatField(blank=True, null=True)
     skill_matrix = models.CharField(max_length=255)
+    QC_acceptance = models.CharField(max_length=255, blank = True, null =True)
+    tolerance = models.CharField(max_length=255, blank = True, null =True)
 
     def save(self, *args, **kwargs):
         # Calculate units_per_minute and units_per_hour based on target_per_unit
