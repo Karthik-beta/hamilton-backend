@@ -260,6 +260,11 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
+class LineMachineSlotConfigEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.lineMachineSlotConfig.objects.all()
+    serializer_class = serializers.lineMachineSlotConfigSerializer
+    lookup_url_kwarg = "id"
+
 
 '''Improper implementation of start shift and start time'''
 # class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):

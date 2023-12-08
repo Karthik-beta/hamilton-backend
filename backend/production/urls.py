@@ -20,6 +20,7 @@ urlpatterns = [
     re_path(r'^productionPlanById/$', views.productionPlanById.as_view()),
 
     re_path(r'^lineMachineSlotConfig/$', views.LineMachineSlotConfigViewSet.as_view({'post': 'calculate_schedule', 'get': 'get_schedule'})),
+    re_path(r'^lineMachineSlotConfig/$', views.LineMachineSlotConfigEdit.as_view()),
 
     re_path(r'^machineWiseData/$', views.machineWiseDataView.as_view()),
     re_path(r'^machineWiseData/(?P<id>\d+)/$', views.machineWiseDataUpdate.as_view()),
