@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 
@@ -127,3 +128,14 @@ class designationEdit(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.designation.objects.all()
     serializer_class = serializers.designationSerializer
     lookup_url_kwarg = "id"
+
+
+class CountAPIView(generics.ListAPIView):
+    def list(self, request, *args, **kwargs):
+        data = {
+            'plant_count': models.plant.objects.count(),
+            'shopfloor_count': models.shopfloor.objects.count(),
+            'assemblyline_count': models.assemblyline.objects.count(),
+            'machine_count': models.machine.objects.count(),
+        }
+        return Response(data)

@@ -9,6 +9,8 @@ from rest_framework import viewsets, serializers, status
 from datetime import timedelta, datetime
 from rest_framework.response import Response
 from django.db.models import Count
+from datetime import date
+from django.db.models import Q
 
 
 
@@ -201,7 +203,7 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
         total_hours_required = round(total_seconds_required / 3600, 2)  # 1 hour = 3600 seconds
 
         # Calculate the number of days required
-        days_required = total_hours_required / 22  # Assuming 21 hours per day
+        days_required = total_hours_required / 22  # Assuming 22 hours per day
 
         # Initialize the current date and remaining hours
         current_date = start_date
@@ -213,6 +215,10 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
         while remaining_hours > 0:
             # Calculate planned production for the day
             planned_hours = min(22, remaining_hours)
+
+            # Divide planned_hours by 2 for shift_a and shift_b
+            shift_a_planned_hours = shift_b_planned_hours = planned_hours // 2
+
             
 
             planned_production = planned_hours * (3600 / product_target)
@@ -231,8 +237,8 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
                 planned_production=planned_production,  # Planned production in units
                 remaining_hours=remaining_hours - planned_hours,
                 balance_production=balance_production,  # Balance production in units
-                shift_a=f'08 - 20 ({planned_hours})',
-                shift_b=f'20 - 08 ({planned_hours})',
+                shift_a=f'08 - 20 ({shift_a_planned_hours})',
+                shift_b=f'20 - 08 ({shift_b_planned_hours})',
                 # shift_c=f'22 - 06 ({planned_hours})',
                 shift_c= None,
                 job_id=job_id,
@@ -498,3 +504,28 @@ class machineWiseDataUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.machineWiseData.objects.all()
     serializer_class = serializers.machineWiseDataUpdateSerializer
     lookup_url_kwarg = "id" 
+
+
+
+
+class ProductionPlanningStatsView(generics.ListAPIView):
+    queryset = models.productionPlanning.objects.all()
+    serializer_class = serializers.productionPlanningSerializer
+
+    def get_stats(self):
+        today = date.today()
+        planned_count = self.queryset.filter(planned_date__isnull=False, processing_date__isnull=True, completed_date__isnull=True).count()
+        order_in_process_count = self.queryset.filter(processing_date__isnull=False, completed_date__isnull=True).count()
+        completed_count = self.queryset.exclude(completed_date__isnull=True).count()
+        transactions_today_count = self.queryset.filter(Q(assigned_date=today) | Q(planned_date=today) | Q(processing_date=today) | Q(completed_date=today)).count()
+
+        return {
+            'planned': planned_count,
+            'order_in_process': order_in_process_count,
+            'completed': completed_count,
+            'transactions_today': transactions_today_count,
+        }
+
+    def list(self, request, *args, **kwargs):
+        stats = self.get_stats()
+        return Response(stats)

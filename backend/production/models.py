@@ -219,4 +219,3 @@ class machineWiseData(models.Model):
             self.performance = 0
 
         super(machineWiseData, self).save(*args, **kwargs)
-

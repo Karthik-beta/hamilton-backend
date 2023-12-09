@@ -24,4 +24,6 @@ urlpatterns = [
 
     re_path(r'^machineWiseData/$', views.machineWiseDataView.as_view()),
     re_path(r'^machineWiseData/(?P<id>\d+)/$', views.machineWiseDataUpdate.as_view()),
+
+    re_path(r'^production_stats/$', views.ProductionPlanningStatsView.as_view()),
 ]

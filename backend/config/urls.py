@@ -40,4 +40,6 @@ urlpatterns = [
     re_path(r'^designation/$', views.designationList.as_view()),
     re_path(r'^designation/(?P<id>\d+)/$', views.designationEdit.as_view()),
 
+    re_path(r'^dash_card_count/$', views.CountAPIView.as_view()),
+
 ]
