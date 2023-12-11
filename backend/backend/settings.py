@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'breakdown',
     'report',
     'config',
-    'django_crontab',
+    # 'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -102,8 +102,8 @@ DATABASES = {
         'NAME': 'magnum',
         'USER': 'postgres',
         'PASSWORD': 'password123',
-        'HOST': 'localhost',
-        # 'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
+        # 'HOST': 'localhost',
+        'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
         'PORT': '5432',
     }
 }
@@ -155,6 +155,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CRONJOBS = [
-    ('*/5 * * * *', 'production.management.commands.machinewise.Command')
-]
+# CRONJOBS = [
+#     ('*/5 * * * *', 'production.management.commands.machinewise.Command')
+# ]
