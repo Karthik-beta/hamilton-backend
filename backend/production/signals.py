@@ -10,29 +10,68 @@ from production.serializers import ScheduleInputSerializer
 
 
 '''copying data from lineMachineSlotConfig to lineMachineConfig'''
-@receiver(post_save, sender=lineMachineSlotConfig)
-def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
-    if created:
-        # Check if a lineMachineConfig entry with the same job_id already exists
-        existing_entry = lineMachineConfig.objects.filter(job_id=instance.job_id).first()
+# @receiver(post_save, sender=lineMachineSlotConfig)
+# def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
+#     if created:
+#         # Check if a lineMachineConfig entry with the same job_id already exists
+#         existing_entry = lineMachineConfig.objects.filter(job_id=instance.job_id).first()
 
-        if not existing_entry:
-            # If no existing entry with the same job_id, create a new one
-            lineMachineConfig.objects.create(
-                job_id=instance.job_id,
-                company=instance.company,
-                plant=instance.plant,
-                shopfloor=instance.shopfloor,
-                product_id=instance.product_id,
-                assembly_line=instance.assembly_line,
-                machine_id=instance.machine_id,
-                total_order=instance.planned_production,
-                required_time=instance.planned_hours,
-                manager=instance.manager
-            )
+#         if not existing_entry:
+#             # If no existing entry with the same job_id, create a new one
+#             lineMachineConfig.objects.create(
+#                 job_id=instance.job_id,
+#                 company=instance.company,
+#                 plant=instance.plant,
+#                 shopfloor=instance.shopfloor,
+#                 product_id=instance.product_id,
+#                 assembly_line=instance.assembly_line,
+#                 machine_id=instance.machine_id,
+#                 total_order= instance.balance_production + instance.planned_production,
+#                 required_time=instance.planned_hours,
+#                 manager=instance.manager
+#             )
 
 
-'''copying data from lineMachineConfig to productionPlanning with assigned start production'''
+'''copying data from lineMachineSlotConfig to lineMachineConfig with assigned start production'''
+# @receiver(post_save, sender=lineMachineSlotConfig)
+# def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
+#     if created:
+#         # Find the first non-null value among "shift_a," "shift_b," and "shift_c"
+#         first_non_null_shift = None
+#         for shift_field in ["shift_a", "shift_b", "shift_c"]:
+#             shift_value = getattr(instance, shift_field)
+#             if shift_value is not None:
+#                 first_non_null_shift = shift_value
+#                 break
+
+#         if first_non_null_shift is not None:
+#             # Check if a lineMachineConfig entry with the same job_id already exists
+#             existing_entry = lineMachineConfig.objects.filter(job_id=instance.job_id).first()
+
+#             if not existing_entry:
+#                 # If no existing entry with the same job_id, create a new one
+#                 lineMachineConfig.objects.create(
+#                     job_id=instance.job_id,
+#                     company=instance.company,
+#                     plant=instance.plant,
+#                     shopfloor=instance.shopfloor,
+#                     product_id=instance.product_id,
+#                     assembly_line=instance.assembly_line,
+#                     machine_id=instance.machine_id,
+#                     total_order=instance.planned_production,
+#                     required_time=instance.planned_hours,
+#                     manager=instance.manager,
+#                     assigned_start_production=first_non_null_shift  # Assign the value
+#                 )
+#             else:
+#                 # Update the existing entry with the first non-null shift value
+#                 existing_entry.assigned_start_production = first_non_null_shift
+#                 existing_entry.save()
+
+
+
+
+'''copying data from lineMachineSlotConfig to lineMachineConfig with assigned start production with date'''
 @receiver(post_save, sender=lineMachineSlotConfig)
 def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
     if created:
@@ -41,12 +80,18 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
         for shift_field in ["shift_a", "shift_b", "shift_c"]:
             shift_value = getattr(instance, shift_field)
             if shift_value is not None:
-                first_non_null_shift = shift_value
+                first_non_null_shift = f"{instance.date}, {shift_value}" # Concatenate shift_value and instance.date
                 break
 
         if first_non_null_shift is not None:
+            # Find the last non-null shift value from the last row of the associated job_id
+            last_row_instance = lineMachineSlotConfig.objects.filter(job_id=instance.job_id).order_by('-id').first()
+            if last_row_instance:
+                last_non_null_shift = f"{last_row_instance.date}, {last_row_instance.shift_b}"
+
             # Check if a lineMachineConfig entry with the same job_id already exists
             existing_entry = lineMachineConfig.objects.filter(job_id=instance.job_id).first()
+            production_entry = productionPlanning.objects.filter(job_id=instance.job_id).first()
 
             if not existing_entry:
                 # If no existing entry with the same job_id, create a new one
@@ -58,15 +103,21 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
                     product_id=instance.product_id,
                     assembly_line=instance.assembly_line,
                     machine_id=instance.machine_id,
-                    total_order=instance.planned_production,
+                    total_order = production_entry.quantity,
                     required_time=instance.planned_hours,
                     manager=instance.manager,
-                    assigned_start_production=first_non_null_shift  # Assign the value
+                    assigned_start_production=first_non_null_shift,  # Assign the value
+                    assigned_end_production=last_non_null_shift
                 )
             else:
                 # Update the existing entry with the first non-null shift value
                 existing_entry.assigned_start_production = first_non_null_shift
                 existing_entry.save()
+
+
+
+
+
 
 
 '''copying data from lineMachineConfig to productionPlanning with assigned end production'''
