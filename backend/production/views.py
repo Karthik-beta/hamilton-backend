@@ -529,3 +529,8 @@ class ProductionPlanningStatsView(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         stats = self.get_stats()
         return Response(stats)
+    
+
+class lineMachineSlotConfigViewAll(generics.ListAPIView):
+    queryset = models.lineMachineSlotConfig.objects.all()
+    serializer_class = serializers.lineMachineSlotConfigSerializer
