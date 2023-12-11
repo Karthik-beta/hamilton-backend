@@ -106,8 +106,8 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
                     total_order = production_entry.quantity,
                     required_time=instance.planned_hours,
                     manager=instance.manager,
-                    assigned_start_production=first_non_null_shift,  # Assign the value
-                    assigned_end_production=last_non_null_shift
+                    assigned_end_production=first_non_null_shift,  # Assign the value
+                    assigned_start_production=last_non_null_shift
                 )
             else:
                 # Update the existing entry with the first non-null shift value
