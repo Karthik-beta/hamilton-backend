@@ -26,5 +26,12 @@ CMD ["python", "manage.py", "makemigrations"]
 # Define the command to migrate models
 CMD ["python", "manage.py", "migrate"]
 
+# Define the command to add crontab
+CMD ["python", "manage.py", "crontab", "add"]
+CMD ["python", "manage.py", "crontab", "add"]
+
+# Define the command to show active jobs
+CMD ["python", "manage.py", "crontab", "show"]
+
 # Define the command to run your application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
