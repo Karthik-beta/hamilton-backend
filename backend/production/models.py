@@ -191,7 +191,7 @@ class machineWiseData(models.Model):
     on_time = models.IntegerField(blank=True, null=True)
     idle_time = models.IntegerField(blank=True, null=True)
     actual = models.IntegerField(blank=True, null=True)
-    target = models.IntegerField(blank=True, null=True, default=60)
+    target = models.IntegerField(blank=True, null=True, default=300)
     performance = models.FloatField(blank=True, null=True)
 
     class Meta:
