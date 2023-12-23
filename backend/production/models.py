@@ -193,6 +193,7 @@ class machineWiseData(models.Model):
     actual = models.IntegerField(blank=True, null=True)
     target = models.IntegerField(blank=True, null=True, default=300)
     performance = models.FloatField(blank=True, null=True)
+    current = models.FloatField(blank=True, null=True)
 
     class Meta:
         db_table = 'machine_wise_data'
