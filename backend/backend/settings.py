@@ -103,6 +103,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'password123',
         'HOST': 'localhost',
+        'HOST': '192.168.0.56',
         # 'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
         'PORT': '5432',
     }
