@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'report',
     'config',
     'django_crontab',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# SIMPLE_JWT = {
+#     'USER_ID_FIELD': 'uid',
+#     'USER_ID_CLAIM': 'user_id',
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     'ALGORITHM': 'HS256',
+#     'SIGNING_KEY': SECRET_KEY,
+#     'SIGNING_DIR': 'HS256',
+#     'VERIFYING_KEY': None,
+#     'VERIFYING_DIR': None,
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     'USER_ROLE_CLAIM': 'roles',
+# }
+
 
 CORS_ALLOW_ALL_ORIGINS = True # new
 
@@ -102,8 +118,8 @@ DATABASES = {
         'NAME': 'magnum',
         'USER': 'postgres',
         'PASSWORD': 'password123',
-        # 'HOST': 'localhost',
-        'HOST': '192.168.0.56',
+        'HOST': 'localhost',
+        # 'HOST': '192.168.0.56',
         # 'HOST': 'db', # This is the name of the PostgreSQL service in the Docker Compose file
         'PORT': '5432',
     }
