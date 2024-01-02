@@ -2,14 +2,16 @@ version: '3'
 
 services:
 
-  # db:
-  #   image: postgres:latest
-  #   environment:
-  #     POSTGRES_DB: magnum
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: password123
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: magnum
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port to the host
 
 
 
@@ -28,5 +30,5 @@ services:
     restart: always  # Add this line for automatic restart
     #   - database  # If you have a separate database container
 
-# volumes:
-#   postgres_data:
+volumes:
+  postgres_data:
