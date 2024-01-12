@@ -320,3 +320,16 @@ class soloAssemblyLineData(models.Model):
             self.gap = 0
 
         super(soloAssemblyLineData, self).save(*args, **kwargs)
+
+
+class ProductionAndon(models.Model):
+    s_no = models.AutoField(primary_key=True)
+    machine_id = models.CharField(max_length=255, blank=True, null=True)
+    machine_datetime = models.DateTimeField(blank=True, null=True)
+    machine_status = models.CharField(max_length=255, blank=True, null=True)
+    production_count = models.CharField(max_length=255, blank=True, null=True)
+    kwh_reading = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'production_andon'

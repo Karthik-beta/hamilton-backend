@@ -637,3 +637,13 @@ class soloAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = "id"
 
     
+
+
+
+
+
+
+
+class ProductionAndonView(generics.ListAPIView):
+    queryset = models.ProductionAndon.objects.all()
+    serializer_class = serializers.ProductionAndonSerializer
