@@ -361,7 +361,7 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
 
                 while remaining_hours > 0:
                     # Calculate planned production for the day
-                    planned_hours = min(22, remaining_hours)
+                    planned_hours = min(20, remaining_hours)
 
                     # Divide planned_hours by 2 for shift_a and shift_b
                     shift_a_planned_hours = shift_b_planned_hours = planned_hours // 2
@@ -384,8 +384,8 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
                         planned_production=planned_production,  # Planned production in units
                         remaining_hours=remaining_hours - planned_hours,
                         balance_production=balance_production,  # Balance production in units
-                        shift_a=f'08 - 20 ({shift_a_planned_hours})',
-                        shift_b=f'20 - 08 ({shift_b_planned_hours})',
+                        shift_a=f'07 - 19 ({shift_a_planned_hours})',
+                        shift_b=f'19 - 07 ({shift_b_planned_hours})',
                         # shift_c=f'22 - 06 ({planned_hours})',
                         shift_c= None,
                         job_id=job_id,
@@ -592,16 +592,12 @@ class ExportExcelMachineView(View):
 class AssemblyLineWiseDataView(generics.ListAPIView):
     queryset = models.assemblyLineWiseData.objects.all()
     serializer_class = serializers.AssemblyLineWiseDataSerializer
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['id', 'date', 'time', 'machine_id', 'product_target']
-    # # paginate_by = None  # To disable pagination
 
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     assembly_line = self.request.query_params.get('assembly_line', None)
-    #     if assembly_line:
-    #         queryset = queryset.filter(assembly_line=assembly_line)
-    #     return queryset
+    def list(self, request, *args, **kwargs):
+        last_object = self.get_queryset().last()
+        serializer = self.get_serializer([last_object], many=True)
+        return Response(serializer.data)
+    
 
 class AssemblyLineWiseDataUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.assemblyLineWiseData.objects.all()
@@ -618,7 +614,7 @@ class soloAssemblyLineDataView(generics.ListAPIView):
         current_time = current_datetime.time()
 
         # Determine the shift based on the current time
-        shift = 'FS' if time(8, 0) <= current_time <= time(20, 0) else 'SS'
+        shift = 'FS' if time(7, 0) <= current_time <= time(19, 0) else 'SS'
 
         # Filter the queryset based on the current date and shift
         queryset = models.soloAssemblyLineData.objects.filter(date=current_date, shift=shift)
@@ -636,6 +632,35 @@ class soloAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.soloAssemblyLineDataUpdateSerializer
     lookup_url_kwarg = "id"
 
+
+
+class spellAssemblyLineDataView(generics.ListAPIView):
+    # queryset = models.soloAssemblyLineData.objects.all()
+    serializer_class = serializers.spellAssemblyLineDataSerializer
+
+    def get_queryset(self):
+        current_datetime = datetime.now()
+        current_date = current_datetime.date()
+        current_time = current_datetime.time()
+
+        # Determine the shift based on the current time
+        shift = 'FS' if time(7, 0) <= current_time <= time(19, 0) else 'SS'
+
+        # Filter the queryset based on the current date and shift
+        queryset = models.spellAssemblyLineData.objects.filter(date=current_date, shift=shift)
+
+        # Arrange the queryset by 'stage_no' in ascending order
+        queryset = queryset.order_by('stage_no')
+
+        print("Current Date:", current_date)
+        print("Shift:", shift)
+
+        return queryset
+
+class spellAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.spellAssemblyLineData.objects.all()
+    serializer_class = serializers.spellAssemblyLineDataUpdateSerializer
+    lookup_url_kwarg = "id"
     
 
 

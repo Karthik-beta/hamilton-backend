@@ -8,13 +8,13 @@ class BreakdownCategory(models.Model):
     breakdownCategoryId = models.AutoField(primary_key=True)
     breakdownCategoryName = models.CharField(max_length=100)
 
-class Shift(models.Model):
-    shiftId = models.AutoField(primary_key=True)
-    shift_name = models.CharField(max_length=100)
-    shift_start_time = models.TimeField()
-    shift_end_time = models.TimeField()
-    lunch_start_time = models.TimeField(blank=True, null=True)
-    lunch_end_time = models.TimeField(blank=True, null=True)
+# class Shift(models.Model):
+#     shiftId = models.AutoField(primary_key=True)
+#     shift_name = models.CharField(max_length=100)
+#     shift_start_time = models.TimeField()
+#     shift_end_time = models.TimeField()
+#     lunch_start_time = models.TimeField(blank=True, null=True)
+#     lunch_end_time = models.TimeField(blank=True, null=True)
 
 class Company(models.Model):
     companyId = models.AutoField(primary_key=True)

@@ -3,7 +3,7 @@ from . import views
 
 from .views import (BreakdownCategoryListCreateView,
                        BreakdownCategoryRetrieveUpdateDestroyView,
-                       ShiftListCreateView, DownloadAndonData,
+                       DownloadAndonData,
                        AndonDataListCreateView, DownloadBreakdownHMIData, AndonMetricsView, Shopfloorwise,
                        check_database_connection, AndonDataOpenListView,
                        AndonDataOpenResettingListView, AndonDataOpenEngineeringListView, AndonDataOpenElectListView, AndonDataOpenQualityListView, AndonDataOpenMechListView)
@@ -14,7 +14,7 @@ urlpatterns = [
     re_path(r'^breakdown_category/$', BreakdownCategoryListCreateView.as_view()),
     re_path(r'^breakdown_category/(?P<breakdownCategoryId>\d+)/?$', BreakdownCategoryRetrieveUpdateDestroyView.as_view()),
 
-    re_path(r'^shift/$', ShiftListCreateView.as_view()),
+    # re_path(r'^shift/$', ShiftListCreateView.as_view()),
 
     # re_path(r'^company/$', CompanyListCreateView.as_view()),
 

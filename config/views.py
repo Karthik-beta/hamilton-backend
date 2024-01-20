@@ -2,6 +2,9 @@ from rest_framework import generics
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
+from django.db.models import Count, F, Value, CharField, Func
+from django.db.models.functions import Concat
+from django.db import connection
 
 
 
@@ -130,6 +133,37 @@ class designationEdit(generics.RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = "id"
 
 
+class GroupConcat(Func):
+    function = 'GROUP_CONCAT'  # Use 'GROUP_CONCAT' for MySQL or 'GroupConcat' for SQLite
+    template = "%(function)s(%(expressions)s)"
+    separator = ', '
+
+
+class QcDefectTypeView(generics.ListCreateAPIView):
+    queryset = models.QCDefectType.objects.order_by('parameter_id')
+    serializer_class = serializers.QCDefectTypeSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['parameter_id']
+
+
+
+
+class QcDefectTypeEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.QCDefectType.objects.all()
+    serializer_class = serializers.QCDefectTypeSerializer
+    lookup_url_kwarg = "id"
+
+
+class InspectionParameterList(generics.ListCreateAPIView):
+    queryset = models.InspectionParameters.objects.order_by('id')
+    serializer_class = serializers.InspectionParameterSerializer
+
+class InspectionParameterEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.InspectionParameters.objects.all()
+    serializer_class = serializers.InspectionParameterSerializer
+    lookup_url_kwarg = "id"
+
+
 class CountAPIView(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         data = {
@@ -139,3 +173,14 @@ class CountAPIView(generics.ListAPIView):
             'machine_count': models.machine.objects.count(),
         }
         return Response(data)
+    
+
+
+class ShiftTimingList(generics.ListCreateAPIView):
+    queryset = models.ShiftTiming.objects.order_by('id')
+    serializer_class = serializers.ShiftTimingSerializer
+
+class ShiftTimingEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.ShiftTiming.objects.all()
+    serializer_class = serializers.ShiftTimingSerializer
+    lookup_url_kwarg = "id"

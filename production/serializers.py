@@ -92,9 +92,18 @@ class soloAssemblyLineDataSerializer(serializers.ModelSerializer):
 class soloAssemblyLineDataUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.soloAssemblyLineData
-        fields = ('mc_on_hours', 'actual', 'current')
+        fields = ('mc_on_hours', 'actual', 'target', 'current')
 
 
+class spellAssemblyLineDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.spellAssemblyLineData
+        fields = '__all__'
+
+class spellAssemblyLineDataUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.spellAssemblyLineData
+        fields = ('mc_on_hours', 'actual', 'target', 'current')
 
 
 class ProductionAndonSerializer(serializers.ModelSerializer):

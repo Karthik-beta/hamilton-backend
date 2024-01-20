@@ -29,9 +29,9 @@ from openpyxl.styles import Font, PatternFill, Alignment
 
 
 from .models import (BreakdownCategory,
-                        Shift, Company, Location, Shopfloor, Assemblyline, Machine, Andon, BreakdownHMI, AndonData)
+                        Company, Location, Shopfloor, Assemblyline, Machine, Andon, BreakdownHMI, AndonData)
 from .serializers import (BreakdownCategorySerializer,
-                            ShiftSerializer, CompanySerializer, LocationSerializer, ShopfloorSerializer, AssemblylineSerializer,
+                            CompanySerializer, LocationSerializer, ShopfloorSerializer, AssemblylineSerializer,
                             MachineSerializer, AndonSerializer, BreakdownHmiSerializer, AndonDataSerializer)
 
 
@@ -44,9 +44,9 @@ class BreakdownCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyA
     serializer_class = BreakdownCategorySerializer
     lookup_url_kwarg = "breakdownCategoryId" 
 
-class ShiftListCreateView(generics.ListCreateAPIView):
-    queryset = Shift.objects.all()
-    serializer_class = ShiftSerializer
+# class ShiftListCreateView(generics.ListCreateAPIView):
+#     queryset = Shift.objects.all()
+#     serializer_class = ShiftSerializer
 
 # class CompanyListCreateView(generics.ListCreateAPIView):
 #     queryset = Company.objects.all()

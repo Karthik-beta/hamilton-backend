@@ -127,3 +127,47 @@ class attendanceRules(models.Model):
 
     class Meta:
         db_table = 'attendance_rules'
+
+
+class InspectionParameters(models.Model):
+    id = models.AutoField(primary_key=True)
+    parameter_name = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'inspection_parameters'
+        
+
+class QCDefectType(models.Model):
+    id = models.AutoField(primary_key=True)
+    product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
+    parameter_id = models.ForeignKey(InspectionParameters, on_delete=models.CASCADE)
+    defect_name = models.CharField(max_length=255)
+    defect_code = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'qc_defect_type'
+
+
+
+
+
+class ShiftTiming(models.Model):
+    id = models.AutoField(primary_key=True)
+    shift_name = models.CharField(max_length=100)
+    shift_start_time = models.TimeField()
+    shift_end_time = models.TimeField()
+    lunch_break_start = models.TimeField()
+    lunch_break_end = models.TimeField()
+    tea_break_1_start = models.TimeField()
+    tea_break_1_end = models.TimeField()
+    tea_break_2_start = models.TimeField()
+    tea_break_2_end = models.TimeField()
+    tea_break_3_start = models.TimeField()
+    tea_break_3_end = models.TimeField()
+    cleaning_start_time = models.TimeField()
+    cleaning_end_time = models.TimeField()
+    spell_downtime = models.DurationField()
+    total_working_hours = models.DurationField()
+
+    class Meta:
+        db_table = 'shift_timing'

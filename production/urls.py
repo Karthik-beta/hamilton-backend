@@ -39,6 +39,9 @@ urlpatterns = [
     re_path(r'^soloAssemblyLineWise/$', views.soloAssemblyLineDataView.as_view()),
     re_path(r'^soloAssemblyLineWise/(?P<id>\d+)/$', views.soloAssemblyLineDataUpdate.as_view()),
 
+    re_path(r'^spellAssemblyLineWise/$', views.spellAssemblyLineDataView.as_view()),
+    re_path(r'^spellAssemblyLineWise/(?P<id>\d+)/$', views.spellAssemblyLineDataUpdate.as_view()),
+
     re_path(r'^productionAndon/$', views.ProductionAndonView.as_view()),
 
 ]

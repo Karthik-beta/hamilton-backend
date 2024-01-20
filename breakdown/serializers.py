@@ -9,10 +9,10 @@ class BreakdownCategorySerializer(serializers.ModelSerializer):
         model = models.BreakdownCategory
         fields = '__all__'
 
-class ShiftSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Shift
-        fields = '__all__'
+# class ShiftSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = models.Shift
+#         fields = '__all__'
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:

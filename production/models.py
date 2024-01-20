@@ -164,12 +164,13 @@ class productionPlanning(models.Model):
 
 class lineMachineConfig(models.Model):
     id = models.AutoField(primary_key=True)
+    # production_planning = models.ForeignKey(productionPlanning, on_delete=models.CASCADE)
     job_id = models.CharField(max_length=255)
     company = models.CharField(max_length=255)
     plant = models.CharField(max_length=255)
     shopfloor = models.CharField(max_length=255)
     product_id = models.CharField(max_length=255)
-    product_target = models.CharField(max_length=255, default='00:00:12')
+    product_target = models.CharField(max_length=255)
     assembly_line = models.CharField(max_length=255)
     machine_id = models.CharField(max_length=255)
     total_order = models.IntegerField(blank=True, null=True)
@@ -178,6 +179,7 @@ class lineMachineConfig(models.Model):
     assigned_start_production = models.CharField(max_length=255, blank=True, null=True)
     assigned_end_production = models.CharField(max_length=255, blank=True, null=True)
     manager = models.CharField(max_length=255)
+    stage_name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         db_table = 'line_machine_config'
@@ -304,9 +306,9 @@ class soloAssemblyLineData(models.Model):
         # self.mc_idle_hours = 660 - self.mc_on_hours if self.mc_on_hours is not None else None
 
         if self.mc_idle_hours is not None and self.mc_on_hours is not None:
-            self.mc_idle_hours = 660 - self.mc_on_hours
+            self.mc_idle_hours = 600 - self.mc_on_hours
         else:
-            self.mc_idle_hours = 660
+            self.mc_idle_hours = 600
 
         # Calculate performance as (actual / target) * 100
         if self.target is not None and self.actual is not None:
@@ -333,3 +335,44 @@ class ProductionAndon(models.Model):
     class Meta:
         managed = False
         db_table = 'production_andon'
+
+
+
+class spellAssemblyLineData(models.Model):
+    id = models.AutoField(primary_key=True)
+    stage_no = models.IntegerField()
+    stage = models.CharField(max_length=255)
+    mc_on_hours = models.IntegerField(blank=True, null=True)
+    mc_idle_hours = models.IntegerField(blank=True, null=True)
+    actual = models.IntegerField(blank=True, null=True)
+    target = models.IntegerField(blank=True, null=True)
+    performance = models.FloatField(blank=True, null=True)
+    gap = models.IntegerField(blank=True, null=True)
+    current = models.FloatField(blank=True, null=True)
+    date = models.DateField(blank=True, null=True)  
+    shift = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        db_table = 'spell_assembly_line_data'
+
+    def save(self, *args, **kwargs):
+        # Calculate idle_time as 60 - on_time
+        # self.mc_idle_hours = 660 - self.mc_on_hours if self.mc_on_hours is not None else None
+
+        if self.mc_idle_hours is not None and self.mc_on_hours is not None:
+            self.mc_idle_hours = 600 - self.mc_on_hours
+        else:
+            self.mc_idle_hours = 600
+
+        # Calculate performance as (actual / target) * 100
+        if self.target is not None and self.actual is not None:
+            self.performance = round((self.actual / self.target) * 100, 2)
+        else:
+            self.performance = 0
+        
+        if self.target is not None and self.actual is not None:
+            self.gap = self.actual - self.target
+        else:
+            self.gap = 0
+
+        super(spellAssemblyLineData, self).save(*args, **kwargs)

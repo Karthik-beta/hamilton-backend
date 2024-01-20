@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from .models import lineMachineSlotConfig, lineMachineConfig, productionPlanning, assemblyLineWiseData, soloAssemblyLineData
+from .models import lineMachineSlotConfig, lineMachineConfig, productionPlanning, assemblyLineWiseData, soloAssemblyLineData, spellAssemblyLineData
 from django.utils import timezone
 from datetime import datetime, timedelta
 from django.db.models import F, Max
@@ -112,6 +112,8 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
                     plant=instance.plant,
                     shopfloor=instance.shopfloor,
                     product_id=instance.product_id,
+                    stage_name = 'Laminator',
+                    product_target = '00:02:30',
                     assembly_line=instance.assembly_line,
                     machine_id=instance.machine_id,
                     total_order = production_entry.quantity,
@@ -139,7 +141,7 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
                     product_id=instance.product_id,
                     date_production= first_production_date.date,
                     # stages = stages_data,
-                    shift_name = "Shift FS 08 - 20 (11)"
+                    shift_name = "Shift FS 07 - 19 (10)"
                     # stages = 4,
                 )
 
@@ -158,41 +160,21 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
                 existing_entry.save()
 
             create_solo_assembly_line_data(first_production_date, last_production_date)
+            create_spell_assembly_line_data(first_production_date, last_production_date)
 
 
 
 def create_solo_assembly_line_data(first_production_date, last_production_date):
     # Define the stage data for four rows
     stages_data = [
-        {'stage_no': 1, 'stage': 'First Spell', 'mc_idle_hours': 660, 'target': 60},
-        {'stage_no': 2, 'stage': 'Second Spell', 'mc_idle_hours': 660, 'target': 60},
-        {'stage_no': 3, 'stage': 'Third Spell', 'mc_idle_hours': 660, 'target': 60},
-        {'stage_no': 4, 'stage': 'Fourth Spell', 'mc_idle_hours': 660, 'target': 60},
+        {'stage_no': 1, 'stage': 'Production - Layup', 'mc_on_hours': 600, 'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 2, 'stage': 'Laminator', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 3, 'stage': 'Framing', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 4, 'stage': 'Flash Testing', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 5, 'stage': 'FQA', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
     ]
 
     '''Copy to soloAssemblyLineData and this works fine'''
-    # for stage_info in stages_data:
-    #     soloAssemblyLineData.objects.create(
-    #         stage_no=stage_info['stage_no'],
-    #         stage=stage_info['stage'],
-    #         mc_idle_hours=stage_info['mc_idle_hours'],
-    #         target=stage_info['target']
-    #     )
-
-    # for stage_info in stages_data:
-    #     for date in range((last_production_date - first_production_date.date).days + 1):
-    #         current_date = first_production_date.date + timedelta(days=date)
-            
-    #         # Create two objects for each day, one for first shift and another for second shift
-    #         for shift_name in ['FS', 'SS']:
-    #             soloAssemblyLineData.objects.create(
-    #                 stage_no=stage_info['stage_no'],
-    #                 stage=stage_info['stage'],
-    #                 mc_idle_hours=stage_info['mc_idle_hours'],
-    #                 target=stage_info['target'],
-    #                 date=current_date,
-    #                 shift=shift_name,
-    #             )
     for stage_info in stages_data:
         current_date = first_production_date.date
         last_date = last_production_date
@@ -221,6 +203,44 @@ def create_solo_assembly_line_data(first_production_date, last_production_date):
             current_date += timedelta(days=1)
 
 
+
+def create_spell_assembly_line_data(first_production_date, last_production_date):
+    # Define the stage data for four rows
+    stages_data = [
+        {'stage_no': 1, 'stage': 'First Spell', 'mc_on_hours': 600, 'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 2, 'stage': 'Second Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 3, 'stage': 'Third Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 4, 'stage': 'Fourth Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 5, 'stage': 'Fifth Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+    ]
+
+    '''Copy to spellAssemblyLineData and this works fine'''
+    for stage_info in stages_data:
+        current_date = first_production_date.date
+        last_date = last_production_date
+
+        while current_date <= last_date:
+            # Check if an object with the same date, stage, and shift already exists
+            existing_object = spellAssemblyLineData.objects.filter(
+                date=current_date,
+                stage_no=stage_info['stage_no'],
+                stage=stage_info['stage'],
+                shift__in=['FS', 'SS'],  # Add any other shifts if necessary
+            ).exists()
+
+            # If the object doesn't exist, create a new one
+            if not existing_object:
+                for shift_name in ['FS', 'SS']:
+                    spellAssemblyLineData.objects.create(
+                        stage_no=stage_info['stage_no'],
+                        stage=stage_info['stage'],
+                        mc_idle_hours=stage_info['mc_idle_hours'],
+                        target=stage_info['target'],
+                        date=current_date,
+                        shift=shift_name,
+                    )
+
+            current_date += timedelta(days=1)
 
 
 

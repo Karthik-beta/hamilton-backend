@@ -40,6 +40,15 @@ urlpatterns = [
     re_path(r'^designation/$', views.designationList.as_view()),
     re_path(r'^designation/(?P<id>\d+)/$', views.designationEdit.as_view()),
 
+    re_path(r'^qc_defect_type/$', views.QcDefectTypeView.as_view()),
+    re_path(r'^qc_defect_type/(?P<id>\d+)/$', views.QcDefectTypeEdit.as_view()),
+
+    re_path(r'^inspection_parameter/$', views.InspectionParameterList.as_view()),
+    re_path(r'^inspection_parameter/(?P<id>\d+)/$', views.InspectionParameterEdit.as_view()),
+
+    re_path(r'^shift/$', views.ShiftTimingList.as_view()),
+    re_path(r'^shift/(?P<id>\d+)/$', views.ShiftTimingEdit.as_view()),
+
     re_path(r'^dash_card_count/$', views.CountAPIView.as_view()),
 
 ]
