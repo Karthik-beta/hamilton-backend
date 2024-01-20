@@ -211,7 +211,7 @@ def create_spell_assembly_line_data(first_production_date, last_production_date)
         {'stage_no': 2, 'stage': 'Second Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
         {'stage_no': 3, 'stage': 'Third Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
         {'stage_no': 4, 'stage': 'Fourth Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
-        # {'stage_no': 5, 'stage': 'Fifth Spell', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
+        {'stage_no': 5, 'stage': 'Total', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
     ]
 
     '''Copy to spellAssemblyLineData and this works fine'''
