@@ -16,6 +16,9 @@ from datetime import datetime, timedelta
 import openpyxl
 from django.views.generic import View
 from django.http import HttpResponse
+from rest_framework.parsers import FileUploadParser
+from rest_framework.views import APIView
+import pandas as pd
 
 
 
@@ -672,3 +675,70 @@ class spellAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
 class ProductionAndonView(generics.ListAPIView):
     queryset = models.ProductionAndon.objects.all()
     serializer_class = serializers.ProductionAndonSerializer
+
+
+
+
+class ExcelImportListView(generics.ListAPIView):
+    queryset = models.ExcelImport.objects.all()
+    serializer_class = serializers.ExcelImportSerializer
+
+
+
+class ExcelImportView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Assuming the file is sent in the 'file' field of the request
+        file = request.FILES.get('file')
+
+        if not file:
+            return Response({'error': 'No file uploaded'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            workbook = openpyxl.load_workbook(file, read_only=True)
+            sheet = workbook.active
+
+            # Assuming your Excel file has headers and data starts from the second row
+            headers = [cell.value for cell in sheet[1]]
+            data = []
+
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                row_data = dict(zip(headers, row))
+                data.append(row_data)
+
+            serializer = serializers.ExcelImportSerializer(data=data, many=True)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'success': 'Data imported successfully'}, status=status.HTTP_201_CREATED)
+            else:
+                return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+        except Exception as e:
+            return Response({'error': f'Error processing Excel file: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+
+class ExportExcelTemplate(View):
+    def get(self, request, *args, **kwargs):
+        queryset = models.ExcelImport.objects.all()
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Template"
+
+        headers = [
+            "field1", "field2"
+        ]
+
+        for col_num, header in enumerate(headers, 1):
+            ws.cell(row=1, column=col_num, value=header)
+
+        for row_num, record in enumerate(queryset, 2):
+            ws.cell(row=row_num, column=1, value=record.field1)
+            ws.cell(row=row_num, column=2, value=record.field2)
+
+        response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        response["Content-Disposition"] = "attachment; filename=machine_records.xlsx"
+        wb.save(response)
+
+        return response

@@ -110,3 +110,9 @@ class ProductionAndonSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ProductionAndon
         fields = '__all__'
+
+
+class ExcelImportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ExcelImport
+        fields = ['field1', 'field2']

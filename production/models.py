@@ -376,3 +376,13 @@ class spellAssemblyLineData(models.Model):
             self.gap = 0
 
         super(spellAssemblyLineData, self).save(*args, **kwargs)
+
+
+
+
+class ExcelImport(models.Model):
+    field1 = models.CharField(max_length=255)
+    field2 = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'excel_import'

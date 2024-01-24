@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 from production import views
 
 
@@ -43,5 +43,11 @@ urlpatterns = [
     re_path(r'^spellAssemblyLineWise/(?P<id>\d+)/$', views.spellAssemblyLineDataUpdate.as_view()),
 
     re_path(r'^productionAndon/$', views.ProductionAndonView.as_view()),
+
+    path('excel_import/', views.ExcelImportView.as_view(), name='excel_import'),
+    path('excel_import/list/', views.ExcelImportListView.as_view(), name='excel_import_list'),
+
+    
+    re_path(r'^template/$', views.ExportExcelTemplate.as_view(), name='Template'),
 
 ]
