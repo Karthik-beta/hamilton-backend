@@ -175,7 +175,7 @@ class lineMachineConfig(models.Model):
     machine_id = models.CharField(max_length=255)
     total_order = models.IntegerField(blank=True, null=True)
     required_time = models.CharField(max_length=255, blank=True, null=True)
-    break_time = models.CharField(max_length=255, blank=True, null=True, default='02:00:00')
+    break_time = models.CharField(max_length=255, blank=True, null=True, default='01:00:00')
     assigned_start_production = models.CharField(max_length=255, blank=True, null=True)
     assigned_end_production = models.CharField(max_length=255, blank=True, null=True)
     manager = models.CharField(max_length=255)
@@ -213,9 +213,9 @@ class lineMachineSlotConfig(models.Model):
 
 class machineWiseData(models.Model):
     id = models.AutoField(primary_key=True)
-    plant = models.CharField(max_length=255, default='Ferozepur')
-    shopfloor = models.CharField(max_length=255, default='Module Line - 1')
-    assembly_line = models.CharField(max_length=255, default='NA')
+    plant = models.CharField(max_length=255, default='Chennai')
+    shopfloor = models.CharField(max_length=255, default='Shopfloor - 1')
+    assembly_line = models.CharField(max_length=255, default='AssemblyLine - 1')
     machine_id = models.CharField(max_length=255)
     product_target = models.IntegerField(default=60)
     time = models.CharField(max_length=255)

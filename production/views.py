@@ -364,7 +364,7 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
 
                 while remaining_hours > 0:
                     # Calculate planned production for the day
-                    planned_hours = min(20, remaining_hours)
+                    planned_hours = min(22, remaining_hours)
 
                     # Divide planned_hours by 2 for shift_a and shift_b
                     shift_a_planned_hours = shift_b_planned_hours = planned_hours // 2
@@ -387,8 +387,8 @@ class LineMachineSlotConfigViewSet(viewsets.ModelViewSet):
                         planned_production=planned_production,  # Planned production in units
                         remaining_hours=remaining_hours - planned_hours,
                         balance_production=balance_production,  # Balance production in units
-                        shift_a=f'07 - 19 ({shift_a_planned_hours})',
-                        shift_b=f'19 - 07 ({shift_b_planned_hours})',
+                        shift_a=f'08 - 20 ({shift_a_planned_hours})',
+                        shift_b=f'20 - 08 ({shift_b_planned_hours})',
                         # shift_c=f'22 - 06 ({planned_hours})',
                         shift_c= None,
                         job_id=job_id,
