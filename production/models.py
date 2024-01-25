@@ -360,9 +360,9 @@ class spellAssemblyLineData(models.Model):
         # self.mc_idle_hours = 660 - self.mc_on_hours if self.mc_on_hours is not None else None
 
         if self.mc_idle_hours is not None and self.mc_on_hours is not None:
-            self.mc_idle_hours = 600 - self.mc_on_hours
+            self.mc_idle_hours = 660 - self.mc_on_hours
         else:
-            self.mc_idle_hours = 600
+            self.mc_idle_hours = 660
 
         # Calculate performance as (actual / target) * 100
         if self.target is not None and self.actual is not None:
