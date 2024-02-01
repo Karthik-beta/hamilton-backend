@@ -742,3 +742,26 @@ class ExportExcelTemplate(View):
         wb.save(response)
 
         return response
+    
+
+from django.db.models import Max
+from django.db.models.functions import TruncHour
+
+class HourlyProductionAndon(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            # Get the latest 'p' value at the end of each hour
+            hourly_data = (
+                models.ProductionAndon.objects
+                .annotate(hour=TruncHour('machine_datetime'))
+                .values('hour')
+                .annotate(last_p=Max('p'))
+            )
+
+            # Extracting the 'p' value at the end of each hour
+            result = [{'hour': entry['hour'], 'last_p': entry['last_p']} for entry in hourly_data]
+
+            return Response(result, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

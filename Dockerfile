@@ -17,6 +17,15 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . /app/
 
+# Add cron schedule file
+COPY cron_schedule /etc/cron.d/cron_schedule
+
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/cron_schedule
+
+# Apply cron job
+RUN crontab /etc/cron.d/cron_schedule
+
 # Expose port 8000 to the outside world
 EXPOSE 8000
 
@@ -26,12 +35,8 @@ CMD ["python", "manage.py", "makemigrations"]
 # Define the command to migrate models
 CMD ["python", "manage.py", "migrate"]
 
-# Define the command to add crontab
-# CMD ["python", "manage.py", "crontab", "add"]
-# CMD ["python", "manage.py", "crontab", "add"]
+# # Define the command to run your application
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
-# # Define the command to show active jobs
-# CMD ["python", "manage.py", "crontab", "show"]
-
-# Define the command to run your application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Start the cron service and then run your application
+CMD cron && python manage.py runserver 0.0.0.0:8000

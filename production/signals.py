@@ -167,7 +167,7 @@ def copy_data_to_line_machine_config(sender, instance, created, **kwargs):
 def create_solo_assembly_line_data(first_production_date, last_production_date):
     # Define the stage data for four rows
     stages_data = [
-        {'stage_no': 1, 'stage': 'Assembly Line - 1', 'mc_on_hours': 660, 'mc_idle_hours': 0, 'target': 60},
+        {'stage_no': 1, 'stage': 'BL-3-A', 'mc_on_hours': 660, 'mc_idle_hours': 0, 'target': 3300},
         # {'stage_no': 2, 'stage': 'Laminator', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
         # {'stage_no': 3, 'stage': 'Framing', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},
         # {'stage_no': 4, 'stage': 'Flash Testing', 'mc_on_hours': 600,  'mc_idle_hours': 0, 'target': 54},

@@ -44,6 +44,8 @@ urlpatterns = [
 
     re_path(r'^productionAndon/$', views.ProductionAndonView.as_view()),
 
+    re_path(r'^productionHourly/$', views.HourlyProductionAndon.as_view()),
+
     path('excel_import/', views.ExcelImportView.as_view(), name='excel_import'),
     path('excel_import/list/', views.ExcelImportListView.as_view(), name='excel_import_list'),
 
