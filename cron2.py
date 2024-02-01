@@ -3,7 +3,7 @@ import subprocess
 def run_docker_command():
     try:
         # Command to run
-        command = ["sudo", "docker", "exec", "-it", "sael-backend-backend-1", "python", "manage.py", "assemblyline_andon"]
+        command = ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "assemblyline_andon"]
 
         # Run the command
         subprocess.run(command, check=True)
