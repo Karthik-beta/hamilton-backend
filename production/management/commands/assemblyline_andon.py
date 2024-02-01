@@ -11,7 +11,7 @@ class Command(BaseCommand):
         last_record_value = ProductionAndon.objects.latest('machine_datetime').p
 
         # Get the current time and add 5 hours and 30 minutes
-        current_time = datetime.now() + timedelta(hours=5, minutes=30)
+        current_time = datetime.now()
 
         # Check if the time is between 08 to 20 hours
         if 8 <= current_time.hour <= 20:
@@ -24,8 +24,8 @@ class Command(BaseCommand):
         #     date=current_time.date(),
         #     shift=shift
         # ).update(actual=last_record_value, shift=shift)
-           
-            
+
+
         # Get the soloAssemblyLineData instance based on date and shift
         data_instance = soloAssemblyLineData.objects.get(
             date=current_time.date(),
