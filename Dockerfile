@@ -17,6 +17,9 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . /app/
 
+# Install cron
+RUN apt-get update && apt-get install -y cron
+
 # Add cron schedule file
 COPY cron_schedule /etc/cron.d/cron_schedule
 
