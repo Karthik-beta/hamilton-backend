@@ -173,10 +173,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CRONJOBS = [
-#     ('*/5 * * * *', 'production.management.commands.machinewise.Command')
-# ]
 CRONJOBS = [
-    ('*/1 * * * *', 'python manage.py assemblyline_andon'),
-    # Adjust the schedule and command as needed
+    ('*/1 * * * *', 'production.management.commands.assemblyline_andon.Command')
 ]
+# CRONJOBS = [
+#     ('*/1 * * * *', 'python manage.py assemblyline_andon'),
+#     # Adjust the schedule and command as needed
+# ]
