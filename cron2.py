@@ -1,14 +1,23 @@
 import subprocess
 
-def execute_docker_command(container_name, command):
+def execute_command_in_docker(image_name, command):
     try:
-        subprocess.run(['sudo', 'docker', 'exec', '-it', container_name] + command.split(), check=True)
-        print(f"Command executed successfully on {container_name}.")
+        # Command to enter Docker bash shell and execute the provided command
+        docker_command = f"docker run -it {image_name} /bin/bash -c '{command}'"
+
+        # Execute the Docker command using subprocess
+        subprocess.run(docker_command, shell=True, check=True)
+
     except subprocess.CalledProcessError as e:
-        print(f"Error executing command: {e}")
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
-# Replace 'sael-backend-backend-1' with your actual container name
-container_name = 'sael-backend-backend-1'
-command_to_execute = 'python manage.py assemblyline_andon'
+# Replace 'your_docker_image_name' with the actual name of your Docker image
+docker_image_name = 'sael-backend-backend-1'
 
-execute_docker_command(container_name, command_to_execute)
+# Command to be executed within the Docker bash shell
+docker_command_to_execute = "python manage.py assemblyline_andon"
+
+# Call the function with the provided image name and command
+execute_command_in_docker(docker_image_name, docker_command_to_execute)
