@@ -673,7 +673,7 @@ class spellAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ProductionAndonView(generics.ListAPIView):
-    queryset = models.ProductionAndon.objects.all()
+    queryset = models.ProductionAndon.objects.order_by('-machine_datetime')[:1]
     serializer_class = serializers.ProductionAndonSerializer
 
 

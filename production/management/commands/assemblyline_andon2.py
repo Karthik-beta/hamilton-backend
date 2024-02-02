@@ -4,7 +4,7 @@ from django.db.models import Q
 from datetime import datetime, timedelta
 
 class Command(BaseCommand):
-    help = 'Updates the actual column in machineWiseData model'
+    help = 'Updates the actual column in machineWiseData model and counts "I" rows'
 
     def handle(self, *args, **options):
         # Get the last record from column 'p' in 'ProductionAndon' model
@@ -53,4 +53,7 @@ class Command(BaseCommand):
         data_instance.mc_idle_hours = i_time_minutes
         data_instance.save()
 
-        self.stdout.write(self.style.SUCCESS('Successfully updated actual column in soloAssemblyLineData model.'))
+        # Print the count value
+        self.stdout.write(self.style.SUCCESS(f'Total "I" rows count: {i_time_minutes}'))
+
+        self.stdout.write(self.style.SUCCESS(f'Total "R" rows count: {r_time_minutes}'))
