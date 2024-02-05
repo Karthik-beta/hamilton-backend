@@ -333,6 +333,7 @@ class ProductionAndon(models.Model):
     class Meta:
         managed = False
         db_table = 'production_andon'
+        unique_together = ('machine_datetime', 'machine_id')
 
 
 
