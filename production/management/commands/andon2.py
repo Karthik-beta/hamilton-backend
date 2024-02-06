@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from production.models import ProductionAndon, machineWiseData
 from django.db.models import Q
 from datetime import datetime, timedelta
+from pytz import utc, timezone
 
 class Command(BaseCommand):
     help = 'Updates the actual column in machineWiseData model'
@@ -10,15 +11,9 @@ class Command(BaseCommand):
         # Get the last record from column 'p' in 'ProductionAndon' model
         last_record = ProductionAndon.objects.latest('machine_datetime').p
 
-        # # Get the current time
-        # current_time = datetime.now()
-
         # Get the current time and add 5 hours and 30 minutes
-        current_time = datetime.now() + timedelta(hours=5, minutes=30)
-
-
-        # Update 'actual' column in 'machineWiseData' model where 'machine_datetime' lies in the range of 'time' field
-        # machineWiseData.objects.filter(Q(date__gte=current_time) & Q(date__lte=current_time)).update(actual=last_record)
+        current_time_utc = datetime.now(utc)
+        current_time_ist = current_time_utc.astimezone(timezone('Asia/Kolkata'))
 
         # Get the latest record in 'machineWiseData' model
         latest_machine_data = machineWiseData.objects.latest('id')

@@ -227,6 +227,7 @@ class machineWiseData(models.Model):
     target = models.IntegerField(blank=True, null=True, default=300)
     performance = models.FloatField(blank=True, null=True)
     current = models.FloatField(blank=True, null=True)
+    gap = models.IntegerField(blank=True, null=True)
 
     class Meta:
         db_table = 'machine_wise_data'
@@ -244,13 +245,18 @@ class machineWiseData(models.Model):
 
     def save(self, *args, **kwargs):
         # Calculate idle_time as 60 - on_time
-        self.idle_time = 60 - self.on_time if self.on_time is not None else 60
+        # self.idle_time = 60 - self.on_time if self.on_time is not None else 60
 
         # Calculate performance as (actual / target) * 100
         if self.target is not None and self.actual is not None:
             self.performance = round((self.actual / self.target) * 100, 2)
         else:
             self.performance = 0
+
+        if self.actual is not None:
+            self.gap = self.actual - self.target 
+        else:
+            self.gap = None
 
         super(machineWiseData, self).save(*args, **kwargs)
 

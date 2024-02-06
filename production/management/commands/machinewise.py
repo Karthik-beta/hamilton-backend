@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from production.models import machineWiseData
 
 from config import models as config_models
@@ -34,7 +34,10 @@ class Command(BaseCommand):
         current_date = date.today()
         current_time = datetime.now()
         current_hour = current_time.hour
-        time_range = f'{current_hour:02d} - {current_hour+1:02d}'
+        start_time = datetime(current_date.year, current_date.month, current_date.day, current_hour, 0)
+        end_time = start_time + timedelta(hours=1)
+        # time_range = f'{current_hour:02d} - {current_hour+1:02d}'
+        time_range = f'{start_time.strftime("%H:%M")} - {end_time.strftime("%H:%M")}'
         
         # Check if a record with the same date and time already exists
         if machineWiseData.objects.filter(date=current_date, time=time_range).exists():
