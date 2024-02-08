@@ -10,7 +10,7 @@ from datetime import timedelta, datetime
 from rest_framework.response import Response
 from django.db.models import Count
 from datetime import datetime, time, date
-from django.db.models import Q
+from django.db.models import Q, Count, Sum, F, FloatField
 
 from datetime import datetime, timedelta
 import openpyxl
@@ -487,7 +487,7 @@ class machineWiseDataView(generics.ListAPIView):
                 )
             )
 
-        return queryset
+        return queryset.order_by('id')
 
 
 '''Update View for machineWiseDate Model'''
