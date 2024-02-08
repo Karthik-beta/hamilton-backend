@@ -79,10 +79,10 @@ class Command(BaseCommand):
             print(f"Matching Machine Data: {matching_machine_data.time} -> {matching_machine_data.date}")
 
             if matching_machine_data:
-                # matching_machine_data.actual = actual_value
-                # matching_machine_data.on_time = r_count * 10 / 60
-                # matching_machine_data.idle_time = 60 - (r_count * 10 / 60)
-                # matching_machine_data.save()
+                matching_machine_data.actual = actual_value
+                matching_machine_data.on_time = r_in_minutes
+                matching_machine_data.idle_time = i_in_minutes
+                matching_machine_data.save()
 
                 self.stdout.write(self.style.SUCCESS(f'Actual value updated successfully for {time_range}'))
             else:
