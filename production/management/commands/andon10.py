@@ -59,10 +59,16 @@ class Command(BaseCommand):
                 r='R'
             ).count()
         
+        passed_minutes = (andon_records.last().machine_datetime.minute - start_hour.minute)
+        
         # print("I Count: ", i_count)
         # print("R Count: ", r_count)
-        i_time_minutes = round(i_count * 10 / 60, 4)
-        r_time_minutes = round(r_count * 10 / 60, 4)
+        r_time_minutes = r_count * 10 / 60
+        i_time_minutes = passed_minutes - r_time_minutes
+
+        print("R Time Minutes:", r_time_minutes)
+        print("I Time Minutes:", i_time_minutes)
+        print("Passed Minutes:", passed_minutes)
 
         latest_machine_data.on_time = r_time_minutes
         latest_machine_data.idle_time = i_time_minutes

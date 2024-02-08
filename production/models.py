@@ -391,3 +391,11 @@ class ExcelImport(models.Model):
 
     class Meta:
         db_table = 'excel_import'
+
+
+class TestTable(models.Model):
+    field1 = models.CharField(max_length=255, blank=True, null=True)
+    field2 = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'test_table'

@@ -6,7 +6,8 @@ def run_docker_commands():
         commands = [
             ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "assemblyline_andon"],
             ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "machinewise"],
-            ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "andon4"],
+            ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "andon10"],
+            ["sudo", "docker", "exec", "sael-backend-backend-1", "python", "manage.py", "andon9"],
             # Add more commands as needed
         ]
 
