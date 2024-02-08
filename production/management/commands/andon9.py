@@ -65,7 +65,7 @@ class Command(BaseCommand):
             # print("R Count:", r_count)
             # print("I Count:", i_count)
 
-            r_in_minutes = r_count * 10 / 60
+            r_in_minutes = round(r_count * 10 / 60, 2)
             i_in_minutes = 60 - r_in_minutes
 
             print("R in Minutes:", r_in_minutes)

@@ -221,8 +221,8 @@ class machineWiseData(models.Model):
     time = models.CharField(max_length=255)
     date = models.DateField()
     # date = models.DateField(default=date.today)    #production sauld
-    on_time = models.IntegerField(blank=True, null=True)
-    idle_time = models.IntegerField(blank=True, null=True)
+    on_time = models.FloatField(blank=True, null=True)
+    idle_time = models.FloatField(blank=True, null=True)
     actual = models.IntegerField(blank=True, null=True)
     target = models.IntegerField(blank=True, null=True, default=300)
     performance = models.FloatField(blank=True, null=True)
