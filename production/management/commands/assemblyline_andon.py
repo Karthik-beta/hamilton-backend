@@ -29,46 +29,46 @@ class Command(BaseCommand):
 
         # Update 'actual' and 'shift' fields
         data_instance.actual = last_record_value
-        data_instance.shift = shift
+        # data_instance.shift = shift
         data_instance.save()
 
         # Check if the time is between 08 to 20 hours
-        if 8 <= current_time_ist.hour <= 20:
-            # Count the total number of rows where 'r' column is "I" between 08 to 20 hours
-            i_count = ProductionAndon.objects.filter(
-                machine_datetime__date=current_time_ist.date(),
-                machine_datetime__hour__range=[8, 20],
-                r='I'
-            ).count()
+        # if 8 <= current_time_ist.hour <= 20:
+        #     # Count the total number of rows where 'r' column is "I" between 08 to 20 hours
+        #     i_count = ProductionAndon.objects.filter(
+        #         machine_datetime__date=current_time_ist.date(),
+        #         machine_datetime__hour__range=[8, 20],
+        #         r='I'
+        #     ).count()
 
-            # Count the total number of rows where 'r' column is "R" between 08 to 20 hours
-            r_count = ProductionAndon.objects.filter(
-                machine_datetime__date=current_time_ist.date(),
-                machine_datetime__hour__range=[8, 20],
-                r='R'
-            ).count()
-        else:
-            # Count the total number of rows where 'r' column is "I" between 20 to 08 hours
-            i_count = ProductionAndon.objects.filter(
-                Q(machine_datetime__date=current_time_ist.date(), machine_datetime__hour__gte=20) |
-                Q(machine_datetime__date=current_time_ist.date() + timedelta(days=1), machine_datetime__hour__lt=8),
-                r='I'
-            ).count()
+        #     # Count the total number of rows where 'r' column is "R" between 08 to 20 hours
+        #     r_count = ProductionAndon.objects.filter(
+        #         machine_datetime__date=current_time_ist.date(),
+        #         machine_datetime__hour__range=[8, 20],
+        #         r='R'
+        #     ).count()
+        # else:
+        #     # Count the total number of rows where 'r' column is "I" between 20 to 08 hours
+        #     i_count = ProductionAndon.objects.filter(
+        #         Q(machine_datetime__date=current_time_ist.date(), machine_datetime__hour__gte=20) |
+        #         Q(machine_datetime__date=current_time_ist.date() + timedelta(days=1), machine_datetime__hour__lt=8),
+        #         r='I'
+        #     ).count()
 
-            # Count the total number of rows where 'r' column is "R" between 20 to 08 hours
-            r_count = ProductionAndon.objects.filter(
-                Q(machine_datetime__date=current_time_ist.date(), machine_datetime__hour__gte=20) |
-                Q(machine_datetime__date=current_time_ist.date() + timedelta(days=1), machine_datetime__hour__lt=8),
-                r='R'
-            ).count()
+        #     # Count the total number of rows where 'r' column is "R" between 20 to 08 hours
+        #     r_count = ProductionAndon.objects.filter(
+        #         Q(machine_datetime__date=current_time_ist.date(), machine_datetime__hour__gte=20) |
+        #         Q(machine_datetime__date=current_time_ist.date() + timedelta(days=1), machine_datetime__hour__lt=8),
+        #         r='R'
+        #     ).count()
 
-        # Calculate time in minutes
-        i_time_minutes = round(i_count * 10 / 60, 2)
-        r_time_minutes = round(r_count * 10 / 60, 2)
+        # # Calculate time in minutes
+        # i_time_minutes = round(i_count * 10 / 60, 2)
+        # r_time_minutes = round(r_count * 10 / 60, 2)
 
-        # Update 'Running' and 'Idle' fields
-        data_instance.mc_on_hours = r_time_minutes
-        data_instance.mc_idle_hours = i_time_minutes
-        data_instance.save()
+        # # Update 'Running' and 'Idle' fields
+        # data_instance.mc_on_hours = r_time_minutes
+        # data_instance.mc_idle_hours = i_time_minutes
+        # data_instance.save()
 
         self.stdout.write(self.style.SUCCESS('Successfully updated actual column in soloAssemblyLineData model.'))
