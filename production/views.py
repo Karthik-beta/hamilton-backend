@@ -496,6 +496,7 @@ class machineWiseDataView(generics.ListAPIView):
     
     # now = datetime(2024, 2, 22, 2, 0, 0)
     now = datetime.now()
+    print(now)
 
     def get_queryset(self):
         if self.now.time() >= datetime.strptime("08:00", "%H:%M").time() and self.now.time() <= datetime.strptime("20:00", "%H:%M").time():
@@ -505,7 +506,7 @@ class machineWiseDataView(generics.ListAPIView):
                 time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(8, 20)]
             )
         else:
-            if self.now.time() >= datetime.strptime("20:00", "%H:%M").time() and self.now.time() <= datetime.strptime("24:00", "%H:%M").time():
+            if self.now.time() >= datetime.strptime("20:00", "%H:%M").time() and self.now.time() <= datetime.strptime("23:59", "%H:%M").time():
                 # Current time is between 20:00 and 23:59
                 today_midnight = datetime.combine(self.now.date(), datetime.min.time())
 
