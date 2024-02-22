@@ -25,6 +25,7 @@ class Command(BaseCommand):
             start_time = current_time.replace(hour=8, minute=0, second=0, microsecond=0)
             passed_minutes = (current_time - start_time).total_seconds() // 60
 
+            print(f"Shift: {shift}, Start Time: {start_time}")
             print(f"Shift: {shift}, Passed Minutes: {passed_minutes}")
 
             r_count = ProductionAndon.objects.filter(
@@ -96,9 +97,9 @@ class Command(BaseCommand):
                     shift=shift
                 )
 
-                data_instance.mc_on_hours = running_time
-                data_instance.mc_idle_hours = idle_time
-                data_instance.save()
+                # data_instance.mc_on_hours = running_time
+                # data_instance.mc_idle_hours = idle_time
+                # data_instance.save()
 
             elif 0 <= current_time.hour <= 8:
                 start_time = current_time.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -155,9 +156,9 @@ class Command(BaseCommand):
                     shift=shift
                 )
 
-                data_instance.mc_on_hours = running_time
-                data_instance.mc_idle_hours = idle_time
-                data_instance.save()
+                # data_instance.mc_on_hours = running_time
+                # data_instance.mc_idle_hours = idle_time
+                # data_instance.save()
 
 
 
