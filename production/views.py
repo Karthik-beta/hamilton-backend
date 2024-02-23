@@ -505,30 +505,28 @@ class machineWiseDataView(generics.ListAPIView):
                 date=self.now.date(),
                 time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(8, 20)]
             )
-        else:
-            if self.now.time() >= datetime.strptime("20:00", "%H:%M").time() and self.now.time() <= datetime.strptime("23:59", "%H:%M").time():
-                # Current time is between 20:00 and 23:59
-                today_midnight = datetime.combine(self.now.date(), datetime.min.time())
-
-                queryset = models.machineWiseData.objects.filter(
+        
+        elif self.now.time() >= datetime.strptime("20:00", "%H:%M").time() and self.now.time() <= datetime.strptime("23:59", "%H:%M").time():
+            # Current time is between 20:00 and 23:59
+            today_midnight = datetime.combine(self.now.date(), datetime.min.time())
+            queryset = models.machineWiseData.objects.filter(
+                date=self.now.date(),
+                time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(20, 24)] +
+                        ["23:00 - 00:00"]
+            )
+        elif self.now.time() >= datetime.strptime("00:00", "%H:%M").time() and self.now.time() <= datetime.strptime("08:00", "%H:%M").time():
+            # Current time is between 00:00 and 08:00
+            yesterday = self.now.date() - timedelta(days=1)
+            queryset = models.machineWiseData.objects.filter(
+                date=yesterday,
+                time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(20, 24)] +
+                        ["23:00 - 00:00"]
+            ).union(
+                models.machineWiseData.objects.filter(
                     date=self.now.date(),
-                    time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(20, 24)] +
-                            ["23:00 - 00:00"]
+                    time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(0, 8)]
                 )
-            elif self.now.time() >= datetime.strptime("00:00", "%H:%M").time() and self.now.time() <= datetime.strptime("08:00", "%H:%M").time():
-                # Current time is between 00:00 and 08:00
-                yesterday = self.now.date() - timedelta(days=1)
-
-                queryset = models.machineWiseData.objects.filter(
-                    date=yesterday,
-                    time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(20, 24)] +
-                            ["23:00 - 00:00"]
-                ).union(
-                    models.machineWiseData.objects.filter(
-                        date=self.now.date(),
-                        time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(0, 8)]
-                    )
-                )
+            )
 
         return queryset.order_by('id')
 
