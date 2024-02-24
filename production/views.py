@@ -489,14 +489,15 @@ class LineMachineSlotConfigEdit(generics.RetrieveUpdateDestroyAPIView):
 
 #         return queryset.order_by('id')
 
+import pytz
 
 ''' 2.0 Get View for machinewise group by machine id'''
 class machineWiseDataView(generics.ListAPIView):
     serializer_class = serializers.machineWiseDataSerializer
     
     # now = datetime(2024, 2, 22, 2, 0, 0)
-    now = datetime.now()
-    print(now)
+    ist_timezone = pytz.timezone('Asia/Kolkata')
+    now = datetime.now(ist_timezone)
 
     def get_queryset(self):
         if self.now.time() >= datetime.strptime("08:00", "%H:%M").time() and self.now.time() <= datetime.strptime("20:00", "%H:%M").time():
@@ -527,6 +528,11 @@ class machineWiseDataView(generics.ListAPIView):
                     time__in=[f"{i:02d}:00 - {i+1:02d}:00" for i in range(0, 8)]
                 )
             )
+        
+        else:
+        # Handle unexpected cases or provide a default queryset
+        # Example: return models.machineWiseData.objects.all()
+            pass
 
         return queryset.order_by('id')
 
