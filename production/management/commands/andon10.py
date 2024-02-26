@@ -66,9 +66,9 @@ class Command(BaseCommand):
         r_time_minutes = round(r_count * 10 / 60, 2)
         i_time_minutes = passed_minutes - r_time_minutes
 
-        print("R Time Minutes:", r_time_minutes)
-        print("I Time Minutes:", i_time_minutes)
-        print("Passed Minutes:", passed_minutes)
+        # print("R Time Minutes:", r_time_minutes)
+        # print("I Time Minutes:", i_time_minutes)
+        # print("Passed Minutes:", passed_minutes)
 
         latest_machine_data.on_time = r_time_minutes
         latest_machine_data.idle_time = i_time_minutes

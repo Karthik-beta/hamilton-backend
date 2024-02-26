@@ -494,12 +494,14 @@ import pytz
 ''' 2.0 Get View for machinewise group by machine id'''
 class machineWiseDataView(generics.ListAPIView):
     serializer_class = serializers.machineWiseDataSerializer
-    
-    now = datetime(2024, 2, 25, 2, 0, 0)
-    # ist_timezone = pytz.timezone('Asia/Kolkata')
-    # now = datetime.now(ist_timezone)
+
 
     def get_queryset(self):
+
+        # now = datetime(2024, 2, 25, 2, 0, 0)
+        ist_timezone = pytz.timezone('Asia/Kolkata')
+        now = datetime.now(ist_timezone)
+
         if self.now.time() >= datetime.strptime("08:00", "%H:%M").time() and self.now.time() <= datetime.strptime("20:00", "%H:%M").time():
             # Current time is between 08:00 and 20:00
             queryset = models.machineWiseData.objects.filter(

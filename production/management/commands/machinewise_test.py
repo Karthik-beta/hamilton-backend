@@ -35,13 +35,15 @@ class Command(BaseCommand):
 
         ist_timezone = pytz.timezone('Asia/Kolkata')
         # now = datetime.now(ist_timezone)
-        now = datetime(2024, 2, 25, 2, 0, 0)
+        now = datetime(2024, 2, 25, 0, 0, 0)
 
         # current_date = date.today()
         # current_time = datetime.now()
 
         current_date = now.date()
         current_time = now.time()
+        # print("Current Date:", current_date)
+        # print("Current Time:", current_time)
 
         current_hour = current_time.hour
         start_time = datetime(current_date.year, current_date.month, current_date.day, current_hour, 0)
@@ -51,8 +53,8 @@ class Command(BaseCommand):
         
         # Check if a record with the same date and time already exists
         if machineWiseData.objects.filter(date=current_date, time=time_range).exists():
-            # self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
-            pass
+            self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
+            # pass
         else:
             # Get a list of all machines from the 'machine' model
             machines = config_models.machine.objects.all()
