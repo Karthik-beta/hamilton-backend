@@ -37,8 +37,12 @@ class Command(BaseCommand):
         # now = datetime.now(ist_timezone)
         now = datetime(2024, 2, 25, 2, 0, 0)
 
-        current_date = date.today()
-        current_time = datetime.now()
+        # current_date = date.today()
+        # current_time = datetime.now()
+
+        current_date = now.date()
+        current_time = now
+        
         current_hour = current_time.hour
         start_time = datetime(current_date.year, current_date.month, current_date.day, current_hour, 0)
         end_time = start_time + timedelta(hours=1)
