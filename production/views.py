@@ -495,9 +495,9 @@ import pytz
 class machineWiseDataView(generics.ListAPIView):
     serializer_class = serializers.machineWiseDataSerializer
     
-    # now = datetime(2024, 2, 22, 2, 0, 0)
-    ist_timezone = pytz.timezone('Asia/Kolkata')
-    now = datetime.now(ist_timezone)
+    now = datetime(2024, 2, 25, 2, 0, 0)
+    # ist_timezone = pytz.timezone('Asia/Kolkata')
+    # now = datetime.now(ist_timezone)
 
     def get_queryset(self):
         if self.now.time() >= datetime.strptime("08:00", "%H:%M").time() and self.now.time() <= datetime.strptime("20:00", "%H:%M").time():

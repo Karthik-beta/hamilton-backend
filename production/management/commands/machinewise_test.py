@@ -34,7 +34,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         ist_timezone = pytz.timezone('Asia/Kolkata')
-        now = datetime.now(ist_timezone)
+        # now = datetime.now(ist_timezone)
+        now = datetime(2024, 2, 25, 2, 0, 0)
 
         current_date = date.today()
         current_time = datetime.now()
