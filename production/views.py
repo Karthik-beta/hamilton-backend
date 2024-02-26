@@ -495,6 +495,8 @@ import pytz
 class machineWiseDataView(generics.ListAPIView):
     serializer_class = serializers.machineWiseDataSerializer
 
+    ist_timezone = pytz.timezone('Asia/Kolkata')
+    now = datetime.now(ist_timezone)
 
     def get_queryset(self):
 
