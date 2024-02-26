@@ -41,8 +41,8 @@ class Command(BaseCommand):
         # current_time = datetime.now()
 
         current_date = now.date()
-        current_time = now
-        
+        current_time = now.time()
+
         current_hour = current_time.hour
         start_time = datetime(current_date.year, current_date.month, current_date.day, current_hour, 0)
         end_time = start_time + timedelta(hours=1)
@@ -51,7 +51,8 @@ class Command(BaseCommand):
         
         # Check if a record with the same date and time already exists
         if machineWiseData.objects.filter(date=current_date, time=time_range).exists():
-            self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
+            # self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
+            pass
         else:
             # Get a list of all machines from the 'machine' model
             machines = config_models.machine.objects.all()

@@ -15,13 +15,13 @@ class Command(BaseCommand):
         # Get current time and set start_time and end_time
         # current_time = datetime.now(pytz.timezone('Asia/Kolkata'))
         current_time = ProductionAndon.objects.latest('machine_datetime').machine_datetime
-        print("Current Time:", current_time)
+        # print("Current Time:", current_time)
 
         start_time = current_time.replace(hour=8, minute=0, second=0, microsecond=0)
         end_time = current_time
 
-        print("Start Time:", start_time)
-        print("End Time:", end_time)
+        # print("Start Time:", start_time)
+        # print("End Time:", end_time)
 
 
         if 8 <= current_time.hour <= 20:
@@ -37,9 +37,9 @@ class Command(BaseCommand):
         first_reading = andon_records.first().p
         last_reading = andon_records.last().p
         actual_value = last_reading - first_reading
-        print("First Reading (p):", first_reading)
-        print("Last Reading (p):", last_reading)
-        print("Actual Value:", actual_value)
+        # print("First Reading (p):", first_reading)
+        # print("Last Reading (p):", last_reading)
+        # print("Actual Value:", actual_value)
 
         data_instance = soloAssemblyLineData.objects.get(
             date=current_time.date(),

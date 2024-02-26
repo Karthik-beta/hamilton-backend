@@ -46,7 +46,8 @@ class Command(BaseCommand):
         
         # Check if a record with the same date and time already exists
         if machineWiseData.objects.filter(date=current_date, time=time_range).exists():
-            self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
+            # self.stdout.write(self.style.SUCCESS(f'A row with time range {time_range} already exists for today.'))
+            pass
         else:
             # Get a list of all machines from the 'machine' model
             machines = config_models.machine.objects.all()

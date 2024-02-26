@@ -17,13 +17,13 @@ class Command(BaseCommand):
         current_time_db = ProductionAndon.objects.latest('machine_datetime').machine_datetime
         current_time_test = current_time_db.replace(minute=0, second=0, microsecond=0)
         current_time = current_time_test - timedelta(hours=1)
-        print("Current Time:", current_time)
+        # print("Current Time:", current_time)
 
         start_time = current_time.replace(minute=0, second=0, microsecond=0)
         end_time = start_time + timedelta(hours=1)
 
         loop_end_time = start_time - timedelta(days=1)
-        print("Loop End Time:", loop_end_time)
+        # print("Loop End Time:", loop_end_time)
 
         # Step 7: Loop until start_time is 00:00
         while end_time > loop_end_time:
@@ -40,12 +40,12 @@ class Command(BaseCommand):
             first_reading = andon_records.first().p
             last_reading = andon_records.last().p
 
-            print("Andon first reading:", andon_records.first().machine_datetime)
-            print("Andon last reading:", andon_records.last().machine_datetime)
+            # print("Andon first reading:", andon_records.first().machine_datetime)
+            # print("Andon last reading:", andon_records.last().machine_datetime)
 
             # Step 4: Calculate 'actual' value
             actual_value = last_reading - first_reading
-            print("Actual Value:", actual_value)
+            # print("Actual Value:", actual_value)
 
 
             # r Count
@@ -68,15 +68,15 @@ class Command(BaseCommand):
             r_in_minutes = round(r_count * 10 / 60, 2)
             i_in_minutes = 60 - r_in_minutes
 
-            print("R in Minutes:", r_in_minutes)
-            print("I in Minutes:", i_in_minutes)
+            # print("R in Minutes:", r_in_minutes)
+            # print("I in Minutes:", i_in_minutes)
 
             # Step 5: Update 'actual' field in 'machineWiseData'
             time_range = f"{start_time.strftime('%H:%M')} - {end_time.strftime('%H:%M')}"
-            print("Time Range:", time_range)
+            # print("Time Range:", time_range)
             matching_machine_data = machineWiseData.objects.filter(time=time_range, date=start_time.date()).first()
-            print("Matching Machine Data: ", matching_machine_data.time)
-            print(f"Matching Machine Data: {matching_machine_data.time} -> {matching_machine_data.date}")
+            # print("Matching Machine Data: ", matching_machine_data.time)
+            # print(f"Matching Machine Data: {matching_machine_data.time} -> {matching_machine_data.date}")
 
             if matching_machine_data:
                 matching_machine_data.actual = actual_value
