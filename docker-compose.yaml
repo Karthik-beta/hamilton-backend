@@ -21,6 +21,7 @@ services:
       dockerfile: Dockerfile  # Use your Django Dockerfile
     ports:
       - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
+    image: backend_image:tag
     # volumes:
     #   - ./backend/entrypoint.sh:/entrypoint.sh  # Mount the entrypoint script
     # entrypoint: /bin/sh -c '/entrypoint.sh'  # Set the entrypoint

@@ -34,10 +34,10 @@ class Command(BaseCommand):
         first_reading = andon_records.first().p
         last_reading = andon_records.last().p
         actual_value = last_reading - first_reading
-        print("andon first reading:", andon_records.first().machine_datetime)
-        print("andon last reading:", andon_records.last().machine_datetime)
-        print("First Reading (p):", andon_records.first().p)
-        print("Last Reading (p):", andon_records.last().p)
+        # print("andon first reading:", andon_records.first().machine_datetime)
+        # print("andon last reading:", andon_records.last().machine_datetime)
+        # print("First Reading (p):", andon_records.first().p)
+        # print("Last Reading (p):", andon_records.last().p)
         print(actual_value)
 
         latest_machine_data = machineWiseData.objects.latest('id')
