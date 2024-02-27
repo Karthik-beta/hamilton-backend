@@ -174,7 +174,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CRONJOBS = [
-    ('*/1 * * * *', 'production.management.commands.assemblyline_andon.Command')
+    ('*/1 * * * *', 'production.management.commands.assemblyline_andon5.Command'),
+    ('*/1 * * * *', 'production.management.commands.machinewise.Command'),
+    ('*/1 * * * *', 'production.management.commands.andon10.Command'),
+    ('*/1 * * * *', 'production.management.commands.andon9.Command'),
 ]
 # CRONJOBS = [
 #     ('*/1 * * * *', 'python manage.py assemblyline_andon'),
