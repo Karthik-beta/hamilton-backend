@@ -14,6 +14,8 @@ from django.db.models import Q, Count, Sum, F, FloatField
 
 from datetime import datetime, timedelta
 import openpyxl
+from openpyxl.styles import Font, PatternFill
+from openpyxl.utils import get_column_letter, column_index_from_string
 from django.views.generic import View
 from django.http import HttpResponse
 from rest_framework.parsers import FileUploadParser
@@ -622,30 +624,65 @@ class ExportExcelMachineView(View):
         ws.title = "Machine Records"
 
         headers = [
-            "Product ID", "Plant", "Shopfloor", "Assembly Line", "Machine ID",
-            "Product Target", "Time", "Date", "On Time", "Idle Time",
+            "Plant", "Shopfloor", "Assembly Line", "Machine ID", "Product ID",
+            "Product Target", "Shift", "Date", "Time", "On Time", "Idle Time",
             "Actual", "Target", "Performance", "Gap", "kW-h"
         ]
 
-        for col_num, header in enumerate(headers, 1):
-            ws.cell(row=1, column=col_num, value=header)
+        def get_shift_info(time_str):
+            # Convert the time string to a datetime object for easier comparison
+            time_format = "%H:%M"
+            time_obj = datetime.datetime.strptime(time_str.split(" - ")[0], time_format)
 
+            # Define shift time ranges
+            shift_a_start = datetime.datetime.strptime("08:00", time_format)
+            shift_a_end = datetime.datetime.strptime("20:00", time_format)
+
+            shift_b_start = datetime.datetime.strptime("20:00", time_format)
+            shift_b_end = datetime.datetime.strptime("08:00", time_format)
+
+            # Check the shift and generate the output
+            if shift_a_start <= time_obj <= shift_a_end:
+                return "Shift A, 08 - 20 (11)"
+            else:
+                return "Shift B, 20 - 08 (11)"
+
+
+        # Set font style and background color for headers
+        header_font = Font(size=14, bold=True)
+        header_fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+
+        for col_num, header in enumerate(headers, 1):
+            cell = ws.cell(row=1, column=col_num, value=header)
+            cell.font = header_font
+            cell.fill = header_fill
+            
         for row_num, record in enumerate(queryset, 2):
-            ws.cell(row=row_num, column=1, value="AQUA 1000ml")
-            ws.cell(row=row_num, column=2, value=record.plant)
-            ws.cell(row=row_num, column=3, value=record.shopfloor)
-            ws.cell(row=row_num, column=4, value=record.assembly_line)
-            ws.cell(row=row_num, column=5, value=record.machine_id)
+            # Extract the hour from the record.time in 24-hour format
+            record_hour = int(record.time.split(':')[0])
+
+            # Determine the shift based on the time
+            if 8 <= record_hour < 20:
+                shift = "Shift A, 08 - 20 (11)"
+            else:
+                shift = "Shift B, 20 - 08 (11)"
+
+            ws.cell(row=row_num, column=1, value=record.plant)
+            ws.cell(row=row_num, column=2, value=record.shopfloor)
+            ws.cell(row=row_num, column=3, value=record.assembly_line)
+            ws.cell(row=row_num, column=4, value=record.machine_id)
+            ws.cell(row=row_num, column=5, value="AQUA 1000ml")
             ws.cell(row=row_num, column=6, value=record.product_target)
-            ws.cell(row=row_num, column=7, value=record.time)
+            ws.cell(row=row_num, column=7, value=shift)
             ws.cell(row=row_num, column=8, value=record.date)
-            ws.cell(row=row_num, column=9, value=record.on_time)
-            ws.cell(row=row_num, column=10, value=record.idle_time)
-            ws.cell(row=row_num, column=11, value=record.actual)
-            ws.cell(row=row_num, column=12, value=record.target)
-            ws.cell(row=row_num, column=13, value=record.performance)
+            ws.cell(row=row_num, column=9, value=record.time)
+            ws.cell(row=row_num, column=10, value=record.on_time)
+            ws.cell(row=row_num, column=11, value=record.idle_time)
+            ws.cell(row=row_num, column=12, value=record.actual)
+            ws.cell(row=row_num, column=13, value=record.target)
             ws.cell(row=row_num, column=14, value=record.performance)
-            ws.cell(row=row_num, column=15, value=record.current)
+            ws.cell(row=row_num, column=15, value=record.gap)
+            ws.cell(row=row_num, column=16, value=record.current)
 
         response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         response["Content-Disposition"] = "attachment; filename=machine_records.xlsx"
