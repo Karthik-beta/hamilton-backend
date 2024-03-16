@@ -17,10 +17,10 @@ class Command(BaseCommand):
         second = 0
 
         # Create a datetime object
-        today = datetime(year, month, day, hour, minute, second)
+        # today = datetime(year, month, day, hour, minute, second)
 
         # Extract Time from the latest record in ProductionAndon
-        # today = datetime.now(pytz.timezone('Asia/Kolkata'))
+        today = datetime.now(pytz.timezone('Asia/Kolkata'))
         current_time = ProductionAndon.objects.latest('machine_datetime').machine_datetime
 
         print("Current Time:", current_time)
