@@ -977,10 +977,17 @@ class ExportExcelMachineView(View):
             ws.cell(row=row_num, column=21, value=record.gap)
             ws.cell(row=row_num, column=22, value=record.current)
 
-            shift_total_on_time += record.on_time
-            shift_total_idle_time += record.idle_time
-            shift_total_actual += record.actual
-            shift_total_target += record.target
+            if record.on_time is not None:
+                shift_total_on_time += record.on_time
+            # shift_total_on_time += record.on_time
+            if record.idle_time is not None:
+                shift_total_idle_time += record.idle_time
+            if record.actual is not None:
+                shift_total_actual += record.actual
+            # shift_total_actual += record.actual
+            if record.target is not None:
+                shift_total_target += record.target
+            # shift_total_target += record.target
             performance_count += 1
             shift_average_performance = shift_total_performance / performance_count if performance_count > 0 else 0
             shift_total_gap = shift_total_actual - shift_total_target
