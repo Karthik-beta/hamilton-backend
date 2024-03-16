@@ -68,8 +68,8 @@ class Command(BaseCommand):
             r_in_minutes = round(r_count * 10 / 60, 2)
             i_in_minutes = round(60 - r_in_minutes)
 
-            # print("R in Minutes:", r_in_minutes)
-            # print("I in Minutes:", i_in_minutes)
+            print("R in Minutes:", r_in_minutes)
+            print("I in Minutes:", i_in_minutes)
 
             # Step 5: Update 'actual' field in 'machineWiseData'
             time_range = f"{start_time.strftime('%H:%M')} - {end_time.strftime('%H:%M')}"

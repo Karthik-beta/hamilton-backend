@@ -22,6 +22,7 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.views import APIView
 import pandas as pd
 from pytz import timezone
+from openpyxl.utils import get_column_letter
 
 
 
@@ -615,82 +616,6 @@ class ExportExcelView(View):
         return queryset
     
 
-class ExportExcelMachineView(View):
-    def get(self, request, *args, **kwargs):
-        queryset = models.machineWiseData.objects.all()
-
-        wb = openpyxl.Workbook()
-        ws = wb.active
-        ws.title = "Machine Records"
-
-        headers = [
-            "Plant", "Shopfloor", "Assembly Line", "Machine ID", "Product ID",
-            "Product Target", "Shift", "Date", "Time", "On Time", "Idle Time",
-            "Actual", "Target", "Performance", "Gap", "kW-h"
-        ]
-
-        def get_shift_info(time_str):
-            # Convert the time string to a datetime object for easier comparison
-            time_format = "%H:%M"
-            time_obj = datetime.datetime.strptime(time_str.split(" - ")[0], time_format)
-
-            # Define shift time ranges
-            shift_a_start = datetime.datetime.strptime("08:00", time_format)
-            shift_a_end = datetime.datetime.strptime("20:00", time_format)
-
-            shift_b_start = datetime.datetime.strptime("20:00", time_format)
-            shift_b_end = datetime.datetime.strptime("08:00", time_format)
-
-            # Check the shift and generate the output
-            if shift_a_start <= time_obj <= shift_a_end:
-                return "Shift A, 08 - 20 (11)"
-            else:
-                return "Shift B, 20 - 08 (11)"
-
-
-        # Set font style and background color for headers
-        header_font = Font(size=14, bold=True)
-        header_fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
-
-        for col_num, header in enumerate(headers, 1):
-            cell = ws.cell(row=1, column=col_num, value=header)
-            cell.font = header_font
-            cell.fill = header_fill
-            
-        for row_num, record in enumerate(queryset, 2):
-            # Extract the hour from the record.time in 24-hour format
-            record_hour = int(record.time.split(':')[0])
-
-            # Determine the shift based on the time
-            if 8 <= record_hour < 20:
-                shift = "Shift A, 08 - 20 (11)"
-            else:
-                shift = "Shift B, 20 - 08 (11)"
-
-            ws.cell(row=row_num, column=1, value=record.plant)
-            ws.cell(row=row_num, column=2, value=record.shopfloor)
-            ws.cell(row=row_num, column=3, value=record.assembly_line)
-            ws.cell(row=row_num, column=4, value=record.machine_id)
-            ws.cell(row=row_num, column=5, value="AQUA 1000ml")
-            ws.cell(row=row_num, column=6, value=record.product_target)
-            ws.cell(row=row_num, column=7, value=shift)
-            ws.cell(row=row_num, column=8, value=record.date)
-            ws.cell(row=row_num, column=9, value=record.time)
-            ws.cell(row=row_num, column=10, value=record.on_time)
-            ws.cell(row=row_num, column=11, value=record.idle_time)
-            ws.cell(row=row_num, column=12, value=record.actual)
-            ws.cell(row=row_num, column=13, value=record.target)
-            ws.cell(row=row_num, column=14, value=record.performance)
-            ws.cell(row=row_num, column=15, value=record.gap)
-            ws.cell(row=row_num, column=16, value=record.current)
-
-        response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        response["Content-Disposition"] = "attachment; filename=machine_records.xlsx"
-        wb.save(response)
-
-        return response
-    
-
 class AssemblyLineWiseDataView(generics.ListAPIView):
     queryset = models.assemblyLineWiseData.objects.all()
     serializer_class = serializers.AssemblyLineWiseDataSerializer
@@ -772,8 +697,57 @@ class spellAssemblyLineDataUpdate(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ProductionAndonView(generics.ListAPIView):
-    queryset = models.ProductionAndon.objects.order_by('-machine_datetime')[:1]
+
+    # queryset = models.ProductionAndon.objects.order_by('-machine_datetime')[:1]
     serializer_class = serializers.ProductionAndonSerializer
+
+    def get_queryset(self):
+        # Get the current date and time in the Asia/Kolkata timezone
+        today = datetime.now(pytz.timezone('Asia/Kolkata'))
+
+        # Retrieve the latest object from the queryset
+        latest_object = models.ProductionAndon.objects.order_by('-machine_datetime').first()
+
+        default_value = [{"r": None }]
+        # default_value = models.ProductionAndon.objects.none()
+
+        # Check if the latest object exists
+        if latest_object:
+            # Get the datetime of the latest object
+            latest_datetime = latest_object.machine_datetime
+
+            # Compare today's date and time with the datetime of the latest object
+            if today.date() == latest_datetime.date():
+                print("Today's date matches the date of the latest object.")
+            else:
+                print("Today's date does not match the date of the latest object.")
+
+            # Define tolerance in minutes
+            tolerance_minutes = 2
+
+            # Calculate the time range within the tolerance
+            lower_bound = latest_datetime - timedelta(minutes=tolerance_minutes)
+            upper_bound = latest_datetime + timedelta(minutes=tolerance_minutes)
+
+            # Check if the current time falls within the tolerance range
+            if lower_bound.time() <= today.time() <= upper_bound.time():
+                today_time = today.time() 
+                print(today_time)
+                print("The current time is within {} minutes of the time of the latest object.".format(tolerance_minutes))
+                # Return the queryset
+                return models.ProductionAndon.objects.order_by('-machine_datetime')[:1]
+            
+            else:
+                print("The current time is not within {} minutes of the time of the latest object.".format(tolerance_minutes))
+                # return default_value
+                return [{"error": "No objects found in the queryset."}]
+
+        else:
+            print("No objects found in the queryset.")
+            # return default_value
+            return [{"error": "No objects found in the queryset."}]
+
+        # return models.ProductionAndon.objects.order_by('-machine_datetime')[:1]
 
 
 
@@ -864,3 +838,262 @@ class HourlyProductionAndon(APIView):
 
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+
+class ExportExcelMachineView(View):
+    def get(self, request, *args, **kwargs):
+        # queryset = models.machineWiseData.objects.all()
+        queryset = models.machineWiseData.objects.all().order_by('date', 'time')
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Machine Records"
+
+        headers = [
+            "Plant", "Shopfloor", "Assembly Line", "Machine ID", "Product ID", "Lot/Batch",
+            "Product Target", "Shift", "Date", "Time", "Batch Order Quantity", "Order Processed", "Order Pending", "On Time", "Idle Time", "Idle Reason", "Break",
+            "Actual", "Target", "Performance", "Gap", "kW-h"
+        ]
+
+        # Set font style and background color for headers
+        header_font = Font(size=14, bold=True)
+        header_fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+
+        footer_font = Font(bold=True)
+        footer_fill = PatternFill(start_color="799184", end_color="799184", fill_type="solid")
+
+        # for col_num, header in enumerate(headers, 1):
+        #     cell = ws.cell(row=1, column=col_num, value=header)
+        #     cell.font = header_font
+        #     cell.fill = header_fill
+
+        # Retrieve the last record from productionPlanning
+        last_record = models.productionPlanning.objects.latest('id')
+
+        # Get the quantity from the last record
+        quantity = last_record.quantity
+
+        processed_quantity = 0
+        remaining_quantity = quantity
+
+        row_num = 1
+        current_shift = None
+        
+        shift_total_on_time = 0
+        shift_total_idle_time = 0
+        shift_total_actual = 0
+        shift_total_target = 0
+        shift_total_performance = 0
+        performance_count = 0
+        shift_average_performance = 0
+        shift_total_gap = 0
+
+        shift_total_order_quantity = quantity
+
+        for record in queryset:
+            # Extract the hour from the record.time in 24-hour format
+            record_hour = int(record.time.split(':')[0])
+
+            # Determine the shift based on the time
+            if 8 <= record_hour < 20:
+                shift = "Shift A, 08 - 20 (11)"
+            else:
+                shift = "Shift B, 20 - 08 (11)"
+
+            if shift != current_shift:
+                # New shift detected, write the previous shift's total target
+                if current_shift:
+                    ws.cell(row=row_num, column=1, value=f"{current_shift} => Total")
+                    ws.merge_cells(start_row=row_num, start_column=1, end_row=row_num, end_column=10)  # Merge columns 1 to 4
+                    for col_num in range(1, 23):  # Loop through columns 1 to 19
+                        cell = ws.cell(row=row_num, column=col_num)
+                        cell.font = footer_font
+                        cell.fill = footer_fill
+                    ws.cell(row=row_num, column=11, value=shift_total_order_quantity)
+                    ws.cell(row=row_num, column=12, value=processed_quantity)
+                    ws.cell(row=row_num, column=13, value=remaining_quantity)
+                    ws.cell(row=row_num, column=14, value=shift_total_on_time)
+                    ws.cell(row=row_num, column=15, value=shift_total_idle_time)
+                    ws.cell(row=row_num, column=18, value=shift_total_actual)
+                    ws.cell(row=row_num, column=19, value=shift_total_target)
+                    ws.cell(row=row_num, column=20, value=shift_average_performance)
+                    ws.cell(row=row_num, column=21, value=shift_total_gap)
+                    ws.cell(row=row_num, column=22, value="")
+                    row_num += 1
+
+                    ws.cell(row=row_num, column=1, value="")
+                    ws.merge_cells(start_row=row_num, start_column=1, end_row=row_num, end_column=22)
+                    row_num += 1
+
+                # Reset the shift target sum for the new shift
+                shift_total_on_time = 0
+                shift_total_idle_time = 0
+                shift_total_actual = 0
+                shift_total_target = 0
+                shift_total_performance = 0
+                performance_count = 0
+                shift_average_performance = 0
+                shift_total_gap = 0
+
+
+                current_shift = shift
+            
+                for col_num, header in enumerate(headers, 1):
+                    cell = ws.cell(row=row_num, column=col_num, value=header)
+                    cell.font = header_font
+                    cell.fill = header_fill
+
+                     # Calculate the width of the column based on the length of the header
+                    header_length = len(header)
+                    column_width = max(16, header_length + 2)  # Minimum width of 10, adjust as needed
+                    ws.column_dimensions[get_column_letter(col_num)].width = column_width
+                    
+                row_num += 1
+
+            # processed_quantity += record.actual
+
+            # Write the record data
+            ws.cell(row=row_num, column=1, value=record.plant)
+            ws.cell(row=row_num, column=2, value=record.shopfloor)
+            ws.cell(row=row_num, column=3, value=record.assembly_line)
+            ws.cell(row=row_num, column=4, value=record.machine_id)
+            ws.cell(row=row_num, column=5, value="AQUA 1000ml")
+            ws.cell(row=row_num, column=6, value="")
+            ws.cell(row=row_num, column=7, value=record.product_target)
+            ws.cell(row=row_num, column=8, value=shift)
+            ws.cell(row=row_num, column=9, value=record.date)
+            ws.cell(row=row_num, column=10, value=record.time)
+            ws.cell(row=row_num, column=11, value=quantity)
+            ws.cell(row=row_num, column=12, value=processed_quantity)
+            ws.cell(row=row_num, column=13, value=remaining_quantity)
+            ws.cell(row=row_num, column=14, value=record.on_time)
+            ws.cell(row=row_num, column=15, value=record.idle_time)
+            ws.cell(row=row_num, column=16, value="")
+            ws.cell(row=row_num, column=17, value="")
+            ws.cell(row=row_num, column=18, value=record.actual)
+            ws.cell(row=row_num, column=19, value=record.target)
+            ws.cell(row=row_num, column=20, value=record.performance)
+            ws.cell(row=row_num, column=21, value=record.gap)
+            ws.cell(row=row_num, column=22, value=record.current)
+
+            shift_total_on_time += record.on_time
+            shift_total_idle_time += record.idle_time
+            shift_total_actual += record.actual
+            shift_total_target += record.target
+            performance_count += 1
+            shift_average_performance = shift_total_performance / performance_count if performance_count > 0 else 0
+            shift_total_gap = shift_total_actual - shift_total_target
+
+
+            processed_quantity += record.actual
+            remaining_quantity -= record.actual
+
+            row_num += 1
+
+        # Write the total target for the last shift
+        ws.cell(row=row_num, column=1, value=f"{current_shift} => Total")
+        ws.merge_cells(start_row=row_num, start_column=1, end_row=row_num, end_column=10)  # Merge columns 1 to 4
+        for col_num in range(1, 23):  # Loop through columns 1 to 19
+            cell = ws.cell(row=row_num, column=col_num)
+            cell.font = footer_font
+            cell.fill = footer_fill
+        ws.cell(row=row_num, column=11, value=shift_total_order_quantity)
+        ws.cell(row=row_num, column=12, value=processed_quantity)
+        ws.cell(row=row_num, column=13, value=remaining_quantity)
+        ws.cell(row=row_num, column=14, value=shift_total_on_time)
+        ws.cell(row=row_num, column=15, value=shift_total_idle_time)
+        ws.cell(row=row_num, column=18, value=shift_total_actual)
+        ws.cell(row=row_num, column=19, value=shift_total_target)
+        ws.cell(row=row_num, column=20, value=shift_average_performance)
+        ws.cell(row=row_num, column=21, value=shift_total_gap)
+        ws.cell(row=row_num, column=22, value="")
+
+        response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        response["Content-Disposition"] = "attachment; filename=machine_records.xlsx"
+        wb.save(response)
+
+        return response
+    
+
+class ExportProductionInfoExcel(View):
+    def get(self, request, *args, **kwargs):
+        # queryset = models.machineWiseData.objects.all()
+        queryset = models.productionPlanning.objects.all()
+
+        lmc = models.lineMachineConfig.objects.all()
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Machine Records"
+
+        headers = [
+            "Jobwork", "Job Assigned", "Customer", "Po & Date", "Drawing No", "Plant", "Shopfloor", "Assembly Line", 
+            "Machine ID", "Product ID", "Lot/Batch", "Product Target", "Shift", "Date", "Time", "Batch Order Quantity",
+            "Order Processed", "Order Pending", "On Time", "Idle Time", "Idle Reason", "Break", "Actual", "Target",
+            "Performance", "Gap", "kW-h"
+        ]
+
+        row_num = 1
+
+        # Set font style and background color for headers
+        header_font = Font(size=14, bold=True)
+        header_fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+
+        for col_num, header in enumerate(headers, 1):
+            cell = ws.cell(row=row_num, column=col_num, value=header)
+            cell.font = header_font
+            cell.fill = header_fill
+
+            # Calculate the width of the column based on the length of the header
+            header_length = len(header)
+            column_width = max(20, header_length + 2)  # Minimum width of 20, adjust as needed
+            ws.column_dimensions[get_column_letter(col_num)].width = column_width
+                    
+        row_num += 1
+
+        
+        # Dictionary to store plant, shopfloor, and assemblyline details for each job_id
+        job_details = {}
+
+        # Populate job_details dictionary with lineMachineConfig details
+        for obj2 in lmc:
+            job_id = obj2.job_id
+            if job_id not in job_details:
+                job_details[job_id] = {}
+            job_details[job_id]['plant'] = obj2.plant
+            job_details[job_id]['shopfloor'] = obj2.shopfloor
+            job_details[job_id]['assemblyline'] = obj2.assembly_line
+            job_details[job_id]['machine_id'] = obj2.machine_id
+            job_details[job_id]['product_id'] = obj2.product_id
+
+        # ws.cell(row=row_num, column=1, value=models.productionPlanning.job_id)
+        for obj in queryset:
+
+            job_id = obj.job_id
+            plant = job_details[job_id]['plant'] if job_id in job_details else ""
+            shopfloor = job_details[job_id]['shopfloor'] if job_id in job_details else ""
+            assemblyline = job_details[job_id]['assemblyline'] if job_id in job_details else ""
+            machine_id = job_details[job_id]['machine_id'] if job_id in job_details else ""
+            product_id = job_details[job_id]['product_id'] if job_id in job_details else ""
+
+            ws.append([
+                obj.job_id,
+                obj.assigned_date,
+                obj.customer,
+                obj.po_no,
+                obj.drawing_no,
+                plant,
+                shopfloor,
+                assemblyline,
+                machine_id,
+                product_id,
+                obj.batch_no,
+            ])
+
+
+        response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        response["Content-Disposition"] = "attachment; filename=production_info.xlsx"
+        wb.save(response)
+
+        return response

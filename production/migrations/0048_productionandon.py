@@ -16,8 +16,8 @@ class Migration(migrations.Migration):
                 ('s_no', models.AutoField(primary_key=True, serialize=False)),
                 ('machine_id', models.CharField(blank=True, max_length=255, null=True)),
                 ('machine_datetime', models.DateTimeField(blank=True, null=True)),
-                ('machine_status', models.CharField(blank=True, max_length=255, null=True)),
-                ('production_count', models.CharField(blank=True, max_length=255, null=True)),
+                ('r', models.CharField(blank=True, max_length=255, null=True)),
+                ('p', models.IntegerField(blank=True, null=True)),
                 ('kwh_reading', models.FloatField(blank=True, null=True)),
             ],
             options={

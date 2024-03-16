@@ -52,4 +52,9 @@ urlpatterns = [
     
     re_path(r'^template/$', views.ExportExcelTemplate.as_view(), name='Template'),
 
+    # re_path(r'^export_excel2/$', views.ExportExcelMachineView2.as_view(), name='export-excel2'),
+    # re_path(r'^export_excel3/$', views.ExportExcelMachineView3.as_view(), name='export-excel3'),
+
+    re_path(r'^productionInfoExcel/$', views.ExportProductionInfoExcel.as_view()),
+
 ]
