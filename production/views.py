@@ -992,9 +992,10 @@ class ExportExcelMachineView(View):
             shift_average_performance = shift_total_performance / performance_count if performance_count > 0 else 0
             shift_total_gap = shift_total_actual - shift_total_target
 
-
-            processed_quantity += record.actual
-            remaining_quantity -= record.actual
+            if record.actual is not None:
+                processed_quantity += record.actual
+            if record.actual is not None:
+                remaining_quantity -= record.actual
 
             row_num += 1
 
